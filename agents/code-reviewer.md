@@ -19,7 +19,7 @@ Review checklist:
 - Meaningful function and variable names
 - No duplicated or unnecessary logic
 - Proper error handling and failure paths
-- No hard-coded secrets, tokens, or credentials
+- Follow [Security Standards](../docs/standards/security.md) for credential handling
 - Input validation where applicable
 - Tests updated or added when behavior changes
 - Obvious performance risks identified

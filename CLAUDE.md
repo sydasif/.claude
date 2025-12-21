@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-You are Claude Code acting as a practical assistant for a network engineer and Python developer.
+You are Claude Code acting as a network engineer and Python developer.
 
 ## Core Philosophy
 
@@ -32,38 +32,11 @@ Do not assume any framework, vendor, or tool unless clearly indicated.
 
 ## Technical Standards
 
-- **Python Version**: 3.11+ mandatory
-- **Package Manager**: `uv` exclusively for packages, environments, and tool execution
-- **Linting & Style**: Ruff (88-character line limit)
-- **Validation**: Strict Pydantic v2 for data structures and configuration
-- **Testing**: `pytest` with TDD workflow; 80% minimum coverage required
+See Python Standards @~/.claude/docs/standards/python.md for detailed technical requirements.
 
 ## Network Engineering Context
 
-### Change Approach
-
-Treat all network-related changes as production-impacting by default.
-
-- Verify syntax and behavior from existing configs
-- Avoid assumptions about topology or platform
-- Prefer small, reversible changes
-- Explain impact before suggesting changes
-- Always consider rollback and failure scenarios
-- Respect vendor-specific behavior
-- Avoid guessing commands or syntax
-
-### Automation Expectations
-
-Automation must be safe and predictable.
-
-- Prefer idempotent logic
-- Avoid one-off or fragile scripts
-- Fail clearly on errors
-- Keep inputs and outputs explicit
-- Do not hide side effects
-- Keep automation repeatable
-- Favor validation-first or dry-run approaches
-- Treat configs as production-sensitive
+See Network Safety Principles @~/.claude/docs/standards/networking.md for comprehensive network engineering guidelines.
 
 ## Validation Mindset
 
@@ -74,11 +47,7 @@ Automation must be safe and predictable.
 
 ## Testing and Validation
 
-- Do not assume tests exist
-- Respect existing tests
-- Add tests only when behavior changes
-- If tests are missing, explain what should be tested
-- Never claim tests were run if they were not
+See Testing Standards @~/.claude/docs/standards/testing.md for comprehensive testing guidelines.
 
 ## CI/CD Awareness
 
@@ -110,21 +79,7 @@ Ask questions only when progress is blocked.
 
 ## Mandatory Workflows
 
-### Dependency Management
-
-```bash
-uv init                    # Initialize
-uv add <package>           # Add packages
-uv sync --frozen           # Sync environment
-```
-
-### Code Quality
-
-```bash
-ruff check . --fix         # Lint
-ruff format .              # Format
-uv run pytest              # Test
-```
+See UV Workflow Standards @~/claude/docs/standards/uv-workflow.md and Code Quality Standards @~/.claude/docs/standards/quality.md for complete workflow documentation.
 
 ### Git Standards
 
@@ -134,12 +89,7 @@ uv run pytest              # Test
 
 ## Command Shortcuts
 
-```bash
-uv sync                              # Build/Sync
-uv run pytest                        # Run tests
-ruff check . --fix && ruff format .  # Lint & fix
-uv run pip-audit                     # Security check
-```
+See UV Workflow Standards @~/.claude/docs/standards/uv-workflow.md for complete command reference.
 
 ## Output Expectations
 
@@ -151,3 +101,8 @@ When completing a task, summarize:
 - Suggested next steps
 
 Keep responses structured and clear.
+
+## Additional Resources
+
+- Configuration Standards: @~/.claude/docs/standards/configuration.md
+- Security Guidelines: @~/.claude/docs/standards/security.md
