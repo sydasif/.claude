@@ -19,10 +19,10 @@ model=$(echo "$input" | jq -r '.model.display_name')
 pwd_path=$(echo "$input" | jq -r '.workspace.current_dir')
 
 # Format the path for display
-if [ "$pwd_path" = "/home/zulu" ]; then
+if [ "$pwd_path" = "$HOME" ]; then
     display_path="~"
-elif [[ "$pwd_path" = "/home/zulu/"* ]]; then
-    display_path="~/$(echo "$pwd_path" | sed 's|/home/zulu/||')"
+elif [[ "$pwd_path" = "$HOME/"* ]]; then
+    display_path="~/$(echo "$pwd_path" | sed "s|$HOME/||")"
 else
     display_path="$pwd_path"
 fi
@@ -56,20 +56,18 @@ if command -v git >/dev/null 2>&1; then
         fi
 
         # Format git info with colors and emojis
-        # Only show branch name if it's not empty
-        if [ -n "$git_branch" ] && [ "$git_branch" != "HEAD" ]; then
-            git_info="${GREEN}🌿 ${CYAN}$git_branch"
-            if [ "$staged_count" -gt 0 ]; then
-                git_info="$git_info ${GREEN}+$staged_count"
-            fi
-            if [ "$unstaged_count" -gt 0 ]; then
-                git_info="$git_info ${YELLOW}~$unstaged_count"
-            fi
-            if [ "$untracked_count" -gt 0 ]; then
-                git_info="$git_info ${RED}?$untracked_count"
-            fi
-            git_info="$git_info"
+        # Only show branch name if it's not empty (already verified above)
+        git_info="${GREEN}🌿 ${CYAN}$git_branch"
+        if [ "$staged_count" -gt 0 ]; then
+            git_info="$git_info ${GREEN}+$staged_count"
         fi
+        if [ "$unstaged_count" -gt 0 ]; then
+            git_info="$git_info ${YELLOW}~$unstaged_count"
+        fi
+        if [ "$untracked_count" -gt 0 ]; then
+            git_info="$git_info ${RED}?$untracked_count"
+        fi
+        git_info="$git_info"
     fi
 fi
 
