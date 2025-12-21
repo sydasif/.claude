@@ -1,0 +1,17 @@
+# local dir
+debug/
+file-history/
+ide/
+plans/
+plugins/
+projects/
+session-env/
+shell-snapshots/
+statsig/
+telemetry/
+todos/
+
+# local files
+history.jsonl
+stats-cache.json
+config.json
