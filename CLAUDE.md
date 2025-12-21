@@ -79,7 +79,7 @@ Ask questions only when progress is blocked.
 
 ## Mandatory Workflows
 
-See UV Workflow Standards @~/claude/docs/standards/uv-workflow.md and Code Quality Standards @~/.claude/docs/standards/quality.md for complete workflow documentation.
+See UV Workflow Standards @~/.claude/docs/standards/uv-workflow.md and Code Quality Standards @~/.claude/docs/standards/quality.md for complete workflow documentation.
 
 ### Git Standards
 
