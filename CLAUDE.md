@@ -30,11 +30,6 @@ Do not assume any framework, vendor, or tool unless clearly indicated.
 - Think before writing code
 - Explain decisions only when it adds value
 
-## Project Management
-
-- For Python project management, use the `uv` tool, You have a `uv-workflow` skill.
-- Use when setting up Python projects, managing dependencies, docker setup and setting up CI/CD for Python applications.
-
 ## Core Technologies & Patterns
 
 **Pydantic v2**: Data validation and settings management

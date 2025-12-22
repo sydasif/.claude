@@ -18,6 +18,11 @@
 - Do not implement features until required
 - Robust validation at boundaries using Pydantic v2
 
+### Project Management
+
+- For Python project management, use the `uv` tool, You have a `uv-workflow` skill.
+- Use when setting up Python projects, managing dependencies, docker setup and setting up CI/CD for Python applications.
+
 ## Testing Standards
 
 ### Requirements

@@ -25,7 +25,6 @@ uv run pytest                 # Run tests
 
 ## Resources
 
-- **Examples**: [examples.md](examples.md) (Check this for Project Structure and Pydantic v2 patterns)
 - **Command Reference**: [reference.md](reference.md) (Full CLI flags and options)
 
 ## Configuration Rules
@@ -33,5 +32,3 @@ uv run pytest                 # Run tests
 - **Python**: `3.11+`
 - **Linting**: `ruff` (line-length 88)
 - **Testing**: `pytest`
-
-> **Note**: If the user asks for a `script`, use a simple flat layout. If they ask for an `app` or `project`, use the `src/` layout defined in [examples.md](examples.md).
