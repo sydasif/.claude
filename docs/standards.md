@@ -30,7 +30,6 @@
 
 - Update or add tests only when behavior changes
 - Never claim tests were run unless they were
-- Add tests only when behavior changes
 
 ## Configuration Management
 
@@ -100,3 +99,17 @@ Treat all network-related changes as production-impacting by default.
 - Prefer simple, proven solutions
 - Prioritize correctness and maintainability
 - Do not run destructive commands
+
+## Documentation Standards
+
+### Style
+
+- **Tone**: Professional, direct, and concise (Technical/Engineering focus)
+- **Format**: Markdown with clear headers
+- **Updates**: Keep documentation close to code; update in the same PR
+
+### Components
+
+- **README**: Must include Setup, Usage, and minimal Examples
+- **CLI**: Document all commands with arguments and example outputs
+- **Docstrings**: Google-style or NumPy-style docstrings for complex functions

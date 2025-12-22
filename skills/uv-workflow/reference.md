@@ -163,12 +163,3 @@ rm -rf .venv && uv sync
 # Debug output
 uv -vv sync
 ```
-
-## Migration from pip
-
-```bash
-pip freeze > requirements.txt
-uv init .
-uv pip install -r requirements.txt
-# Or directly: uv add requests flask pandas
-```
