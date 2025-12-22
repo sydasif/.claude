@@ -11,8 +11,8 @@ description: Use Gemini CLI to perform internet research and code analysis to pr
 **When invoked**:
 
 1. Determine if the user needs internet research or code analysis.
-2. For research: Run the `scripts/research.sh` helper with the query.
-3. For code analysis: Run the `scripts/analyze-code.sh` helper with the target path and analysis type.
+2. For research: Run the `scripts/research.py` helper with the query.
+3. For code analysis: Run the `scripts/analyze_code.py` helper with the target path and analysis type.
 
 **Usage Examples**:
 
@@ -22,7 +22,7 @@ When the user requests:
 - "Find current statistics about renewable energy adoption"
 - "Search for recent news about climate change policies"
 
-The script can be called directly: `@skills/gemini-research/scripts/research.sh "[specific query]"`
+The script can be called directly: `@skills/gemini/scripts/research.py "[specific query]"`
 
 When the user requests code analysis:
 
@@ -32,9 +32,11 @@ When the user requests code analysis:
 - "Review code for best practices"
 - "Suggest refactoring opportunities"
 
-The script can be called directly: `@skills/gemini-research/scripts/analyze-code.sh [path] --type [analysis-type]`
+The script can be called directly: `@skills/gemini/scripts/analyze_code.py [path] --type [analysis-type]`
 
 **Expected Behavior**:
 
 - For research: The skill will return factual, up-to-date information from internet research
 - For code analysis: The skill will analyze provided code files or directories and provide expert feedback
+
+**Notes**: Wait as needed for the scripts to complete before returning results to the user.
