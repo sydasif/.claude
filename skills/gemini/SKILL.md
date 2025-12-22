@@ -10,9 +10,19 @@ description: Use Gemini CLI to perform internet research and code analysis to pr
 
 **When invoked**:
 
-1. Determine if the user needs internet research or code analysis.
-2. For research: Run the `scripts/research.py` helper with the query and optional parameters.
-3. For code analysis: Run the `scripts/analyze_code.py` helper with the target path, analysis type, and optional parameters.
+1. **Determine user intent**:
+   - Use `research.py` for general research questions, factual information, statistics, news, or explanations about concepts
+   - Use `analyze_code.py` when analyzing code files, reviewing code quality, checking for security issues, or examining code structure
+
+2. **For research queries**: Run the `scripts/research.py` helper with the query and optional parameters.
+
+3. **For code analysis**: Run the `scripts/analyze_code.py` helper with the target path, analysis type, and optional parameters.
+
+4. **Intent detection examples**:
+   - **Research intent**: "What is the latest Python version?", "Find statistics about AI adoption", "Explain how neural networks work", "Research climate change policies"
+   - **Code analysis intent**: "Analyze this Python code for security issues", "Review code quality", "Check for performance problems", "Suggest improvements for this function", "Find bugs in the provided code"
+
+5. **Default behavior**: If the user intent is ambiguous, prefer `research.py` for general questions and `analyze_code.py` when code files or specific technical analysis is mentioned.
 
 **Usage Examples**:
 
