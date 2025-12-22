@@ -77,19 +77,10 @@ Ask questions only when progress is blocked.
 - Do not assume environment details
 - Do not make external calls without approval
 
-## Mandatory Workflows
-
-See UV Workflow Standards @~/.claude/docs/standards/uv-workflow.md and Code Quality Standards @~/.claude/docs/standards/quality.md for complete workflow documentation.
-
 ### Git Standards
 
 - Use **Conventional Commits** (`feat:`, `fix:`, `docs:`, etc.)
-- Branching: `feature/`, `fix/`, or `hotfix/` followed by issue number
-- Commit signing via GPG required for `main` branch
-
-## Command Shortcuts
-
-See UV Workflow Standards @~/.claude/docs/standards/uv-workflow.md for complete command reference.
+- Write clear, concise commit messages
 
 ## Output Expectations
 
