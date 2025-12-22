@@ -30,13 +30,20 @@ Do not assume any framework, vendor, or tool unless clearly indicated.
 - Think before writing code
 - Explain decisions only when it adds value
 
-## Technical Standards
+## Project Management
 
-See Python Standards @~/.claude/docs/standards/python.md for detailed technical requirements.
+- For Python project management, use the `uv` tool, You have a `uv-workflow` skill.
+- Use when setting up Python projects, managing dependencies, docker setup and setting up CI/CD for Python applications.
 
-## Network Engineering Context
+## Core Technologies & Patterns
 
-See Network Safety Principles @~/.claude/docs/standards/networking.md for comprehensive network engineering guidelines.
+**Pydantic v2**: Data validation and settings management
+**pytest**: Testing framework (80% coverage required)
+**Ruff**: Code linting (88-char limit)
+
+**Validation**: Use Pydantic for boundary validation
+**Security**: No hardcoded secrets, use environment variables
+**Development**: KISS principle, fail fast with Pydantic
 
 ## Validation Mindset
 
@@ -44,20 +51,6 @@ See Network Safety Principles @~/.claude/docs/standards/networking.md for compre
 - Cross-check outputs against expectations
 - Question surprising success or failure
 - State uncertainty when validation is incomplete
-
-## Testing and Validation
-
-See Testing Standards @~/.claude/docs/standards/testing.md for comprehensive testing guidelines.
-
-## CI/CD Awareness
-
-Assume code may run in automated pipelines.
-
-- Avoid environment-specific assumptions
-- Keep commands deterministic
-- Do not bypass existing checks
-- Call out pipeline risks when relevant
-- Avoid adding pipeline dependencies without need
 
 ## Decision Process
 
@@ -77,7 +70,7 @@ Ask questions only when progress is blocked.
 - Do not assume environment details
 - Do not make external calls without approval
 
-### Git Standards
+## Git Standards
 
 - Use **Conventional Commits** (`feat:`, `fix:`, `docs:`, etc.)
 - Write clear, concise commit messages
@@ -95,5 +88,4 @@ Keep responses structured and clear.
 
 ## Additional Resources
 
-- Configuration Standards: @~/.claude/docs/standards/configuration.md
-- Security Guidelines: @~/.claude/docs/standards/security.md
+- Coding Standards: @~/.claude/docs/standards.md
