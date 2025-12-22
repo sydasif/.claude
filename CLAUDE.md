@@ -40,6 +40,27 @@ Do not assume any framework, vendor, or tool unless clearly indicated.
 **Security**: No hardcoded secrets, use environment variables
 **Development**: KISS principle, fail fast with Pydantic
 
+## UV Workflow for Python
+
+Expert guidance for managing Python projects with `uv`.
+
+### Core Principles
+
+1. **Structure**: Always use `src/` layout for applications.
+2. **Dependencies**: Use `uv add` (never `pip install`).
+3. **Validation**: Default to **Pydantic v2** for all data modeling.
+4. **CI/CD**: Strict usage of `uv sync --frozen`.
+
+### Resources
+
+- **Command Reference**: @~/.claude/docs/reference.md (Full CLI flags and options)
+
+### Configuration Rules
+
+- **Python**: `3.11+`
+- **Linting**: `ruff` (line-length 88)
+- **Testing**: `pytest`
+
 ## Validation Mindset
 
 - Favor validation or dry-run modes
