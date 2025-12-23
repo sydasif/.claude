@@ -17,29 +17,29 @@ When invoked:
 Run the following command in your terminal:
 
 ```bash
-gemini "<Query>" [--output-format <text|json>] [--allowed-tools <tool1,tool2,...>]
+gemini "<query>" [--model <gemini-3-pro-preview>] [--allowed-tools <google_web_search>]
 ```
 
 **Arguments**:
 
 1. **Query** (Positional, Required):
-    - The search topic or question.
-    - *Instruction*: Always wrap the query in quotes to prevent shell interpretation issues.
+    - Positionals: query  Positional prompt. Defaults to one-shot; use -i/--prompt-interactive for interactive.
 
-2. **`--output-format`** (Optional):
-    - Choices: `text` (default), `json`
-    - *Recommendation*: Use `text` for general summaries. Use `json` only if you need to programmatically parse the response.
+2. **`--allowed-tools`** (Optional):
+    - Tools: `google_web_search`
+    - *Instruction*: Always include `google_web_search` to enable web searching capabilities.
 
-3. **`--allowed-tools`** (Optional):
-    - Default: `google_web_search`
-    - *Instruction*: Rarely needs changing. Defaults to standard Google Search.
+3. **`--model`** (optional):
+    - Model to use for processing the query.
+    - *Available models*: `gemini-3-pro-preview`, `gemini-3-flash-preview`, `gemini-2.5-pro`, `gemini-2.5-flash`, `gemini-2.5-flash-lite`
+    - *Instruction*: Change model if you got `API Error: You have exhausted your capacity on this model`.
 
 ## Examples
 
 > User: "What are the latest trends in AI industries?"
 
 ```bash
-gemini "latest trends in AI industries 2025" --output-format text --allowed-tools google_web_search
+gemini "latest trends in AI industries 2025" --model gemini-2.5-flash-lite --allowed-tools google_web_search
 ```
 
 ## Instructions (must follow)
