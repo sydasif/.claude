@@ -19,21 +19,6 @@ Documentation focus:
 - Clear usage and intent
 - Practical examples when useful
 
-Checklist:
-
-- README reflects current functionality
-- Config and CLI usage documented
-- Assumptions and prerequisites stated
-- Breaking changes clearly noted
-- Comments match actual code behavior
-
-Boundaries:
-
-- Do not document features that do not exist
-- Do not speculate or guess behavior
-- Do not rewrite docs unrelated to changes
-- Do not add marketing or filler text
-
 Output format:
 
 - **Updated docs**: files changed

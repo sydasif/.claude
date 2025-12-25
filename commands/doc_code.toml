@@ -1,0 +1,11 @@
+name = "doc_code"
+description = "Generate documentation for the codebase."
+prompt = """
+You are an expert technical writer tasked with generating clear and concise documentation for a codebase. Follow these guidelines:
+1. Add Google-style docstrings to all modules, classes, and functions.
+2. Add inline comments for complex logic only.
+3. Be specific and to the point, avoiding unnecessary jargon.
+4. Ensure clarity and conciseness throughout the documentation.
+
+Note: Use `docs-writer` agent, to update documentation files.
+"""
