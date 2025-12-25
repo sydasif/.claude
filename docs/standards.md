@@ -1,120 +1,73 @@
 # Unified Development Standards
 
-## Python Standards
+## Python Environment
 
-### Version Requirements
+### Version & Layout
 
-- **Python Version**: 3.11+ mandatory
+- **Python Version**: 3.11+ mandatory.
+- **Structure**: Always use `src/` layout for proper package isolation.
 
 ### Framework & Libraries
 
-- **Validation**: Pydantic v2 for data structures and configuration
-- **Testing**: `pytest`; 80% minimum coverage required
-- **Linting**: Ruff with 88-character line limit
+- **Validation**: Pydantic v2 for all data structures, settings, and configuration.
+- **Testing**: `pytest` with `pytest-mock` (mocker fixture).
+- **Linting/Formatting**: Ruff (88-character line limit).
+- **Management**: `uv` (Mandatory. Do not use `pip`).
 
-### Best Practices
+### Commands (UV Workflow)
 
-- Favor straightforward solutions over clever abstractions
-- Do not implement features until required
-- Robust validation at boundaries using Pydantic v2
+```bash
+# Dependency Management
+uv add requests pydantic          # Runtime dependencies
+uv add --dev pytest ruff mypy    # Development dependencies
 
-### Project Management
+# Execution & Sync
+uv sync                           # Development environment
+uv sync --frozen                  # CI/CD (strict lockfile)
 
-- For Python project management, use the `uv` tool, You have a `uv-workflow` skill.
-- Use when setting up Python projects, managing dependencies, docker setup and setting up CI/CD for Python applications.
+# Running Tasks
+uv run python -m package_name     # Run application
+uv run pytest                     # Run tests
+uv run ruff check . --fix         # Lint
+uv run ruff format .              # Format
+```
 
-## Testing Standards
+## Quality Gates
 
-### Requirements
+### Testing
 
-- **Framework**: `pytest` with TDD workflow
-- **Coverage**: 80% minimum required
-- **Mocks**: Use `pytest-mock` (mocker fixture)
-
-### Approach
-
-- Update or add tests only when behavior changes
-- Never claim tests were run unless they were
-
-## Configuration Management
-
-### Settings & Validation
-
-- Use `Pydantic Settings` for environment variable validation
-- Wrap settings in `@lru_cache()` to avoid repeated file system access
-- Fail fast with Pydantic v2 validation at boundaries
-
-### Secret Management
-
-- Never commit sensitive values
-- Use environment variables for credentials
-- Enable SSH key-based authentication where possible
-
-## Security Standards
-
-### Security Checklist
-
-- No hard-coded secrets, tokens, or credentials
-- Input validation at system boundaries
-- Proper error handling that doesn't expose sensitive information
-- Validate all external inputs and data sources
-
-### Security Testing
-
-- Run security vulnerability scanning as part of development workflow
-- Monitor for potential security issues in dependencies
-
-## Network Safety Principles
-
-### Change Approach
-
-Treat all network-related changes as production-impacting by default.
-
-- Prefer small, reversible changes
-- Explain impact before suggesting changes
-- Always consider rollback and failure scenarios
-- Avoid guessing commands or syntax
-
-### Automation Standards
-
-- Prefer idempotent operations
-- Fail clearly on errors
-- Favor validation-first or dry-run approaches
-- All scripts must be safe to run multiple times
-
-### Boundaries
-
-- Do not touch credentials or secrets
-- Do not push configs to live devices without approval
-- Treat all changes as production-impacting
-
-## Code Quality Standards
+- **Coverage**: Minimum 80% required.
+- **Workflow**: Tests must pass before merging.
+- **Mocking**: Use `pytest-mock` exclusively.
 
 ### Linting
 
-- **Tool**: Ruff for linting and formatting
-- **Line Limit**: 88-character limit
-- Commands: `ruff check . --fix` and `ruff format .`
+- **Tool**: Ruff for both linting and formatting.
+- **Rules**:
+  - Line limit: 110 characters.
+  - Commands: `ruff check . --fix` and `ruff format .`.
 
-### Quality Requirements
+## Configuration & Security
 
-- Follow existing structure, style, and patterns
-- Keep changes minimal and scoped
-- Avoid unnecessary abstractions
-- Prefer simple, proven solutions
-- Prioritize correctness and maintainability
-- Do not run destructive commands
+### Settings
 
-## Documentation Standards
+- **Library**: `Pydantic Settings`.
+- **Optimization**: Wrap settings in `@lru_cache()` to prevent repeated file system access.
+- **Validation**: Strict Pydantic v2 validation at system boundaries.
 
-### Style
+### Security Checklist
 
-- **Tone**: Professional, direct, and concise (Technical/Engineering focus)
-- **Format**: Markdown with clear headers
-- **Updates**: Keep documentation close to code; update in the same PR
+- No hard-coded secrets, tokens, or credentials in code.
+- Credentials must use environment variables.
+- Input validation required at all system boundaries.
+- Error handling must not expose sensitive information.
+- Security scanning must be part of the CI workflow.
 
-### Components
+## Documentation
 
-- **README**: Must include Setup, Usage, and minimal Examples
-- **CLI**: Document all commands with arguments and example outputs
-- **Docstrings**: Google-style or NumPy-style docstrings for complex functions
+- **Tone**: Technical, direct, and concise.
+- **Format**: Markdown with clear headers.
+- **Requirements**:
+  - README must include Setup, Usage, and Examples.
+  - CLI commands must document arguments and example outputs.
+  - Complex functions require Google-style or NumPy-style docstrings.
