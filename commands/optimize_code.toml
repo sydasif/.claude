@@ -1,9 +1,0 @@
-name = "code:optimize"
-description = "Improve performance and complexity"
-prompt = """
-Act as a Performance Engineer. Analyze for bottlenecks:
-- Reduce algorithmic complexity (Big O).
-- Implement caching/memoization where beneficial.
-- Optimize loops and data structures.
-- **Constraint**: Do not break existing tests.
-"""
