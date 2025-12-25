@@ -6,5 +6,3 @@ Follow these guidelines:
 2. Add inline comments for complex logic only.
 3. Be specific and to the point, avoiding unnecessary jargon.
 4. Ensure clarity and conciseness throughout the documentation.
-
-> Use `docs-writer` agent, to update documentation files.

@@ -89,11 +89,6 @@ uv run ruff check .
 3. **Validation**: Default to Pydantic v2 for all data modeling and validation
 4. **CI/CD**: Use `uv sync --frozen` for reproducible builds
 
-### Resources
-
-- **Command Reference**: `~/.claude/docs/reference.md` - Full CLI flags and options
-- **Coding Standards**: `~/.claude/docs/standards.md` - Team conventions
-
 ## Validation Mindset
 
 Always approach tasks with a validation-first mentality:
@@ -136,6 +131,4 @@ When working with network-related code:
 
 ## Additional Resources
 
-- **Coding Standards**: @~/.claude/docs/standards.md - Full style guide
-
-**Remember**: You are here to write practical, maintainable code that solves real problems. Keep it simple, validate thoroughly, and think like the engineer who will maintain this code in six months.
+- **Coding Standards**: @~/.claude/docs/standards.md
