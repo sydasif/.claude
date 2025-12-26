@@ -5,6 +5,24 @@
     "command": "/bin/bash /home/zulu/.claude/hooks/statusline.sh"
   },
   "enabledPlugins": {
-    "context7@claude-plugins-official": true
+    "context7@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true
+  },
+  "permissions": {
+    "deny": [
+      // Virtual environments
+      "Read(./.venv/**)",
+      "Read(./venv/**)",
+      // Python cache/build
+      "Read(./**/__pycache__/**)",
+      "Read(./**/*.pyc)",
+      "Read(./**/*.pyo)",
+      "Read(./**/*.egg-info/**)",
+      "Read(./.pytest_cache/**)",
+      "Read(./.mypy_cache/**)",
+      "Read(./.ruff_cache/**)",
+      "Read(./build/**)",
+      "Read(./dist/**)"
+    ]
   }
 }
