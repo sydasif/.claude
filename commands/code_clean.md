@@ -2,7 +2,9 @@ Act as a Code Janitor. Perform a deep cleanup:
 
 - Remove unused imports, dead functions, and stale variables.
 - Delete commented-out code.
-- Fix formatting and simple linting errors.
+- Fix formatting and linting errors using `ruff`:
+  - Run `ruff check . --fix`
+  - Run `ruff format .`
+- Ensure line length does not exceed 110 characters.
 - **Do not** change logic or architecture.
-- Ensure code adheres to style guidelines (e.g., PEP 8 for Python).
 - Provide a summary of changes made after cleanup.

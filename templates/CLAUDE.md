@@ -6,55 +6,49 @@ Brief description of the project purpose, main functionality, and key features.
 
 ## Technology Stack
 
-- Language/Framework: [e.g., Python 3.11+, React, Node.js]
-- Dependencies: [List key dependencies]
-- Build System: [e.g., uv, npm, make]
-- Testing Framework: [e.g., pytest, jest]
+- **Language**: Python 3.11+
+- **Management**: uv (Mandatory)
+- **Validation**: Pydantic v2
+- **Testing**: pytest, pytest-mock
+- **Linting/Formatting**: Ruff (110 char limit)
 
 ## Project Structure
 
 ```
 project-root/
-├── src/                 # Source code
+├── src/                 # Source code (mandatory layout)
 ├── tests/               # Test files
 ├── docs/                # Documentation
-├── config/              # Configuration files
-└── scripts/             # Utility scripts
+├── pyproject.toml       # Configuration
+└── README.md
 ```
 
 ## Setup & Installation
 
-- Installation commands: `uv sync` or `npm install`
-- Environment setup: [Any special environment variables or setup steps]
-- Database setup: [If applicable]
+```bash
+# Install dependencies
+uv sync
 
-## Development Commands
+# Run tests
+uv run pytest
+```
 
-- Run locally: `uv run python -m package_name` or `npm run dev`
-- Run tests: `uv run pytest` or `npm test`
-- Build: `uv run python -m build` or `npm run build`
-- Lint: `uv run ruff check . --fix` or `npm run lint`
+## Development Standards
 
-## Code Style & Conventions
+### Quality Gates
 
-- Formatting: [e.g., Ruff with 110 char limit, Prettier]
-- Naming: [e.g., snake_case for Python, camelCase for JavaScript]
-- Documentation: [Style guide for comments/docstrings]
+- **Coverage**: >80%
+- **Linting**: `uv run ruff check . --fix`
+- **Formatting**: `uv run ruff format .`
 
-## Security Considerations
+### Configuration
 
-- Do not hardcode credentials
-- Use environment variables for secrets
-- Validate all user inputs
+- Use `pydantic-settings` for all configuration.
+- Wrap settings in `@lru_cache()`.
+- No hard-coded secrets.
 
-## Common Tasks
+## Core Principles
 
-- How to add a new feature
-- How to fix common issues
-- Deployment process
-
-## Special Instructions
-
-- Any project-specific requirements or constraints
-- Tools that should/shouldn't be used
-- API endpoints or external services used
+- **Practical & Direct**: Solve efficiently; avoid ceremony.
+- **Validation-First**: Always prefer `--check`, `--dry-run`, or `--validate` modes.
+- **Safety**: Treat network changes as production-impacting. Idempotency is key.

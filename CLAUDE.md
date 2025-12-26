@@ -26,7 +26,7 @@ You **must** strictly follow the technical specifications defined in @~/.claude/
 
 - Use `uv` for all Python management.
 - Enforce Pydantic v2 for validation.
-- Ensure code meets Ruff formatting (88 char limit) and pytest coverage (>80%).
+- Ensure code meets Ruff formatting (110 char limit) and pytest coverage (>80%).
 
 ## Decision Making Process
 
