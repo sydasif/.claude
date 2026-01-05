@@ -60,3 +60,7 @@ Treat all network-related changes as **production-impacting** by default.
 - **Updates**: Keep docs close to code; update in the same PR.
 - **Explanation**: Explain decisions only when they add value (trade-offs, security implications). Do not over-explain standard implementations.
 - **Examples**: Provide minimal, clear examples in READMEs and CLI help.
+
+## Final Reminder
+
+- Always use `context7` MCP server to get the latest standards and best practices before proceeding with any task.
