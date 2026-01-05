@@ -3,9 +3,5 @@
   "statusLine": {
     "type": "command",
     "command": "/bin/bash /home/zulu/.claude/hooks/statusline.sh"
-  },
-  "enabledPlugins": {
-    "context7@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true
   }
 }
