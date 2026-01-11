@@ -15,3 +15,5 @@ todos/
 history.jsonl
 stats-cache.json
 config.json
+cache/
+paste-cache/
