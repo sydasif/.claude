@@ -11,7 +11,6 @@ Use the `gemini` command when you need to analyze contexts larger than your curr
 
 * **Context Strategy:** Use this for whole-project analysis, large refactors, or reading file sets >100KB.
 * **Positional Arguments:** You must pass the prompt as the **last positional argument** enclosed in quotes.
-* **Non-Interactive:** Always use the `-y` (YOLO) flag or ensure the prompt does not require follow-up questions, to prevent the agent from hanging.
 
 ## 2. Model Selection Strategy
 
@@ -24,8 +23,6 @@ You **must** specify a model using the `--model` (or `-m`) flag based on the use
 | **Legacy / Stable Analysis** | Gemini 2.5 Pro | `-m gemini-2.5-pro` | Use if previews are unstable. |
 | **Web Search & Lookups** | Gemini 2.5 Flash | `-m gemini-2.5-flash` | Optimized for `google_web_search`. |
 | **Low Cost / Simple Tasks** | Gemini 2.5 Flash Lite | `-m gemini-2.5-flash-lite` | Minimal reasoning required. |
-
-*Default Rule: If the user provides no specific constraint, use `gemini-3-pro-preview`.*
 
 ## 3. File & Directory Syntax
 
