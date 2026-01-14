@@ -3,5 +3,9 @@
   "statusLine": {
     "type": "command",
     "command": "/bin/bash /home/zulu/.claude/hooks/statusline.sh"
+  },
+  "defaults": {
+    "model": "sonnet",
+    "auto_review_threshold": 10
   }
 }
