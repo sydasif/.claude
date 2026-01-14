@@ -10,7 +10,7 @@ Use the `gemini` command when you need to analyze contexts larger than your curr
 ## 1. Core Behavior & Rules
 
 * **Context Strategy:** Use this for whole-project analysis, large refactors, or reading file sets >100KB.
-* **Positional Arguments:** The `-p` flag is deprecated. You must pass the prompt as the **last positional argument** enclosed in quotes.
+* **Positional Arguments:** You must pass the prompt as the **last positional argument** enclosed in quotes.
 * **Non-Interactive:** Always use the `-y` (YOLO) flag or ensure the prompt does not require follow-up questions, to prevent the agent from hanging.
 
 ## 2. Model Selection Strategy
