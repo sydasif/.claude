@@ -78,6 +78,23 @@ When available, use the helper script:
 ./scripts/run-gemini.sh "Your prompt" [EXTRA_GEMINI_ARGS...]
 ```
 
+## Available Gemini CLI Tools
+
+The following tools are available when using Gemini CLI:
+
+- **Activate Skill** (activate_skill) - Activates specific skills or capabilities
+- **Delegate to Agent** (delegate_to_agent) - Delegates tasks to specialized agents
+- **Edit** (replace) - Edits or replaces content in files
+- **FindFiles** (glob) - Finds files using glob patterns
+- **GoogleSearch** (google_web_search) - Performs Google web searches
+- **ReadFile** (read_file) - Reads content from files
+- **ReadFolder** (list_directory) - Lists contents of directories
+- **SaveMemory** (save_memory) - Saves information to memory for later use
+- **SearchText** (search_file_content) - Searches for text within files
+- **Shell** (run_shell_command) - Executes shell commands
+- **WebFetch** (web_fetch) - Fetches content from web URLs
+- **WriteFile** (write_file) - Writes content to files
+
 ## Model selection
 
 Choose a model appropriate for the task:
@@ -196,12 +213,83 @@ gemini "@src/ @tests/ Analyze test coverage and suggest missing test cases" \
   --model gemini-3-pro-preview --output-format json | jq -r '.response'
 ```
 
+## New Features & Advanced Options
+
+### Interactive mode with continued conversation
+- Use `--prompt-interactive` to execute initial prompt and continue in interactive mode:
+```bash
+gemini -p "Analyze this code" --prompt-interactive
+```
+
+### MCP server management
+- Manage MCP servers with the `mcp` subcommand:
+```bash
+gemini mcp --help
+```
+
+### Extension management
+- Manage extensions with the `extensions` subcommand:
+```bash
+gemini extensions --help
+gemini extensions list
+gemini extensions install extension-name
+```
+
+### Session management
+- Resume previous sessions:
+```bash
+gemini --resume latest          # Most recent session
+gemini --resume 5               # Session by index
+```
+- List available sessions:
+```bash
+gemini --list-sessions
+```
+- Delete a session:
+```bash
+gemini --delete-session 3
+```
+
+### Experimental ACP mode
+- Start agent in ACP mode with `--experimental-acp` flag:
+```bash
+gemini --experimental-acp
+```
+
+### Approval modes
+- Control approval behavior with `--approval-mode`:
+```bash
+gemini -p "query" --approval-mode default    # Prompt for approval (default)
+gemini -p "query" --approval-mode auto_edit  # Auto-approve edit tools
+gemini -p "query" --approval-mode yolo       # Auto-approve all tools
+```
+
+### Screen reader mode
+- Enable accessibility with `--screen-reader`:
+```bash
+gemini -p "query" --screen-reader
+```
+
+### Debug and configuration options
+- Enable debug mode with `--debug`:
+```bash
+gemini -p "query" --debug
+```
+- Specify allowed MCP servers:
+```bash
+gemini -p "query" --allowed-mcp-server-names server1,server2
+```
+- Specify allowed tools:
+```bash
+gemini -p "query" --allowed-tools Read,Grep,Bash
+```
+
 ## Integration workflow
 
 When the user asks a question:
 
 1) Decide if web search or current information is needed
-   - Look for keywords like “latest”, “current”, “newest”, “2025”, “recent”, “today”.
+   - Look for keywords like "latest", "current", "newest", "2025", "recent", "today".
    - Questions about versions, releases, updates.
    - Requests for current best practices or standards.
 
@@ -213,23 +301,23 @@ When the user asks a question:
 
 3) For code analysis → consider using Gemini CLI
    - As a primary tool for an alternative perspective.
-   - As a verification step to validate Claude’s own analysis.
+   - As a verification step to validate Claude's own analysis.
    - For comprehensive reviews where different models may catch different issues.
 
 4) Present results clearly
    - Cite that information came from Gemini CLI + web search.
    - Include relevant URLs when Gemini provides them.
-   - Summarize key findings and how they apply to the user’s codebase or situation.
+   - Summarize key findings and how they apply to the user's codebase or situation.
 
 ## Important notes
 
 - All `@` syntax paths are relative to the current working directory.
 - For analysis tasks (no writes), you do not need `--yolo`; read‑only is sufficient.
 - Always parse JSON output and use the `.response` field for the actual answer.
-- Use Gemini CLI as a complement to Claude, not a wholesale replacement.
-- Leverage Gemini’s built‑in Google Search integration for real‑time queries.
+- Use Gemini CLI as a companion to Claude, not a wholesale replacement.
+- Leverage Gemini's built‑in Google Search integration for real-time queries.
 - Be mindful of context window: keep `@` scopes focused and avoid unnecessary duplication.
-- Multiple perspectives (Claude + Gemini) are helpful for cross‑validation.
+- Multiple perspectives (Claude + Gemini) are helpful for cross-validation.
 
 ## Quick reference
 
@@ -255,6 +343,31 @@ When the user asks a question:
 
   ```bash
   gemini "@src/ @tests/ prompt" --model gemini-3-pro-preview --output-format json | jq -r '.response'
+  ```
+
+- Interactive mode
+
+  ```bash
+  gemini -p "Initial query" --prompt-interactive
+  ```
+
+- With specific approval mode
+
+  ```bash
+  gemini -p "Query" --approval-mode auto_edit
+  ```
+
+- Session management
+
+  ```bash
+  gemini --list-sessions
+  gemini --resume latest
+  ```
+
+- Debug mode
+
+  ```bash
+  gemini -p "Query" --debug
   ```
 
 ## Related docs in this skill
