@@ -1,15 +1,12 @@
 ---
-name: research-assistant
-description: Handles code analysis, architectural reasoning, and web searches.
+name: research-with-gemini
+description: Code analysis, architectural reasoning, debugging, and latest web searches.
 ---
 
 # Research Assistant
 
-Use the `gemini` when you need to code-analysis, web-search, architecture, reasoning, perform deep reasoning tasks, or access real-time information via Google Search.
+Use the `gemini` CLI when you need to code-analysis, web-search, architecture, reasoning, perform deep reasoning tasks, debugging or access real-time information via Google Search.
 
-## Core Behavior & Rules
-
-* **Context Strategy:** Use this for project analysis, refactors, or debugging etc.
 * **Positional Arguments:** Pass the prompt as the **positional argument** enclosed in quotes.
 
 ## File & Directory Syntax
@@ -38,30 +35,17 @@ Use `--include-directories` to force the inclusion of specific paths into the wo
 **Multiple directories:** `gemini "@src/ @tests/ Analyze test coverage for the source code"`
 **Current directory and subdirectories:** `gemini "@./ Give me an overview of this entire project"`
 
-## Google Web Search (`google_web_search`)
-
-To use the search tool, you must explicitly instruct Gemini to use its tools in the prompt string.
-
-* **Trigger:** "Search for...", "Find documentation on...", "Check current version of..."
-* **Recommended Model:** `gemini-2.5-flash` (Fastest tool execution).
-
-**Example:**
-
-```bash
-gemini "Check the latest news in UK about Tech" -m gemini-2.5-flash --allowed-tools google_web_search
-```
-
-## Model Selection Strategy
+## Model Selection
 
 You **may** specify a model using the `--model` (or `-m`) flag based on the user's intent.
 
-| Use Case | Recommended Model | Flag Name | Notes |
-| :--- | :--- | :--- | :--- |
-| **Deep Reasoning & Architecture** | **Gemini 3 Pro** (Preview) | `gemini-3-pro-preview` | For complex code analysis. |
-| **Speed & High Throughput** | Gemini 3 Flash (Preview) | `gemini-3-flash-preview` | Best for quick summaries of large files. |
-| **Legacy / Stable Analysis** | Gemini 2.5 Pro | `gemini-2.5-pro` | Use if previews are unstable (errors). |
-| **Web Search & Lookups** | Gemini 2.5 Flash | `gemini-2.5-flash` | Optimized for google search. |
-| **Low Cost / Simple Tasks** | Gemini 2.5 Flash Lite | `gemini-2.5-flash-lite` | Minimal reasoning required. |
+| Flag Name | Notes |
+| :--- | :--- |
+| `gemini-3-pro-preview` | For code analysis. |
+| `gemini-3-flash-preview` | Best for Web Search. |
+| `gemini-2.5-pro` | Use if previews are unstable (errors). |
+| `gemini-2.5-flash` | Good for quick reviews. |
+| `gemini-2.5-flash-lite` | Minimal reasoning required. |
 
 ### Important Notes
 
