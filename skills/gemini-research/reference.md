@@ -12,7 +12,7 @@ Headless mode provides a non‑interactive interface to Gemini CLI that:
 - Returns structured output (text or JSON)
 - Supports file redirection and piping
 - Is designed for scripting, automation, and CI/CD pipelines
-- Provides consistent exit codes for error handling【turn0search0】
+- Provides consistent exit codes for error handling
 
 ## Basic usage
 
@@ -163,7 +163,7 @@ The streaming JSONL format emits these event types:
 - `tool_use` — tool call requests with parameters
 - `tool_result` — tool execution results (success or error)
 - `error` — non‑fatal errors and warnings
-- `result` — final session outcome with aggregated stats【turn0search0】
+- `result` — final session outcome with aggregated stats
 
 Each line is a complete JSON object.
 
@@ -197,7 +197,7 @@ gemini -p "List programming languages" | grep -i "python"
 | `--yolo`, `-y`          | Auto‑approve all actions                 | `gemini -p "query" --yolo`                 |
 | `--approval-mode`       | Set approval mode                        | `gemini -p "query" --approval-mode auto_edit` |
 
-For full configuration details (settings files, environment variables), see the official Gemini CLI configuration documentation.【turn0search11】【turn0search14】
+For full configuration details (settings files, environment variables), see the official Gemini CLI configuration documentation.
 
 ## Related documentation
 
