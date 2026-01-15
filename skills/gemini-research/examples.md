@@ -1,12 +1,12 @@
-# Gemini CLI Examples – Research & Automation
+# Gemini CLI Examples — Research & Automation
 
-This file contains concrete, copy‑pasteable examples of using Gemini CLI in common workflows. For background on headless mode and flags, see [reference.md](reference.md). For when Claude should use Gemini, see [SKILL.md](SKILL.md).
+This file contains concrete, copy-paste examples of using Gemini CLI in common workflows.
 
 In these examples:
 
-- `--output-format json` is used by default for automation‑friendly output.
-- `jq` extracts `.response` for the actual answer.
-- Where relevant, `stats` are shown for tracking usage.
+- `--output-format json` is used by default for automation-friendly output
+- `jq` extracts `.response` for the actual answer
+- Where relevant, `stats` are shown for tracking usage
 
 ## Web search & current information
 
@@ -142,7 +142,7 @@ gemini "@src/ @tests/ Analyze test coverage and suggest missing test cases" \
   --model gemini-3-pro-preview --output-format json | jq -r '.response'
 ```
 
-### Edge‑case suggestions
+### Edge-case suggestions
 
 Suggest edge cases to test for utility functions:
 
@@ -228,12 +228,32 @@ echo "Recent usage trends:"
 tail -5 usage.log
 ```
 
+## Interactive workflows
+
+### Start interactive mode after initial query
+
+```bash
+gemini -p "Analyze this codebase" --prompt-interactive
+```
+
+### Resume previous session
+
+```bash
+# Resume the most recent session
+gemini --resume latest
+
+# Resume a specific session by index
+gemini --resume 5
+```
+
 ## Tips for adapting these examples
 
 - Adjust `--model` based on task complexity:
-  - Use `gemini-3-flash-preview` for web and simple queries.
-  - Use `gemini-3-pro-preview` or `gemini-2.5-pro` for complex code or architecture.
-- Keep `@` scopes focused to avoid overloading context.
-- In CI pipelines, always check `.error` before parsing `.response`.
-- When logging or tracking, leverage `stats` fields for observability.
-- Combine with other CLI tools (`grep`, `awk`, etc.) for custom workflows.
+  - Use `gemini-3-flash-preview` for web and simple queries
+  - Use `gemini-3-pro-preview` or `gemini-2.5-pro` for complex code or architecture
+- Keep `@` scopes focused to avoid overloading context
+- In CI pipelines, always check `.error` before parsing `.response`
+- When logging or tracking, leverage `stats` fields for observability
+- Combine with other CLI tools (`grep`, `awk`, etc.) for custom workflows
+- Use `--approval-mode auto_edit` for safer automated editing
+- Use session management (`--resume`, `--list-sessions`) for continued work

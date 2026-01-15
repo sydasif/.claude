@@ -1,161 +1,68 @@
 ---
 name: gemini-research
-description: Uses Gemini CLI for web search, code analysis, architectural reasoning, and real-time information. Use when the user needs current information, web search, code review, architecture advice, or a second opinion on implementation decisions.
+description: Uses Gemini CLI for web search, code analysis, and real-time information. Use when the user needs current information, web search, code review, or a second opinion.
 ---
 
 # Research Assistant with Gemini CLI
 
-This skill tells Claude when and how to use Gemini CLI as a complementary research and analysis tool.
+Use Gemini CLI as a complementary research and analysis tool.
 
-## When to use this skill
+## When to use
 
-Prefer Gemini CLI when any of the following are true:
+Use Gemini CLI when:
 
-- Web search or real-time information is required
-  - Questions about current events, latest versions, releases, or recent changes
-  - Queries with words like “latest”, “current”, “newest”, “2025”, “recent”, “today”
-  - Requests for up‑to‑date best practices, standards, or comparisons
+- **Web search or real-time info needed**
+  - Current events, latest versions, releases, recent changes
+  - Keywords: "latest", "current", "newest", "2025", "recent", "today"
+  - Up-to-date best practices, standards, comparisons
 
-- A second AI perspective would be valuable
-  - Code analysis, security reviews, or architecture decisions
-  - Cross‑checking assumptions or verifying implementation approaches
+- **Second AI perspective valuable**
+  - Code analysis, security reviews, architecture decisions
+  - Cross-checking assumptions or implementation approaches
 
-- Deep research or documentation diving is needed
-  - Understanding unfamiliar libraries, frameworks, or APIs
-  - Investigating best practices, patterns, or trade‑offs
+- **Research needed**
+  - Unfamiliar libraries, frameworks, APIs
+  - Best practices, patterns, trade-offs
 
-Treat Gemini CLI as a research assistant that:
-
-- Performs web searches with Google Search integration
-- Reads and analyzes code from a different AI perspective
-- Provides architectural and implementation guidance
-- Helps debug complex issues by exploring code and docs
-
-## Command syntax
-
-Basic format:
+## Basic usage
 
 ```bash
-gemini "PROMPT" [FLAGS]
-```
-
-For anything automated or parsed, always use JSON output:
-
-```bash
+# Always use JSON output for parsing
 gemini "PROMPT" --output-format json
-```
 
-JSON response structure (main fields):
-
-```json
-{
-  "response": "The actual answer to your prompt",
-  "stats": {
-    "models": { /* per‑model API & token usage */ },
-    "tools":  { /* tool usage stats */ },
-    "files":  { /* file modification stats */ }
-  },
-  "error": { /* only present if an error occurred */ }
-}
-```
-
-Extract the answer and handle errors safely (bash pattern):
-
-```bash
+# Extract response safely
 result=$(gemini -p "Your prompt" --output-format json)
-
-if echo "$result" | jq -e '.error' > /dev/null 2>&1; then
-  echo "Gemini error: $(echo "$result" | jq -r '.error.message')" >&2
-  exit 1
-fi
-
 echo "$result" | jq -r '.response'
+
+# Or use the helper script
+./scripts/run-gemini.sh "Your prompt"
 ```
-
-When available, use the helper script:
-
-```bash
-./scripts/run-gemini.sh "Your prompt" [EXTRA_GEMINI_ARGS...]
-```
-
-## Available Gemini CLI Tools
-
-The following tools are available when using Gemini CLI:
-
-- **Activate Skill** (activate_skill) - Activates specific skills or capabilities
-- **Delegate to Agent** (delegate_to_agent) - Delegates tasks to specialized agents
-- **Edit** (replace) - Edits or replaces content in files
-- **FindFiles** (glob) - Finds files using glob patterns
-- **GoogleSearch** (google_web_search) - Performs Google web searches
-- **ReadFile** (read_file) - Reads content from files
-- **ReadFolder** (list_directory) - Lists contents of directories
-- **SaveMemory** (save_memory) - Saves information to memory for later use
-- **SearchText** (search_file_content) - Searches for text within files
-- **Shell** (run_shell_command) - Executes shell commands
-- **WebFetch** (web_fetch) - Fetches content from web URLs
-- **WriteFile** (write_file) - Writes content to files
 
 ## Model selection
 
-Choose a model appropriate for the task:
+- `gemini-3-flash-preview` - **Default for web search and current info**
+- `gemini-3-pro-preview` - Deep code analysis, complex reasoning
+- `gemini-2.5-pro` - Stable fallback
+- `gemini-2.5-flash` - Quick, simple queries
 
-- `gemini-3-flash-preview`
-  - Best for: web search, real‑time information, quick answers (default preference)
-- `gemini-3-pro-preview`
-  - Best for: deep code analysis, complex reasoning, architecture
-- `gemini-2.5-pro`
-  - Best for: stable fallback when preview models are unavailable or error
-- `gemini-2.5-flash`
-  - Best for: quick analysis, simple queries, lower latency
-- `gemini-2.5-flash-lite`
-  - Best for: very simple queries where speed/cost matter more than depth
-
-Defaults:
-
-- For web search or current information: prefer `gemini-3-flash-preview`.
-- For deep code/architecture tasks: prefer `gemini-3-pro-preview` or `gemini-2.5-pro`.
-
-## File and directory inclusion
-
-In‑prompt `@` syntax:
-
-- `"@src/main.ts"` — specific file
-- `"@src/components/"` — entire directory
-- `"@./"` — current directory and all subdirectories
-- Combine multiple: `"@file1.js @src/ @tests/"`
-
-Workspace scope flag:
+## File inclusion
 
 ```bash
---include-directories ./libs,./tests
+# Single file
+gemini "@src/main.ts Review this file"
+
+# Directory
+gemini "@src/components/ Find code smells"
+
+# Multiple paths
+gemini "@src/ @tests/ Analyze coverage"
 ```
 
-Paths are relative to the current working directory. Use forward slashes consistently.
+> Paths are relative to current directory.
 
-## Output handling
+## Common patterns
 
-For automation:
-
-- Always use `--output-format json`.
-- Always:
-  - Check `.error` and surface error messages
-  - Extract `.response` for the actual answer
-  - Use `.stats.models` and `.stats.tools` for usage tracking when useful
-
-For long‑running operations or event‑driven use:
-
-- Use `--output-format stream-json` and process JSONL events (init, message, tool_use, tool_result, error, result). See [reference.md](reference.md) for details.
-
-## Common usage patterns
-
-### Web search & current information
-
-- Latest framework features or release notes
-- Current best practices or security recommendations
-- Version checking and comparisons
-- Technology or tool comparisons
-
-Example:
+### Web search
 
 ```bash
 gemini "What are the latest features in React 19?" \
@@ -164,214 +71,55 @@ gemini "What are the latest features in React 19?" \
 
 ### Code analysis
 
-- Single file review (security, correctness, style)
-- Architecture analysis for a module or codebase
-- Code smell or refactoring opportunities across a directory
-
-Example:
-
 ```bash
-gemini "@src/auth.ts Review this authentication implementation for security issues" \
+gemini "@src/auth.ts Review for security issues" \
   --model gemini-3-pro-preview --output-format json | jq -r '.response'
 ```
 
-### Research & documentation
-
-- API design guidance (pagination, filtering, error handling)
-- Configuration and environment layout
-- Debugging help (why this code might fail, leak, or stall)
-
-Example:
+### Second opinion
 
 ```bash
-gemini "@config/ How should I structure environment configuration for this setup?" \
+gemini "@src/cache.ts Is this appropriate for high-traffic?" \
   --model gemini-3-pro-preview --output-format json | jq -r '.response'
 ```
 
-### Verification & second opinion
+## Workflow
 
-- Validate approach choices (caching, batching, retries)
-- Security and performance audits
-- Cross‑checking Claude’s analysis
+1. **Decide if web search needed**
+   - Keywords: "latest", "current", "2025", "recent"
+   - Version/release questions
+   - Current best practices
 
-Example:
-
-```bash
-gemini "@src/cache.ts Is this caching strategy appropriate for high-traffic scenarios?" \
-  --model gemini-3-pro-preview --output-format json | jq -r '.response'
-```
-
-### Testing & quality
-
-- Test coverage analysis and missing test suggestions
-- Edge‑case brainstorms for utilities and APIs
-
-Example:
-
-```bash
-gemini "@src/ @tests/ Analyze test coverage and suggest missing test cases" \
-  --model gemini-3-pro-preview --output-format json | jq -r '.response'
-```
-
-## New Features & Advanced Options
-
-### Interactive mode with continued conversation
-- Use `--prompt-interactive` to execute initial prompt and continue in interactive mode:
-```bash
-gemini -p "Analyze this code" --prompt-interactive
-```
-
-### MCP server management
-- Manage MCP servers with the `mcp` subcommand:
-```bash
-gemini mcp --help
-```
-
-### Extension management
-- Manage extensions with the `extensions` subcommand:
-```bash
-gemini extensions --help
-gemini extensions list
-gemini extensions install extension-name
-```
-
-### Session management
-- Resume previous sessions:
-```bash
-gemini --resume latest          # Most recent session
-gemini --resume 5               # Session by index
-```
-- List available sessions:
-```bash
-gemini --list-sessions
-```
-- Delete a session:
-```bash
-gemini --delete-session 3
-```
-
-### Experimental ACP mode
-- Start agent in ACP mode with `--experimental-acp` flag:
-```bash
-gemini --experimental-acp
-```
-
-### Approval modes
-- Control approval behavior with `--approval-mode`:
-```bash
-gemini -p "query" --approval-mode default    # Prompt for approval (default)
-gemini -p "query" --approval-mode auto_edit  # Auto-approve edit tools
-gemini -p "query" --approval-mode yolo       # Auto-approve all tools
-```
-
-### Screen reader mode
-- Enable accessibility with `--screen-reader`:
-```bash
-gemini -p "query" --screen-reader
-```
-
-### Debug and configuration options
-- Enable debug mode with `--debug`:
-```bash
-gemini -p "query" --debug
-```
-- Specify allowed MCP servers:
-```bash
-gemini -p "query" --allowed-mcp-server-names server1,server2
-```
-- Specify allowed tools:
-```bash
-gemini -p "query" --allowed-tools Read,Grep,Bash
-```
-
-## Integration workflow
-
-When the user asks a question:
-
-1) Decide if web search or current information is needed
-   - Look for keywords like "latest", "current", "newest", "2025", "recent", "today".
-   - Questions about versions, releases, updates.
-   - Requests for current best practices or standards.
-
-2) For web search → use Gemini CLI immediately
+2. **Execute search**
 
    ```bash
-   gemini "User's question" --model gemini-3-flash-preview --output-format json | jq -r '.response'
+   gemini "User's question" --model gemini-3-flash-preview --output-format json
    ```
 
-3) For code analysis → consider using Gemini CLI
-   - As a primary tool for an alternative perspective.
-   - As a verification step to validate Claude's own analysis.
-   - For comprehensive reviews where different models may catch different issues.
+3. **Present results**
+   - Cite Gemini CLI + web search
+   - Include relevant URLs
+   - Apply findings to user's context
 
-4) Present results clearly
-   - Cite that information came from Gemini CLI + web search.
-   - Include relevant URLs when Gemini provides them.
-   - Summarize key findings and how they apply to the user's codebase or situation.
+## Key points
 
-## Important notes
-
-- All `@` syntax paths are relative to the current working directory.
-- For analysis tasks (no writes), you do not need `--yolo`; read‑only is sufficient.
-- Always parse JSON output and use the `.response` field for the actual answer.
-- Use Gemini CLI as a companion to Claude, not a wholesale replacement.
-- Leverage Gemini's built‑in Google Search integration for real-time queries.
-- Be mindful of context window: keep `@` scopes focused and avoid unnecessary duplication.
-- Multiple perspectives (Claude + Gemini) are helpful for cross-validation.
+- Always use `--output-format json` for automation
+- Check `.error` before using `.response`
+- Gemini is a complement to Claude, not a replacement
+- Keep `@` scopes focused to avoid context overload
+- For details see: [reference.md](reference.md), [examples.md](examples.md)
 
 ## Quick reference
 
-- Web search (most common)
+```bash
+# Web search
+gemini "query" --model gemini-3-flash-preview --output-format json | jq -r '.response'
 
-  ```bash
-  gemini "search query" --model gemini-3-flash-preview --output-format json | jq -r '.response'
-  ```
+# Code analysis
+gemini "@path/to/code prompt" --model gemini-3-pro-preview --output-format json | jq -r '.response'
 
-- Code analysis
+# Multiple paths
+gemini "@src/ @tests/ prompt" --output-format json | jq -r '.response'
+```
 
-  ```bash
-  gemini "@path/to/code prompt" --model gemini-3-pro-preview --output-format json | jq -r '.response'
-  ```
-
-- Full codebase analysis
-
-  ```bash
-  gemini "@./ prompt" --model gemini-3-pro-preview --output-format json | jq -r '.response'
-  ```
-
-- Multiple paths
-
-  ```bash
-  gemini "@src/ @tests/ prompt" --model gemini-3-pro-preview --output-format json | jq -r '.response'
-  ```
-
-- Interactive mode
-
-  ```bash
-  gemini -p "Initial query" --prompt-interactive
-  ```
-
-- With specific approval mode
-
-  ```bash
-  gemini -p "Query" --approval-mode auto_edit
-  ```
-
-- Session management
-
-  ```bash
-  gemini --list-sessions
-  gemini --resume latest
-  ```
-
-- Debug mode
-
-  ```bash
-  gemini -p "Query" --debug
-  ```
-
-## Related docs in this skill
-
-- [reference.md](reference.md) — detailed Gemini CLI headless reference (flags, output formats, JSON schema).
-- [examples.md](examples.md) — concrete, copy‑pasteable scenarios and automation patterns.
-- [scripts/run-gemini.sh](scripts/run-gemini.sh) — helper for safe JSON parsing and error handling.
+See [scripts](scripts/run-gemini.sh) for a helper script.

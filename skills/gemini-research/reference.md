@@ -2,13 +2,11 @@
 
 This reference explains headless mode and the most useful options for using Gemini CLI programmatically in scripts, CI/CD, and automation tools.
 
-For how Claude should decide when and how to use Gemini CLI, see [SKILL.md](SKILL.md).
-
 ## Overview
 
-Headless mode provides a non‑interactive interface to Gemini CLI that:
+Headless mode provides a non-interactive interface to Gemini CLI that:
 
-- Accepts prompts via command‑line arguments or stdin
+- Accepts prompts via command-line arguments or stdin
 - Returns structured output (text or JSON)
 - Supports file redirection and piping
 - Is designed for scripting, automation, and CI/CD pipelines
@@ -50,7 +48,7 @@ cat README.md | gemini -p "Summarize this documentation"
 
 ### Text output (default)
 
-Standard human‑readable text:
+Standard human-readable text:
 
 ```bash
 gemini -p "What is the capital of France?"
@@ -70,7 +68,7 @@ For automation, use JSON output:
 gemini -p "What is the capital of France?" --output-format json
 ```
 
-Response structure (high‑level):
+Response structure (high-level):
 
 ```json
 {
@@ -136,7 +134,7 @@ The `error` object is present only when an error occurs.
 
 ### Streaming JSON output (stream-json)
 
-For real‑time progress monitoring, event‑driven automation, or live UIs, use:
+For real-time progress monitoring, event-driven automation, or live UIs, use:
 
 ```bash
 gemini --output-format stream-json --prompt "What is 2+2?"
@@ -162,7 +160,7 @@ The streaming JSONL format emits these event types:
 - `message` — user prompts and assistant messages
 - `tool_use` — tool call requests with parameters
 - `tool_result` — tool execution results (success or error)
-- `error` — non‑fatal errors and warnings
+- `error` — non-fatal errors and warnings
 - `result` — final session outcome with aggregated stats
 
 Each line is a complete JSON object.
@@ -187,19 +185,76 @@ gemini -p "List programming languages" | grep -i "python"
 
 ## Key configuration options
 
-| Option                  | Description                              | Example                                     |
-| ----------------------- | ---------------------------------------- | ------------------------------------------- |
-| `--prompt`, `-p`        | Run in headless mode                     | `gemini -p "query"`                         |
-| `--output-format`       | Output format (text, json, stream-json)  | `gemini -p "query" --output-format json`    |
-| `--model`, `-m`         | Choose the Gemini model                 | `gemini -p "query" -m gemini-2.5-flash`    |
-| `--debug`, `-d`         | Enable debug mode                        | `gemini -p "query" --debug`                 |
-| `--include-directories` | Include additional directories          | `gemini -p "query" --include-directories src,docs` |
-| `--yolo`, `-y`          | Auto‑approve all actions                 | `gemini -p "query" --yolo`                 |
-| `--approval-mode`       | Set approval mode                        | `gemini -p "query" --approval-mode auto_edit` |
+| Option | Description | Example |
+| -------- | ------------- | --------- |
+| `--prompt`, `-p` | Run in headless mode | `gemini -p "query"` |
+| `--output-format` | Output format (text, json, stream-json) | `gemini -p "query" --output-format json` |
+| `--model`, `-m` | Choose the Gemini model | `gemini -p "query" -m gemini-2.5-flash` |
+| `--debug`, `-d` | Enable debug mode | `gemini -p "query" --debug` |
+| `--include-directories` | Include additional directories | `gemini -p "query" --include-directories src,docs` |
+| `--yolo`, `-y` | Auto-approve all actions | `gemini -p "query" --yolo` |
+| `--approval-mode` | Set approval mode | `gemini -p "query" --approval-mode auto_edit` |
+| `--prompt-interactive` | Execute prompt and continue interactively | `gemini -p "query" --prompt-interactive` |
+| `--resume` | Resume previous session | `gemini --resume latest` |
+| `--list-sessions` | List available sessions | `gemini --list-sessions` |
+| `--delete-session` | Delete a session | `gemini --delete-session 3` |
+| `--screen-reader` | Enable accessibility mode | `gemini -p "query" --screen-reader` |
+| `--allowed-mcp-server-names` | Specify allowed MCP servers | `gemini -p "query" --allowed-mcp-server-names server1,server2` |
+| `--allowed-tools` | Specify allowed tools | `gemini -p "query" --allowed-tools Read,Grep,Bash` |
+| `--experimental-acp` | Start agent in ACP mode | `gemini --experimental-acp` |
 
-For full configuration details (settings files, environment variables), see the official Gemini CLI configuration documentation.
+## Approval modes
+
+Control how Gemini handles tool execution approvals:
+
+- `default` — Prompt for approval (default behavior)
+- `auto_edit` — Auto-approve edit tools only
+- `yolo` — Auto-approve all tools (same as `--yolo` flag)
+
+Example:
+
+```bash
+gemini -p "Refactor this code" --approval-mode auto_edit
+```
+
+## Session management
+
+Resume previous sessions, list available sessions, or delete old sessions:
+
+```bash
+# Resume the most recent session
+gemini --resume latest
+
+# Resume a specific session by index
+gemini --resume 5
+
+# List all available sessions
+gemini --list-sessions
+
+# Delete a specific session
+gemini --delete-session 3
+```
+
+## Subcommands
+
+### MCP server management
+
+Manage Model Context Protocol (MCP) servers:
+
+```bash
+gemini mcp --help
+```
+
+### Extension management
+
+Manage Gemini CLI extensions:
+
+```bash
+gemini extensions --help
+gemini extensions list
+gemini extensions install extension-name
+```
 
 ## Related documentation
 
-- [Gemini CLI Docs](https://geminicli.com/docs) — main documentation site
-- [Headless mode](https://geminicli.com/docs/cli/headless) — detailed headless guide
+- [examples.md](examples.md) — concrete, copy-pasteable usage examples
