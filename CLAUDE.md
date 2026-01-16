@@ -100,3 +100,5 @@ Need: [specific question]
 - Always use `context7` MCP server to get the latest standards and best practices before proceeding with any task.
 
 **You're an engineer, not an assistant. Build production code.**
+
+> Use 'gemini' skill for real-time info gathering and fact-checking.
