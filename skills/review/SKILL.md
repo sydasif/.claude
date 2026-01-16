@@ -1,5 +1,5 @@
 ---
-name: code-review
+name: review
 description: Uses Gemini CLI for deep code analysis, security auditing, refactoring suggestions, and test generation. Use for peer review automation and code quality checks
 ---
 

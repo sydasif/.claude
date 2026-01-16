@@ -88,10 +88,8 @@ gemini "React 19 hydration error #418 workaround" \
 2. **Describe Symptom**: specific error message, unexpected behavior, or paste the log.
 3. **Select Model**: Use `gemini-3-pro-preview` for deep logic, `flash` for external library errors.
 4. **Execute**: Run with `--output-format json`.
-5. **Apply**: Review the explanation and apply the suggested patch.
 
 ## Quick Tips
 
 - **Always include the error message**: "Fix this" is weak. "Fix the NullPointer at line 10" is strong.
-- **Limit Context**: Don't include the whole repo (`@.`) unless necessary; it dilutes the debugging focus.
 - **Use JSON**: Always use `--output-format json` to ensure clean separation of reasoning and code blocks.
