@@ -33,9 +33,6 @@ gemini "PROMPT" --output-format json
 
 # Review a specific file
 gemini "@src/main.ts Review for logic errors" --output-format json
-
-# Or use the helper script
-./scripts/run-gemini.sh "@src/main.ts Review this code"
 ```
 
 ## Model selection

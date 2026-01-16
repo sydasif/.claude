@@ -24,4 +24,4 @@ Every debugging session must conclude with:
 4. **Verification**: The exact `uv` command used to pass.
 5. **Prevention**: Strategy to avoid recurrence (Type hints, validation, regression test).
 
-> **Constraint**: Add logging strategically during debug, but **never** commit debug prints.
+> `gemini` is a bash CLI tool, command chaining and piping are supported as in any bash environment.
