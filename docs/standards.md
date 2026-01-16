@@ -347,7 +347,7 @@ if __name__ == "__main__":
 ## Quick Reference
 
 | Task | Command |
-|------|---------|
+| ------ | --------- |
 | Add dependency | `uv add package` |
 | Dev dependency | `uv add --dev package` |
 | Run tests | `uv run pytest -v` |
