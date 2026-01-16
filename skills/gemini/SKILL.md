@@ -6,6 +6,7 @@ description: Uses for **Web search**, **Fact-checking and verification**, **Code
 # Gemini
 
 Use Gemini CLI `gemini` bash command as a primary tool for gathering real-time information, verifying facts, and researching topics.
+Use fallback models when the preferred models are unavailable due to rate `limits` or errors.
 
 ## Usage
 
