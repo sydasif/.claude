@@ -1,60 +1,73 @@
 ---
 name: review
-description: Uses Gemini CLI for deep code analysis, security auditing, refactoring suggestions, and test generation. Use for peer review automation and code quality checks
+description: Uses for code analysis, security auditing, refactoring suggestions, and test generation as peer review automation, finding subtle bugs, security vulnerabilities, and for code quality analysis.
 ---
 
-# Code Reviewer with Gemini CLI
+# Code Review with Gemini CLI
 
-Use Gemini CLI as an automated peer reviewer and static analysis tool.
+This skill provides automated peer review and deep code analysis using Gemini CLI, acting as an AI-powered static analysis tool.
 
-## When to use
+## When to Use This Skill
 
-Use Gemini CLI for code review when:
+Use this skill for code review when you need:
 
-- **Deep Analysis is required**
-  - Finding subtle bugs, race conditions, or logic errors
-  - Security auditing (OWASP top 10, injection risks)
-  - Performance bottleneck identification
+### Analysis
 
-- **Refactoring & Modernization**
-  - Converting legacy code to modern syntax (e.g., Java to Kotlin, JS to TS)
-  - Improving readability and maintainability
-  - reducing technical debt
+- Finding subtle bugs, race conditions, or logic errors
+- Security auditing (OWASP top 10, injection risks, authentication flaws)
+- Performance bottleneck identification
+- Complex algorithm analysis
 
-- **Test Generation**
-  - Generating unit tests for complex functions
-  - Identifying edge cases missing in current test suites
+### Refactoring
 
-## Basic usage
+- Converting legacy code to modern syntax (e.g., Java to Kotlin, JS to TypeScript)
+- Improving readability and maintainability
+- Reducing technical debt
+- Applying design patterns
+
+## Basic Usage
+
+Always use JSON output format for reliable parsing:
 
 ```bash
-# Always use JSON output for parsing
 gemini "PROMPT" --output-format json
+```
 
-# Review a specific file
+Review a specific file:
+
+```bash
 gemini "@src/main.ts Review for logic errors" --output-format json
 ```
 
-## Model selection
+## Model Selection
 
-- `gemini-3-pro-preview` - **Primary for Code Review**. Best for deep reasoning, security, and complex architecture.
-- `gemini-2.5-pro` - **Fallback** for general code analysis. If `gemini-3-pro-preview` is unavailable.
-- `gemini-3-flash-preview` - Good for quick syntax checks or generating boilerplate tests.
+Choose the appropriate model based on your needs:
 
-## File inclusion
+- **`gemini-3-pro-preview`** - Primary choice for code review. Best for deep reasoning, security analysis, and complex architecture review
+- **`gemini-2.5-pro`** - Fallback for general code analysis if `gemini-3-pro-preview` is unavailable
+- **`gemini-3-flash-preview`** - Good for quick syntax checks or generating boilerplate tests
+
+## File Inclusion Patterns
+
+### Single File Review
 
 ```bash
-# Single file review
-gemini "@src/auth.ts Review for security vulnerabilities"
-
-# Compare/Contextual review
-gemini "@src/types.d.ts @src/api.ts Ensure type safety between these files"
-
-# Full module review
-gemini "@src/modules/payment/ Analyze architecture and separation of concerns"
+gemini "@src/auth.ts Review for security vulnerabilities" --output-format json
 ```
 
-## Common patterns
+### Contextual Review (Multiple Files)
+
+```bash
+gemini "@src/types.d.ts @src/api.ts Ensure type safety between these files" --output-format json
+```
+
+### Full Module Review
+
+```bash
+gemini "@src/modules/payment/ Analyze architecture and separation of concerns" --output-format json
+```
+
+## Common Review Patterns
 
 ### Security Audit
 
@@ -77,22 +90,16 @@ gemini "@src/legacy/utils.js Convert to TypeScript and apply functional patterns
   --model gemini-3-pro-preview --output-format json | jq -r '.response'
 ```
 
-### Test Generation
-
-```bash
-gemini "@src/lib/calc.ts Generate Vitest test cases including edge cases" \
-  --model gemini-3-flash-preview --output-format json | jq -r '.response'
-```
-
-## Workflow
+## Review Workflow
 
 1. **Select Scope**
-   - Identify the specific file(s) or directory needing review.
-   - *Tip: Don't dump the whole repo; focus on the modified module.*
+   - Identify the specific file(s) or directory needing review
+   - Focus on modified modules rather than entire repository
+   - Use `git diff` to identify recently changed files
 
 2. **Define the Goal**
-   - Are you looking for *bugs*, *security flaws*, *style issues*, or *tests*?
-   - Be specific in the prompt.
+   - Be specific: bugs, security flaws, style issues, or tests?
+   - Include requirements in your prompt
 
 3. **Execute Review**
 
@@ -101,23 +108,50 @@ gemini "@src/lib/calc.ts Generate Vitest test cases including edge cases" \
    ```
 
 4. **Process Output**
-   - The output will often contain markdown. Pipe to a viewer or save to a PR comment draft.
+   - Parse JSON response
+   - Extract findings using `jq` or similar tools
+   - Format for presentation or PR comments
 
-## Key points
+## Key Principles
 
-- **Context Matters**: Include interface/type definitions (`@types.ts`) if reviewing code that depends on them.
-- **Model Choice**: Always use `gemini-3-pro-preview` for security or logic reviews; it has significantly better reasoning capabilities.
-- **Output**: Use `--output-format json` to handle special characters in code blocks safely.
+- **Context Matters**: Include interface/type definitions (`@types.ts`) when reviewing code that depends on them
+- **Model Choice**: Always use `gemini-3-pro-preview` for security or complex logic reviews due to superior reasoning capabilities
+- **Output Format**: Use `--output-format json` to handle special characters in code blocks safely and enable reliable parsing
+- **Focused Reviews**: Don't dump entire repositories; focus on the modified module or component
 
-## Quick reference
+## Output Processing
+
+The JSON response contains the review in the `.response` field. Extract and format as needed:
+
+```bash
+# Extract just the review text
+gemini "@file.ts Review code" --output-format json | jq -r '.response'
+
+# Save to file for PR comment
+gemini "@file.ts Review code" --output-format json | jq -r '.response' > review.md
+```
+
+## Quick Reference
 
 ```bash
 # Security Check
 gemini "@file Audit for security" --model gemini-3-pro-preview --output-format json | jq -r '.response'
 
-# Optimization
+# Performance Optimization
 gemini "@file Optimize performance" --model gemini-3-pro-preview --output-format json | jq -r '.response'
 
-# Unit Tests
+# Generate Unit Tests
 gemini "@file Write tests" --model gemini-3-flash-preview --output-format json | jq -r '.response'
+
+# Type Safety Check
+gemini "@types.ts @impl.ts Check type consistency" --model gemini-3-pro-preview --output-format json | jq -r '.response'
 ```
+
+## Best Practices
+
+- Always specify the model explicitly for consistency
+- Use JSON output format for reliable automation
+- Include relevant context files (types, interfaces, schemas)
+- Be specific about what you're looking for in the review
+- Process output through `jq` for clean extraction
+- Consider saving results for documentation or PR comments
