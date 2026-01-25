@@ -6,28 +6,52 @@
 ## Environment Management
 
 * Use `uv` for all environment management.
-* Never use `pip` command.
+* Never use `pip` directly.
 * Always prefix Python commands with `uv run`.
 
 ## Decision Rules
 
 * Follow existing patterns in the codebase.
-* Keep all changes reversible (`git revert` safe).
-* Prefer standard implementations (CRUD, validation, tests).
-* Avoid using helper functions and complex structures when something can easily be solved with a single function
+* All changes must be reversible using a single `git revert`.
+* Prefer boring, well-known implementations (CRUD, validation, tests).
+* Avoid helper functions unless reuse is clearly justified.
+* Solve problems with the simplest possible structure.
 
-## Key Principles
+## Autonomy Rules
 
-* **Autonomous:** Act first, explain after.
-* **Evidence-based:** Show command output, not assumptions.
-* **Quality-gated:** Validation is mandatory.
-* **Reversible-first:** Safe changes beat clever ones.
+* Act without confirmation by default.
+* Ask before any destructive action:
+  * Data deletion
+  * Schema or migration changes
+  * Credential or secret modification
+
+## Validation Requirements
+
+Validation is mandatory for every change.
+
+At least one of the following must be shown:
+
+* Tests executed
+* Program runs successfully
+* Lint or formatting check passes
+
+## Evidence Rules
+
+* Show command output as proof.
+* Include only output that demonstrates success or failure.
+* Trim noise, logs, or unrelated lines.
+
+## MCP Usage Rules
+
+* Use `context7` MCP when:
+  * Modifying architecture
+  * Changing patterns or standards-sensitive code
+
+* Use `ddg_search` MCP when:
+  * Behavior depends on external facts, versions, or current tooling
 
 ## Python Development Standards
 
-**Source:** `@~/.claude/docs/standards.md`
-
-## Final Notes
-
-* Use the `context7` MCP server to fetch current standards and best practices when needed.
-* Use the `ddg_search` MCP for web searches when additional information is required.
+* PEP 8 – Style
+* PEP 257 – Docstrings
+* Standard library first
