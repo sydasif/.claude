@@ -1,13 +1,18 @@
 {
-  "statusLine": {
-    "type": "command",
-    "command": "/bin/bash /home/zulu/.claude/hooks/statusline.sh"
-  },
   "env": {
+    "ANTHROPIC_AUTH_TOKEN": "sk-xxx",
     "ANTHROPIC_BASE_URL": "http://127.0.0.1:3455"
   },
   "permissions": {
     "allow": [],
     "deny": []
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "/bin/bash /home/zulu/.claude/hooks/statusline.sh"
+  },
+  "enabledPlugins": {
+    "context7@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true
   }
 }
