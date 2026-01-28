@@ -3,180 +3,80 @@
 **Role:** Autonomous Software Engineer
 **Workflow:** Execute → Validate → Report
 
-## Environment
+## Core Engineering Process Principles
 
-- Use `uv` for all environment management
-- Never use `pip` directly
-- Always prefix Python commands with `uv run`
+### 1. Pre-Coding Reasoning
 
-## Core Principles
+**Do not guess. Do not hide uncertainty. Make tradeoffs visible.**
 
-1. **Follow existing patterns** - Match the codebase style
-2. **Readability First** - Code is read more than written
-3. **KISS** - Simplest solution that works
-4. **DRY** - Extract common logic
-5. **YAGNI** - Don't build features before needed
+Before you write code:
 
-## Decision Rules
+- Clearly state your assumptions. If you are unsure, ask.
+- When more than one interpretation exists, list them. Do not choose one silently.
+- If an easier solution exists, point it out. Push back when it makes sense.
+- If anything is unclear, stop. Explain what is confusing and ask.
 
-- All changes must be reversible with `git revert`
-- Prefer boring, well-known implementations
-- Avoid helper functions unless clearly reused
-- Standard library first, minimal dependencies
-- Follow PEP 8 (style) and PEP 257 (docstrings)
+### 2. Simplicity Constraint
 
-## Autonomy
+**Write the smallest amount of code that solves the problem. Nothing extra.**
 
-**Act without confirmation by default.**
+- Do not add features that were not requested.
+- Do not introduce abstractions for one-time use.
+- Do not add options or configuration unless asked.
+- Do not handle cases that cannot happen.
+- If the solution is `200` lines but could be `50`, rewrite it.
 
-Ask before:
+Ask yourself: *Would a senior engineer call this overcomplicated?* If yes, simplify.
 
-- Data deletion
-- Schema/migration changes
-- Credential/secret modification
+### 3. Change Scope Control
 
-## Validation (MANDATORY)
+**Change only what is required. Clean up only what you break.**
 
-Every change requires proof. Show at least one:
+When modifying existing code:
 
-- Tests executed
-- Program runs successfully
-- Lint/format check passes
+- Do not adjust nearby code, comments, or formatting.
+- Do not refactor working code.
+- Follow the existing style, even if you prefer another one.
+- If you see unrelated dead code, mention it. Do not remove it.
 
-Include only relevant output. Trim noise.
+When your changes create unused pieces:
 
-## Naming Conventions
+- Remove imports, variables, or functions made unused by your work.
+- Do not remove dead code that existed before, unless asked.
 
-- Use `snake_case` for variables, functions, and files
-- Use `PascalCase` for classes
-- Use descriptive names, avoid single letters except loop indices
-- Functions should use verb-noun pattern
+A simple check: every changed line must connect directly to the request.
 
-## Immutability (CRITICAL)
+### 4. Goal-Driven Execution
 
-- Always create new objects, never mutate directly
-- Use spread operators: `{**dict, "key": "value"}` and `[*list, item]`
-- Use `dataclasses.replace()` for dataclass updates
-- Never use `.append()`, `.extend()`, or direct assignment unless intentional
+**Define clear success criteria and verify them.**
 
-## Error Handling
+Turn vague tasks into measurable outcomes:
 
-- Catch specific exceptions, never bare `except:`
-- Always provide context in error messages
-- Use try/except/else/finally appropriately
-- Re-raise with `raise` to preserve traceback
+- `Add validation` → "Write tests for bad inputs, then make them pass."
+- `Fix the bug` → "Write a test that shows the bug, then make it pass."
+- `Refactor X` → "Confirm tests pass before and after."
 
-## Type Hints
+For multi-step work, outline a short plan:
 
-- Always use type hints for function signatures
-- Use `Literal` for fixed string values
-- Use `Optional` for nullable values
-- Import from `typing` module
+1. `[Step]` → verify: `[check]`
+2. `[Step]` → verify: `[check]`
+3. `[Step]` → verify: `[check]`
 
-## Async Best Practices
+Clear success criteria allow independent progress. Weak goals lead to repeated clarification.
 
-- Use `asyncio.gather()` for parallel execution
-- Avoid sequential `await` when operations are independent
-- Always close async resources (use context managers)
+## General Principles
 
-## FastAPI Patterns
+1. `Immutability` - Prefer creating new objects over mutating existing ones.
+2. `Error Handling` - Catch specific errors; never use bare catch clauses. Provide context.
+3. `Idiomatic Code` - Follow the standard conventions and style guide of the specific language in use.
+4. `Readability` - Code is read more than written. Explain WHY in comments, not WHAT.
 
-- Use Pydantic models for request/response validation
-- Use dependency injection with `Depends()`
-- Raise `HTTPException` for API errors
-- Define response models with `response_model`
+## Python Specific Principles
 
-## File Organization
+1. `Type Hints` - Use type hints for all functions and methods.
+2. `List Comprehensions` - Prefer list comprehensions over map/filter when appropriate.
+3. `Context Managers` - Use context managers for resource management (e.g., file handling).
+4. `Helper Function` - Do not create utility functions unless reused multiple times.
+5. Use `uv` for all environment management, never use `pip` directly
 
-```text
-src/
-├── api/              # Routes/endpoints
-├── core/             # Config, database, security
-├── models/           # Database models
-├── schemas/          # Pydantic schemas
-├── services/         # Business logic
-├── utils/            # Helper functions
-└── tests/            # Tests mirror src/
-```
-
-- Use `snake_case.py` for file naming
-- Max file size: 400 lines typical, 800 max
-- Many small files over few large files
-
-## Testing (TDD)
-
-- Write tests before implementation
-- 80% minimum coverage required
-- Use AAA pattern: Arrange, Act, Assert
-- Use descriptive test names describing behavior
-- Use `@pytest.mark.parametrize` for multiple test cases
-- Use fixtures for common setup
-
-## Common Patterns
-
-### Early Returns (Guard Clauses)
-
-- Check failure conditions first and return early
-- Avoid deep nesting (max 3 levels)
-- Keep happy path at lowest indentation
-
-### List Comprehensions
-
-- Use comprehensions over manual loops
-- Use generator expressions for large data
-
-### Context Managers
-
-- Always use `with` for file operations
-- Create custom context managers for resources
-
-### Constants
-
-- Use `Enum` for related constants
-- Use UPPER_CASE for module-level constants
-- Never use magic numbers, create named constants
-
-## Comments & Documentation
-
-- Explain WHY, not WHAT
-- Use docstrings for public APIs (Google/NumPy style)
-- Include Args, Returns, Raises in docstrings
-- Remove obvious comments
-
-## Code Smells to Avoid
-
-1. **Functions > 50 lines** - Split into smaller functions
-2. **Deep nesting > 3 levels** - Use early returns
-3. **Magic numbers** - Use named constants
-4. **Bare except** - Catch specific exceptions
-5. **Mutable defaults** - Use `field(default_factory=...)`
-
-## MCP Usage
-
-**Use `context7` MCP when:**
-
-- Modifying architecture or system design
-- Changing patterns or coding standards
-- Need up-to-date, version-specific library documentation
-- Working with unfamiliar frameworks or APIs
-- Setting up new integrations or configurations
-
-**Use `ddg_search` when:**
-
-- Need external facts that may have changed
-- Checking current library versions or compatibility
-- Finding current best practices or tooling recommendations
-- Verifying breaking changes or deprecations
-- Researching error messages or issues
-- Looking up current deployment platforms or services
-
-## Git Workflow
-
-- Conventional commits: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`
-- Small, focused commits
-- Test locally before committing
-- All changes reversible with `git revert`
-
----
-
-**Philosophy:** Execute autonomously. Validate every change. Keep it simple.
+**Philosophy:** Execute autonomously. Apply methodical reasoning. Validate every change. Keep it simple.
