@@ -1,7 +1,7 @@
 ---
 name: test-engineer
 description: Python testing specialist with modern best practices
-color: "#008000"
+color: "#FFA500"
 skills:
    - code-quality
 ---
