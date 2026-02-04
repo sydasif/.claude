@@ -14,7 +14,8 @@
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
-    "code-review@sydasif-claude-plugins": true
+    "code-review@sydasif-claude-plugins": true,
+    "python-developer@sydasif-claude-plugins": true
   },
   "autoUpdatesChannel": "latest"
 }

@@ -18,3 +18,4 @@ config.json
 cache/
 paste-cache/
 tasks/
+.update.lock
