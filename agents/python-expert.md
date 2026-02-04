@@ -1,7 +1,7 @@
 ---
 name: python-expert
 description: Python development expert with modern best practices
-color: blue
+color: "#0000FF"
 skills:
    - dependency-manager
    - code-quality

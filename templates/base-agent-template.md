@@ -1,7 +1,7 @@
 ---
 name: base-template
 description: Base template for Claude Code agents with standardized initialization
-color: gray
+color: "#808080"
 skills: []
 ---
 

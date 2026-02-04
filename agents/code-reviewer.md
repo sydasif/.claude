@@ -1,7 +1,7 @@
 ---
 name: code-reviewer
 description: Semantic code review using specific skills
-color: purple
+color: "#800080"
 skills:
    - python-rules
 ---
