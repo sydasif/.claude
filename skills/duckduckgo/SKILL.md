@@ -1,14 +1,17 @@
 # Web Search MCP Skill
 
 ## Overview
+
 The Web Search MCP Skill enables Claude to leverage the web-search-mcp Model Context Protocol (MCP) server, which provides integrated access to multiple research tools including web search, location geocoding, weather data retrieval, content extraction, and domain-specific research. This MCP server extends Claude's capabilities with real-world data access through a standardized interface.
 
 ## Available Tools
 
 ### search_web
+
 Perform comprehensive web searches using DuckDuckGo with support for both text and news searches.
 
 Parameters:
+
 - `query`: Search query string
 - `search_type`: 'text' or 'news' (default: 'text')
 - `max_results`: Max number of results (default: 5)
@@ -19,18 +22,22 @@ Parameters:
 - `backend`: Backend to use ('auto', 'legacy', 'api')
 
 ### get_weather
+
 Retrieve current weather or forecast for any location using latitude and longitude.
 
 Parameters:
+
 - `latitude`: Latitude of the location
 - `longitude`: Longitude of the location
 - `mode`: 'current' or 'forecast' (default: 'current')
 - `days`: Number of days for forecast (1-16, default: 7)
 
 ### fetch_page
+
 Extract content from web pages with configurable output formats.
 
 Parameters:
+
 - `url`: The URL to fetch and extract content from
 - `output_format`: Format for extracted content ('csv', 'html', 'json', 'markdown', 'python', 'txt', 'xml', 'xmltei')
 - `include_metadata`: Include document metadata (default: False)
@@ -42,43 +49,52 @@ Parameters:
 - `timeout`: Request timeout in seconds (default: 30)
 
 ### search_domain
+
 Search specifically for content within a given domain (useful for documentation).
 
 Parameters:
+
 - `query`: What you're searching for
 - `domain`: The domain to search (default: 'docs.python.org')
 
 ### geocode_location
+
 Convert location names/addresses to geographic coordinates.
 
 Parameters:
+
 - `query`: Location name or address to geocode
 - `limit`: Maximum number of results (default: 5, max: 40)
 
 ## Usage Examples
 
 ### Web Search
+
 ```
 search_web(query="Python asyncio tutorial", search_type="text", max_results=5)
 ```
 
 ### Weather Information
+
 ```
 geocode_location(query="Paris, France")
 get_weather(latitude=48.8566, longitude=2.3522, mode="current")
 ```
 
 ### Content Extraction
+
 ```
 fetch_page(url="https://docs.python.org/3/library/asyncio.html", output_format="markdown", include_metadata=True)
 ```
 
 ### Domain-Specific Search
+
 ```
 search_domain(query="pandas DataFrame methods", domain="pandas.pydata.org")
 ```
 
 ### Comprehensive Research Example
+
 ```
 # Find location coordinates
 location_result = geocode_location(query="Tokyo, Japan")
