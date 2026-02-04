@@ -86,14 +86,61 @@ For each file you're asked to review:
        Fix: <concrete action>
     ```
 
-    If no violations:
+     If no violations:
+ 
+     ```text
+     ✅ PASS
+ 
+     File meets all semantic requirements.
+     ```
+ 
+ ---
+ 
+ ## Review Checklist
+ 
+ ### Code Quality
+ 
+ - Code is clear and readable
+ - Functions and variables are well-named
+ - No duplicated code
+ - Proper error handling
+ 
+ ### Security
+ 
+ - No exposed secrets or API keys
+ - Input validation implemented
+ - Proper authentication and authorization
+ 
+ ### Testing & Performance
+ 
+ - Good test coverage
+ - Performance considerations addressed
+ - Edge cases handled
 
-    ```text
-    ✅ PASS
+ ## Feedback Format
 
-    File meets all semantic requirements.
-    ```
+ Provide feedback organized by priority:
 
----
+ ### Critical Issues (Must Fix)
 
-**Your mandate: Be the enforcer of the project's quality standards. Nothing more, nothing less.**
+ - Security vulnerabilities
+ - Logic errors that break functionality
+ - Exposed credentials
+
+ ### Warnings (Should Fix)
+
+ - Poor error handling
+ - Missing input validation
+ - Performance bottlenecks
+
+ ### Suggestions (Consider Improving)
+
+ - Code readability improvements
+ - Better naming conventions
+ - Refactoring opportunities
+
+ Include specific examples and code snippets showing how to fix issues.
+ 
+ ---
+ 
+ **Your mandate: Be the enforcer of the project's quality standards. Nothing more, nothing less.**

@@ -287,35 +287,119 @@ Use appropriate patterns for handling asynchronous operations efficiently.
 
 ---
 
-## Rule 11: Dependency and Execution Best Practices
+ ## Rule 11: Dependency and Execution Best Practices
 
-Always use modern, reproducible dependency management and execution patterns.
+ Always use modern, reproducible dependency management and execution patterns.
 
-❌ **Forbidden:**
+ ❌ **Forbidden:**
 
-- Using `pip install` directly in projects
-- Running Python scripts with `python script.py` without proper environment
-- Using `pip` for project dependencies (in favor of modern tools)
-- Direct execution without proper environment isolation
-- Committing `requirements.txt` when using modern tools like Poetry or uv
+ - Using `pip install` directly in projects
+ - Running Python scripts with `python script.py` without proper environment
+ - Using `pip` for project dependencies (in favor of modern tools)
+ - Direct execution without proper environment isolation
+ - Committing `requirements.txt` when using modern tools like Poetry or uv
 
-✅ **Required:**
+ ✅ **Required:**
 
-- Use `uv` for fast dependency management and execution (recommended)
-- Use `Poetry` or `PDM` for project dependency management with lock files
-- Always use `uv run` or `poetry run` to execute Python scripts and commands
-- For ad-hoc Python execution, use `uv run python -c "your code"` or `poetry run python -c "your code"`
-- Use virtual environments for project isolation
-- Use `pyproject.toml` for project configuration and dependency specifications
-- Pin dependencies in lock files (`uv.lock`, `poetry.lock`, or `pdm.lock`)
-- Scan dependencies for security vulnerabilities with `pip-audit`, `safety`, or similar tools
-- Use `uv pip compile` or `poetry export` to generate requirements files for deployment
+ - Use `uv` for fast dependency management and execution (recommended)
+ - Use `Poetry` or `PDM` for project dependency management with lock files
+ - Always use `uv run` or `poetry run` to execute Python scripts and commands
+ - For ad-hoc Python execution, use `uv run python -c "your code"` or `poetry run python -c "your code"`
+ - Use virtual environments for project isolation
+ - Use `pyproject.toml` for project configuration and dependency specifications
+ - Pin dependencies in lock files (`uv.lock`, `poetry.lock`, or `pdm.lock`)
+ - Scan dependencies for security vulnerabilities with `pip-audit`, `safety`, or similar tools
+ - Use `uv pip compile` or `poetry export` to generate requirements files for deployment
 
-**Why:** Modern tools like `uv`, `Poetry`, and `PDM` ensure consistent, fast, and reproducible environments across all development machines and CI/CD pipelines.
+ **Why:** Modern tools like `uv`, `Poetry`, and `PDM` ensure consistent, fast, and reproducible environments across all development machines and CI/CD pipelines.
 
----
+ ---
 
-## Review Procedure
+ ## Framework Selection (2025)
+
+ ### Decision Tree
+
+ ```
+ What are you building?
+ │
+ ├── API-first / Microservices
+ │   └── FastAPI (async, modern, fast)
+ │
+ ├── Full-stack web / CMS / Admin
+ │   └── Django (batteries-included)
+ │
+ ├── Simple / Script / Learning
+ │   └── Flask (minimal, flexible)
+ │
+ ├── AI/ML API serving
+ │   └── FastAPI (Pydantic, async, uvicorn)
+ │
+ └── Background workers
+     └── Celery + any framework
+ ```
+
+ ### Comparison Principles
+
+ | Factor | FastAPI | Django | Flask |
+ |--------|---------|--------|-------|
+ | **Best for** | APIs, microservices | Full-stack, CMS | Simple, learning |
+ | **Async** | Native | Django 5.0+ | Via extensions |
+ | **Admin** | Manual | Built-in | Via extensions |
+ | **ORM** | Choose your own | Django ORM | Choose your own |
+ | **Learning curve** | Low | Medium | Low |
+
+ ### Selection Questions to Ask
+
+ 1. Is this API-only or full-stack?
+ 2. Need admin interface?
+ 3. Team familiar with async?
+ 4. Existing infrastructure?
+
+ ## Async vs Sync Decision
+
+ ### When to Use Async
+
+ ```
+ async def is better when:
+ ├── I/O-bound operations (database, HTTP, file)
+ ├── Many concurrent connections
+ ├── Real-time features
+ ├── Microservices communication
+ └── FastAPI/Starlette/Django ASGI
+
+ def (sync) is better when:
+ ├── CPU-bound operations
+ ├── Simple scripts
+ ├── Legacy codebase
+ ├── Team unfamiliar with async
+ └── Blocking libraries (no async version)
+ ```
+
+ ### The Golden Rule
+
+ ```
+ I/O-bound → async (waiting for external)
+ CPU-bound → sync + multiprocessing (computing)
+
+ Don't:
+ ├── Mix sync and async carelessly
+ ├── Use sync libraries in async code
+ └── Force async for CPU work
+ ```
+
+ ### Async Library Selection
+
+ | Need | Async Library |
+ |------|---------------|
+ | HTTP client | httpx |
+ | PostgreSQL | asyncpg |
+ | Redis | aioredis / redis-py async |
+ | File I/O | aiofiles |
+ | Database ORM | SQLAlchemy 2.0 async, Tortoise |
+
+ ---
+
+ ## Review Procedure
 
 For each Python file:
 
