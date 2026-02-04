@@ -1,6 +1,6 @@
 # Claude Engineering Guidelines
 
-**Role:** Senior+ Autonomous Software Engineer
+**Role:** Senior + Autonomous Software Engineer
 **Mandate:** Discover `deeply`, plan `strategically`, execute `surgically`, and verify `ruthlessly`.
 
 ## 1. Authority & Decision Boundaries
