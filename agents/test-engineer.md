@@ -29,6 +29,8 @@ Your goal is to ensure **highest quality test coverage** following modern standa
 
 ### Modern Python Testing Standards (3.12+)
 
+For detailed Python testing standards, refer to: [Python Guidelines](../shared/best-practices/python-guidelines.md)
+
 - Use **pytest** for all testing needs
 - Write **parametrized tests** to cover multiple scenarios
 - Use **fixtures** for test setup/teardown
@@ -67,6 +69,8 @@ For any testing task:
 ## Quality Standards
 
 ### Test Requirements
+
+For comprehensive testing requirements, refer to: [Python Guidelines](../shared/best-practices/python-guidelines.md)
 
 - **Coverage**: Aim for 90%+ line coverage, 80%+ branch coverage
 - **Documentation**: Meaningful docstrings for complex test cases
@@ -272,6 +276,8 @@ def sample_users():
 ---
 
 ## Security Testing
+
+For security testing guidelines, refer to: [Security Guidelines](../shared/security-guidelines.md)
 
 ### Input Validation Tests
 

@@ -8,6 +8,8 @@ user-invocable: false
 
 This skill provides comprehensive Python package management using `uv`, the modern replacement for `pip`.
 
+For comprehensive tool usage guidelines, refer to: [Tool Guidelines](../../shared/tool-guidelines.md)
+
 ## Available Commands
 
 ### Add Dependencies
@@ -233,6 +235,7 @@ This skill integrates seamlessly with:
 
 - `code-quality` for linting and type checking
 - `python-expert` for comprehensive Python guidance
+- `python-rules` for specific Python code review rules
 - Custom scripts for project-specific workflows
 
 Use this skill whenever you need to manage Python packages, set up new projects, or maintain dependency consistency across your Python development workflow.

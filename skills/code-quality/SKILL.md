@@ -8,6 +8,12 @@ user-invocable: false
 
 This skill ensures Python code meets the highest quality standards using modern tools and best practices.
 
+For comprehensive Python best practices, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md)
+
+For security guidelines, refer to: [Security Guidelines](../../shared/security-guidelines.md)
+
+For tool usage guidelines, refer to: [Tool Guidelines](../../shared/tool-guidelines.md)
+
 ## Available Commands
 
 ### Linting with Ruff
@@ -110,6 +116,8 @@ jobs:
 
 ## Performance Optimization
 
+For comprehensive performance best practices, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md)
+
 ### Avoid Common Pitfalls
 
 ```python
@@ -140,6 +148,8 @@ with open('data.txt', 'r') as file:
 ```
 
 ## Security Best Practices
+
+For comprehensive security guidelines, refer to: [Security Guidelines](../../shared/security-guidelines.md)
 
 ### Input Validation
 

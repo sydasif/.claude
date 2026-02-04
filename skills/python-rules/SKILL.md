@@ -8,6 +8,8 @@ user-invocable: false
 
 These are Python-specific code review rules. Follow these guidelines to maintain high-quality Python code.
 
+For comprehensive Python best practices, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md)
+
 ---
 
 ## Rule 1: Google-Style Docstrings (PEP 257)
@@ -191,6 +193,8 @@ from myapp.utils import helper_function
 
 Implement secure coding practices to prevent vulnerabilities.
 
+For comprehensive security guidelines, refer to: [Security Guidelines](../../shared/security-guidelines.md)
+
 ❌ **Forbidden:**
 
 - Hardcoded secrets, API keys, or passwords
@@ -221,6 +225,8 @@ Implement secure coding practices to prevent vulnerabilities.
 
 Leverage modern Python features for cleaner, more efficient code.
 
+For comprehensive modern Python practices, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md)
+
 ❌ **Forbidden:**
 
 - Outdated Python 2 compatibility code
@@ -244,6 +250,8 @@ Leverage modern Python features for cleaner, more efficient code.
 
 Write efficient code that minimizes resource consumption.
 
+For comprehensive performance best practices, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md)
+
 ❌ **Forbidden:**
 
 - Loading entire large files into memory unnecessarily
@@ -264,6 +272,8 @@ Write efficient code that minimizes resource consumption.
 ## Rule 10: Asynchronous Programming Patterns (asyncio)
 
 Use appropriate patterns for handling asynchronous operations efficiently.
+
+For comprehensive async best practices, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md)
 
 ❌ **Forbidden:**
 
@@ -288,6 +298,8 @@ Use appropriate patterns for handling asynchronous operations efficiently.
 ---
 
  ## Rule 11: Dependency and Execution Best Practices
+
+ For comprehensive dependency management guidelines, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md) and [Tool Guidelines](../../shared/tool-guidelines.md)
 
  Always use modern, reproducible dependency management and execution patterns.
 

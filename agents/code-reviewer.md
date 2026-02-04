@@ -95,24 +95,26 @@ For each file you're asked to review:
      ```
  
  ---
- 
+
  ## Review Checklist
- 
+
+ For detailed review checklists, refer to: [Python Guidelines](../shared/best-practices/python-guidelines.md) and [Security Guidelines](../shared/security-guidelines.md)
+
  ### Code Quality
- 
+
  - Code is clear and readable
  - Functions and variables are well-named
  - No duplicated code
  - Proper error handling
- 
+
  ### Security
- 
+
  - No exposed secrets or API keys
  - Input validation implemented
  - Proper authentication and authorization
- 
+
  ### Testing & Performance
- 
+
  - Good test coverage
  - Performance considerations addressed
  - Edge cases handled
