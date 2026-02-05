@@ -134,13 +134,15 @@ If a task is impossible or fails:
 ## 8. Code Reusability and Standardization Guidelines
 
 ### Reference Shared Resources
+
 - Use standardized templates for creating new agents
 - Reference shared best practices files rather than duplicating content
-- Utilize common components from `/home/zulu/.claude/shared/` directory
+- Utilize common components from `~/.claude/rules/` directory
 - Follow the established patterns in `/home/zulu/.claude/templates/` for new agent creation
 
 ### Integration with Standardized Components
-- Link to shared resources using relative paths: `../shared/best-practices/python-guidelines.md`
+
+- Link to shared resources using relative paths: `../rules/best-practices/python-guidelines.md`
 - Reference centralized security guidelines when implementing security measures
 - Use common tool guidelines for consistent development workflows
 - Follow the base agent template structure for new agents

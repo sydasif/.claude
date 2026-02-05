@@ -73,10 +73,10 @@ What information do you need?
 ### When to Chain Tools Together
 
 ```
-Multi-tool research is better when:    
+Multi-tool research is better when:
 ├── Need location-specific information
 │   └── geocode_location → get_weather / search_web
-├── Need authoritative documentation  
+├── Need authoritative documentation
 │   └── search_domain → fetch_page
 ├── Need comprehensive topic analysis
 │   └── search_web → fetch_page → analyze
@@ -217,6 +217,7 @@ Best practices:
 Perform comprehensive web searches using DuckDuckGo with support for both text and news searches.
 
 Parameters:
+
 - `query`: Search query string
 - `search_type`: 'text' or 'news' (default: 'text')
 - `max_results`: Max number of results (default: 5)
@@ -231,6 +232,7 @@ Parameters:
 Retrieve current weather or forecast for any location using latitude and longitude.
 
 Parameters:
+
 - `latitude`: Latitude of the location
 - `longitude`: Longitude of the location
 - `mode`: 'current' or 'forecast' (default: 'current')
@@ -241,6 +243,7 @@ Parameters:
 Extract content from web pages with configurable output formats.
 
 Parameters:
+
 - `url`: The URL to fetch and extract content from
 - `output_format`: Format for extracted content ('csv', 'html', 'json', 'markdown', 'python', 'txt', 'xml', 'xmltei')
 - `include_metadata`: Include document metadata (default: False)
@@ -256,6 +259,7 @@ Parameters:
 Search specifically for content within a given domain (useful for documentation).
 
 Parameters:
+
 - `query`: What you're searching for
 - `domain`: The domain to search (default: 'docs.python.org')
 
@@ -264,6 +268,7 @@ Parameters:
 Convert location names/addresses to geographic coordinates.
 
 Parameters:
+
 - `query`: Location name or address to geocode
 - `limit`: Maximum number of results (default: 5, max: 40)
 
@@ -272,27 +277,32 @@ Parameters:
 ## Usage Examples
 
 ### Web Search
+
 ```
 search_web(query="Python asyncio tutorial", search_type="text", max_results=5)
 ```
 
 ### Weather Information
+
 ```
 geocode_location(query="Paris, France")
 get_weather(latitude=48.8566, longitude=2.3522, mode="current")
 ```
 
 ### Content Extraction
+
 ```
 fetch_page(url="https://docs.python.org/3/library/asyncio.html", output_format="markdown", include_metadata=True)
 ```
 
 ### Domain-Specific Search
+
 ```
 search_domain(query="pandas DataFrame methods", domain="pandas.pydata.org")
 ```
 
 ### Comprehensive Research Example
+
 ```
 # Find location coordinates
 location_result = geocode_location(query="Tokyo, Japan")
@@ -398,6 +408,7 @@ Before conducting research:
 ## Advanced Research Patterns
 
 ### Academic Research Workflow
+
 ```
 1. search_web(query="topic", max_results=10, time_range="y")  # Recent academic interest
 2. Scan for university sites, journals, academic papers
@@ -407,6 +418,7 @@ Before conducting research:
 ```
 
 ### Technical Problem-Solving Workflow
+
 ```
 1. search_domain(query="problem", domain="official-doc-site")  # Official documentation
 2. fetch_page(url=doc_url, output_format="html", include_code=True)  # Detailed examples
@@ -415,6 +427,7 @@ Before conducting research:
 ```
 
 ### Location-Based Research Workflow
+
 ```
 1. geocode_location(query="location")  # Get coordinates
 2. get_weather(latitude=lat, longitude=lon, mode="current")  # Current conditions

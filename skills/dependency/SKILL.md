@@ -1,5 +1,5 @@
 ---
-name: dependency-manager
+name: python-dependency
 description: Manage Python dependencies using uv for fast, reliable package management
 user-invocable: false
 ---
@@ -8,7 +8,7 @@ user-invocable: false
 
 This skill provides comprehensive Python package management using `uv`, the modern replacement for `pip`.
 
-For comprehensive tool usage guidelines, refer to: [Tool Guidelines](../../shared/tool-guidelines.md)
+For comprehensive tool usage guidelines, refer to: [Tool Guidelines](../../rules/tool-guidelines.md)
 
 ## Available Commands
 

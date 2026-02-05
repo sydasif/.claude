@@ -140,9 +140,9 @@ uv sync
 
 Skills should reference shared resources where possible:
 
-- For Python best practices: `[Python Guidelines](../shared/best-practices/python-guidelines.md)`
-- For security practices: `[Security Guidelines](../shared/security-guidelines.md)`
-- For tool usage: `[Tool Guidelines](../shared/tool-guidelines.md)`
+- For Python best practices: `[Python Guidelines](../rules/best-practices/python-guidelines.md)`
+- For security practices: `[Security Guidelines](../rules/security-guidelines.md)`
+- For tool usage: `[Tool Guidelines](../rules/tool-guidelines.md)`
 
 ### Cross-Skill Communication
 

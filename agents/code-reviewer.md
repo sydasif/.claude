@@ -98,7 +98,7 @@ For each file you're asked to review:
 
  ## Review Checklist
 
- For detailed review checklists, refer to: [Python Guidelines](../shared/best-practices/python-guidelines.md) and [Security Guidelines](../shared/security-guidelines.md)
+ For detailed review checklists, refer to: [Python Guidelines](../rules/best-practices/python-guidelines.md) and [Security Guidelines](../rules/security-guidelines.md)
 
  ### Code Quality
 

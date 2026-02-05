@@ -64,7 +64,7 @@ This document contains centralized Python development best practices to be refer
 
 ### Decision Tree
 
-```
+```text
 What are you building?
 │
 ├── API-first / Microservices
@@ -87,7 +87,7 @@ What are you building?
 
 #### When to Use Async
 
-```
+```text
 async def is better when:
 ├── I/O-bound operations (database, HTTP, file)
 ├── Many concurrent connections

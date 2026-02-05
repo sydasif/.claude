@@ -1,5 +1,5 @@
 ---
-name: refactoring-specialist
+name: code-refactoring
 description: Modernize legacy Python code with best practices
 user-invocable: false
 ---
@@ -8,13 +8,11 @@ user-invocable: false
 
 This skill transforms legacy Python code into modern, maintainable, and efficient implementations following current best practices.
 
-For comprehensive Python best practices, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md)
+For comprehensive Python best practices, refer to: [Python Guidelines](../../rules/best-practices/python-guidelines.md)
 
-For security guidelines, refer to: [Security Guidelines](../../shared/security-guidelines.md)
+For security guidelines, refer to: [Security Guidelines](../../rules/security-guidelines.md)
 
-For tool usage guidelines, refer to: [Tool Guidelines](../../shared/tool-guidelines.md)
-
-
+For tool usage guidelines, refer to: [Tool Guidelines](../../rules/tool-guidelines.md)
 
 ## Refactoring Process
 

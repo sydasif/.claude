@@ -8,7 +8,7 @@ user-invocable: false
 
 These are Python-specific code review rules. Follow these guidelines to maintain high-quality Python code.
 
-For comprehensive Python best practices, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md)
+For comprehensive Python best practices, refer to: [Python Guidelines](../../rules/best-practices/python-guidelines.md)
 
 ---
 
@@ -193,7 +193,7 @@ from myapp.utils import helper_function
 
 Implement secure coding practices to prevent vulnerabilities.
 
-For comprehensive security guidelines, refer to: [Security Guidelines](../../shared/security-guidelines.md)
+For comprehensive security guidelines, refer to: [Security Guidelines](../../rules/security-guidelines.md)
 
 ❌ **Forbidden:**
 
@@ -225,7 +225,7 @@ For comprehensive security guidelines, refer to: [Security Guidelines](../../sha
 
 Leverage modern Python features for cleaner, more efficient code.
 
-For comprehensive modern Python practices, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md)
+For comprehensive modern Python practices, refer to: [Python Guidelines](../../rules/best-practices/python-guidelines.md)
 
 ❌ **Forbidden:**
 
@@ -250,7 +250,7 @@ For comprehensive modern Python practices, refer to: [Python Guidelines](../../s
 
 Write efficient code that minimizes resource consumption.
 
-For comprehensive performance best practices, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md)
+For comprehensive performance best practices, refer to: [Python Guidelines](../../rules/best-practices/python-guidelines.md)
 
 ❌ **Forbidden:**
 
@@ -273,7 +273,7 @@ For comprehensive performance best practices, refer to: [Python Guidelines](../.
 
 Use appropriate patterns for handling asynchronous operations efficiently.
 
-For comprehensive async best practices, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md)
+For comprehensive async best practices, refer to: [Python Guidelines](../../rules/best-practices/python-guidelines.md)
 
 ❌ **Forbidden:**
 
@@ -299,7 +299,7 @@ For comprehensive async best practices, refer to: [Python Guidelines](../../shar
 
  ## Rule 11: Dependency and Execution Best Practices
 
- For comprehensive dependency management guidelines, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md) and [Tool Guidelines](../../shared/tool-guidelines.md)
+ For comprehensive dependency management guidelines, refer to: [Python Guidelines](../../rules/best-practices/python-guidelines.md) and [Tool Guidelines](../../rules/tool-guidelines.md)
 
  Always use modern, reproducible dependency management and execution patterns.
 
