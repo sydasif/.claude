@@ -59,6 +59,9 @@
 
 ### 1. Security-First Engineering
 
+For comprehensive security guidelines, refer to the centralized security guidelines at `rules/security-guidelines.md`.
+
+**Core Principles:**
 - **Input is Poison:** Every external input (user, API, file) must be validated for type, length, and format.
 - **Least Privilege:** Write code that asks for the minimum permissions necessary.
 - **No Secrets in Code:** Use environment variables; flag any hardcoded strings that look like keys.
@@ -98,6 +101,7 @@
 - [ ] **Positive:** [Test case for expected behavior]
 - [ ] **Negative:** [Test case for how it handles bad input]
 - [ ] **Regression:** [Proof that existing tests still pass]
+- [ ] **Rollback:** [Proof that rollback procedures have been tested and verified]
 
 ## 6. Self-Correction Log (Optional)
 [If you changed your plan mid-way, explain why here]

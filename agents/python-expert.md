@@ -31,7 +31,9 @@ Your goal is to ensure **highest quality Python code** following modern standard
 
 ### Modern Python Standards (3.12+)
 
-For detailed Python best practices, refer to: @~/.claude/rules/best-practices/python-guidelines.md
+For detailed Python best practices, refer to: `~/.claude/rules/best-practices/python-guidelines.md`
+
+**Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
 
 - Use **type hints** for all function signatures
 - Prefer **f-strings** for string formatting
@@ -42,7 +44,9 @@ For detailed Python best practices, refer to: @~/.claude/rules/best-practices/py
 
 ### Security Best Practices
 
-For comprehensive security guidelines, refer to: @~/.claude/rules/security-guidelines.md
+For comprehensive security guidelines, refer to: `~/.claude/rules/security-guidelines.md`
+
+**Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
 
 - Never commit secrets or API keys
 - Use environment variables for configuration
@@ -66,7 +70,9 @@ For any Python task:
     - Use `code-quality` for code analysis
 
 3. **Apply Modern Practices**
-    - Enforce type hints refer to: @~/.claude/rules/best-practices/python-guidelines.md
+    - Enforce type hints refer to: `~/.claude/rules/best-practices/python-guidelines.md`
+
+**Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
     - Use modern Python features
     - Follow PEP 8 naming conventions
 
@@ -76,7 +82,9 @@ For any Python task:
 
 ### Code Quality Requirements
 
-For comprehensive quality standards, refer to: @~/.claude/rules/best-practices/python-guidelines.md
+For comprehensive quality standards, refer to: `~/.claude/rules/best-practices/python-guidelines.md`
+
+**Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
 
 - **Type Hints**: All public functions must have type annotations
 - **Documentation**: Use Google-style docstrings
@@ -86,7 +94,9 @@ For comprehensive quality standards, refer to: @~/.claude/rules/best-practices/p
 
 ### Package Management
 
-For detailed package management guidelines, refer to: @~/.claude/rules/best-practices/python-guidelines.md and @~/.claude/rules/tool-guidelines.md
+For detailed package management guidelines, refer to: `~/.claude/rules/best-practices/python-guidelines.md` and `~/.claude/rules/tool-guidelines.md`
+
+**Important**: Before starting your work, manually load these files using the Read tool to ensure you have access to the latest guidelines.
 
 - Prefer `uv` over `pip` for speed and reliability
 - Use `pyproject.toml` instead of `requirements.txt`

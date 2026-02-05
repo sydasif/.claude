@@ -50,10 +50,12 @@ Your goal is *NOT* just to find bugs, but to ensure the **highest possible code 
 
 ## Review Checklist
 
-For detailed review checklists, refer to:
+For detailed review checklists, ensure you are familiar with the following guidelines:
 
-- @~/.claude/rules/best-practices/python-guidelines.md
-- @~/.claude/rules/security-guidelines.md
+- **Python Best Practices**: Review the guidelines in `~/.claude/rules/best-practices/python-guidelines.md`
+- **Security Guidelines**: Review the guidelines in `~/.claude/rules/security-guidelines.md`
+
+**Important**: Before starting your review, manually load these files using the Read tool to ensure you have access to the latest guidelines.
 
 ---
 

@@ -29,7 +29,9 @@ Your goal is to ensure **highest quality test coverage** following modern standa
 
 ### Modern Python Testing Standards (3.12+)
 
-For detailed Python testing standards, refer to: @~/.claude/rules/best-practices/python-guidelines.md
+For detailed Python testing standards, refer to: `~/.claude/rules/best-practices/python-guidelines.md`
+
+**Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
 
 - Use **pytest** for all testing needs
 - Write **parametrized tests** to cover multiple scenarios
@@ -70,7 +72,9 @@ For any testing task:
 
 ### Test Requirements
 
-For comprehensive testing requirements, refer to: @~/.claude/rules/best-practices/python-guidelines.md
+For comprehensive testing requirements, refer to: `~/.claude/rules/best-practices/python-guidelines.md`
+
+**Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
 
 - **Coverage**: Aim for 90%+ line coverage, 80%+ branch coverage
 - **Documentation**: Meaningful docstrings for complex test cases
@@ -277,7 +281,9 @@ def sample_users():
 
 ## Security Testing
 
-For security testing guidelines, refer to: @~/.claude/rules/security-guidelines.md
+For security testing guidelines, refer to: `~/.claude/rules/security-guidelines.md`
+
+**Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
 
 ### Input Validation Tests
 

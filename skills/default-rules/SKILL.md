@@ -23,10 +23,58 @@ There are no direct commands for this skill. It provides rules that are applied 
 
 ### 2. Error Handling
 
-- Handle exceptions appropriately
-- Don't ignore caught exceptions without explanation
-- Use specific exception types when catching
-- Fail fast when encountering invalid states
+## Error Handling Standards
+
+**Requirements**
+- Use specific exception types
+- Log at appropriate level (debug/info/warning/error/critical)
+- Take explicit action (return default, retry, raise, fallback)
+- Include context in log messages
+
+#### ❌ VIOLATIONS:
+
+**Silent failure:**
+```python
+try:
+    critical_operation()
+except:  # Too broad
+    pass  # No logging, no action
+```
+
+**Wrong log level:**
+
+```python
+try:
+    save_to_database()
+except DatabaseError as e:
+    logger.debug(f"Save failed: {e}")  # Should be error/critical
+    return None  # Hiding critical failure
+```
+
+#### ✅ CORRECT PATTERNS
+
+**Specific exception, logged, action taken:**
+
+```python
+try:
+    process_payment(amount)
+except ValueError as e:
+    logger.warning(f"Invalid payment amount: {e}")
+    return {"error": "Invalid amount", "details": str(e)}
+except PaymentProviderError as e:
+    logger.error(f"Payment provider failed: {e}")
+    raise  # Re-raise critical errors
+```
+
+**With recovery:**
+
+```python
+try:
+    data = fetch_from_cache()
+except CacheTimeout:
+    logger.info("Cache timeout, falling back to database")
+    data = fetch_from_database()
+```
 
 ### 3. Code Organization
 
