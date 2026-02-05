@@ -99,7 +99,7 @@ This skill works with:
 
 - `code-quality` to ensure refactored code meets modern standards
 - `python-dependency` to add any new dependencies if needed
-- `test-engineer` to ensure refactored code has proper test coverage
+- Refer to `~/.claude/rules/testing-guidelines.md` to ensure refactored code has proper test coverage
 - `python-rules` for specific Python code review rules
 
 Use this skill to modernize legacy Python code into clean, maintainable, and efficient implementations using contemporary Python features and best practices.

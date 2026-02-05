@@ -1,91 +1,51 @@
----
-name: test-engineer
-description: Python testing specialist with modern best practices, ensuring high-quality test coverage.
-color: "#FFA500"
-skills:
-   - code-quality
----
+# Python Testing Best Practices and Guidelines
 
-You are a **Python Test Engineer**. Your purpose is to ensure comprehensive test coverage and quality for Python code using modern testing practices.
+This document contains centralized Python testing best practices to be referenced by various skills and agents.
 
-## CRITICAL: Initialize Environment
+## Modern Python Testing Standards (3.12+)
 
-**BEFORE** any testing work, you MUST:
-
-1. **Load Skills**: Load the following skills into your environment:
-    - `code-quality` for linting and type checking of test code
-
-2. **Project Context**: Always check if the project uses:
-    - `pytest` for testing framework
-    - `pytest-cov` for coverage
-    - `hypothesis` for property-based testing
-    - `pytest-mock` for mocking
-
----
-
-## The Testing Mandate
-
-Your goal is to ensure **highest quality test coverage** following modern standards.
-
-### Modern Python Testing Standards (3.12+)
-
-For detailed Python testing standards, refer to: `~/.claude/rules/best-practices/python-guidelines.md`
-
-**Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
-
-- Use **pytest** for all testing needs
-- Write **parametrized tests** to cover multiple scenarios
-- Use **fixtures** for test setup/teardown
-- Implement **property-based testing** with `hypothesis`
-- Maintain **high test coverage** (90%+ preferred)
+### Core Testing Framework
+- Use **pytest** for all testing needs (the de facto standard as of 2026)
+- Write **parametrized tests** to cover multiple scenarios efficiently
+- Use **fixtures** for test setup/teardown and resource management
+- Implement **property-based testing** with `hypothesis` for robust validation
+- Maintain **high test coverage** with emphasis on branch coverage over line coverage
 
 ### Test Organization
-
 - Place tests in `tests/` directory
 - Mirror source structure: `src/module.py` → `tests/test_module.py`
 - Use descriptive test names: `test_calculate_total_with_discount()`
 - Group related tests in classes: `TestClassCalculator`
+- Separate unit, integration, and end-to-end tests when appropriate
 
----
+## Testing Standards and Requirements
 
-## Development Workflow
+### Test Coverage Requirements
 
-For any testing task:
+**By Component Criticality:**
 
-1. **Analyze Code Structure**
-    - Identify classes and functions needing tests
-    - Determine test complexity
-    - Plan test scenarios
+| Component Type | Branch Coverage | Rationale |
+|---|---|---|
+| Business logic | 95%+ | Core value, high risk |
+| API endpoints | 90%+ | User-facing |
+| Data models/validation | 85%+ | Data integrity |
+| CLI tools | 70%+ | Integration tests sufficient |
+| Utilities | 80%+ | Pure functions |
+| Config/constants | 60%+ | Low complexity |
 
-2. **Load Appropriate Skills**
-    - Use `code-quality` for test code quality
+**Use Branch Coverage, Not Line:**
+```bash
+pytest --cov=src --cov-branch --cov-report=term-missing --cov-report=html
+```
 
-3. **Apply Modern Practices**
-    - Write clear, maintainable tests
-    - Use pytest fixtures
-    - Include edge cases
-    - Test error conditions
+**Don't Chase 100%**
+- Some code isn't worth testing (`__repr__`, simple getters, logging)
+- Focus on **risk areas**, not percentage
+- Use coverage to find **untested code**, not as a goal
 
----
-
-## Quality Standards
-
-### Test Requirements
-
-For comprehensive testing requirements, refer to: `~/.claude/rules/best-practices/python-guidelines.md`
-
-**Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
-
-- **Coverage**: Aim for 90%+ line coverage, 80%+ branch coverage
-- **Documentation**: Meaningful docstrings for complex test cases
-- **Testing**: Tests must pass in isolation and as part of the full suite
-- **Performance**: Avoid slow, unnecessary tests
-- **Maintainability**: Easy to understand and modify
-
-### Test Patterns
+### Test Patterns and Examples
 
 #### Basic Unit Test
-
 ```python
 def test_addition():
     """Test basic addition."""
@@ -93,7 +53,6 @@ def test_addition():
 ```
 
 #### Parametrized Test
-
 ```python
 @pytest.mark.parametrize("a,b,expected", [
     (2, 3, 5),
@@ -106,7 +65,6 @@ def test_addition_parametrized(a, b, expected):
 ```
 
 #### Property-Based Test
-
 ```python
 from hypothesis import given, strategies as st
 
@@ -117,7 +75,6 @@ def test_addition_commutative(a, b):
 ```
 
 #### Test with Fixture
-
 ```python
 @pytest.fixture
 def calculator():
@@ -130,10 +87,10 @@ def test_calculator_initial_state(calculator):
 ```
 
 #### Mock Test
-
 ```python
-def test_save_to_database(mock_db_connection):
+def test_save_to_database(mocker):
     """Test saving data to database."""
+    mock_db_connection = mocker.patch('myapp.database.Connection')
     service = DataService(db_conn=mock_db_connection)
     result = service.save_data({"id": 1, "name": "Test"})
 
@@ -141,12 +98,9 @@ def test_save_to_database(mock_db_connection):
     assert result is True
 ```
 
----
-
-## Common Testing Scenarios
+## Advanced Testing Patterns
 
 ### Testing Classes
-
 ```python
 class TestCalculator:
     def setup_method(self):
@@ -165,7 +119,6 @@ class TestCalculator:
 ```
 
 ### Testing Async Code
-
 ```python
 import asyncio
 import pytest
@@ -181,7 +134,6 @@ async def test_async_api_call():
 ```
 
 ### Testing Error Conditions
-
 ```python
 def test_division_by_zero():
     """Test division by zero raises error."""
@@ -191,22 +143,9 @@ def test_division_by_zero():
         calc.divide(5, 0)
 ```
 
-### Testing with Coverage
-
-```bash
-# Run tests with coverage
-uv run pytest --cov=src --cov-report=html
-
-# Check specific module coverage
-uv run pytest --cov=src.calculator --cov-report=term-missing
-```
-
----
-
 ## Integration Testing
 
 ### Database Integration Tests
-
 ```python
 @pytest.fixture(scope="session")
 def db_connection():
@@ -227,7 +166,6 @@ def test_create_user(db_connection):
 ```
 
 ### API Integration Tests
-
 ```python
 @pytest.fixture
 def api_client():
@@ -246,12 +184,9 @@ def test_get_user_endpoint(api_client):
     assert data["id"] == 1
 ```
 
----
-
-## Performance Testing
+## Performance and Load Testing
 
 ### Benchmark Tests
-
 ```python
 import pytest_benchmark
 
@@ -265,7 +200,6 @@ def test_heavy_calculation_performance(benchmark):
 ```
 
 ### Load Testing Preparation
-
 ```python
 # Prepare test data for load testing
 @pytest.fixture
@@ -277,16 +211,9 @@ def sample_users():
     ]
 ```
 
----
-
 ## Security Testing
 
-For security testing guidelines, refer to: `~/.claude/rules/security-guidelines.md`
-
-**Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
-
 ### Input Validation Tests
-
 ```python
 def test_sql_injection_prevention():
     """Test that SQL injection attempts are prevented."""
@@ -300,7 +227,6 @@ def test_sql_injection_prevention():
 ```
 
 ### Authentication Tests
-
 ```python
 def test_unauthorized_access():
     """Test that unauthorized access is prevented."""
@@ -311,50 +237,34 @@ def test_unauthorized_access():
     assert response.status_code == 401  # Unauthorized
 ```
 
----
+## Test Quality Standards
 
-## Best Practices
-
-### Test Naming Conventions
-
-- `test_` prefix
-- Descriptive names
-- Include expected outcome
-- Group related tests in classes
-
-### Test Structure (AAA Pattern)
-
-1. **Arrange**: Set up test data
-2. **Act**: Execute the function
-3. **Assert**: Verify the result
+### AAA Pattern (Arrange, Act, Assert)
+1. **Arrange**: Set up test data and preconditions
+2. **Act**: Execute the function or method under test
+3. **Assert**: Verify the expected outcome
 
 ### Test Isolation
-
-- Each test should be independent
+- Each test should be independent and not rely on others
 - Use fixtures for setup/teardown
-- Clean up after tests
-- Avoid shared mutable state
+- Clean up after tests to avoid side effects
+- Avoid shared mutable state between tests
 
 ### Test Documentation
+- Include meaningful docstrings for complex test cases
+- Document the purpose and expected behavior
+- Explain why certain edge cases are important to test
 
-- Document complex test scenarios
-- Explain why certain edge cases are important
-- Include references to specifications
-
----
-
-## Continuous Integration
+## Continuous Integration and Delivery
 
 ### Pre-commit Checks
-
 ```bash
 # Run tests before committing
-uv run pytest
-uv run pytest --cov=src --cov-fail-under=90
+pytest
+pytest --cov=src --cov-fail-under=90
 ```
 
-### CI/CD Pipeline
-
+### CI/CD Pipeline Example
 ```yaml
 name: Python Test Suite
 
@@ -391,6 +301,65 @@ jobs:
         run: uv run pytest --cov=src --cov-report=xml
 ```
 
+## Test Naming Conventions
+
+- Use `test_` prefix for all test functions
+- Make names descriptive and include expected outcome
+- Follow the pattern: `test_[functionality]_[scenario]_[expected_result]`
+- Group related tests in classes with `Test` prefix
+
+## Testing Anti-Patterns to Avoid
+
+### 1. Test Chaining
+```python
+# ❌ DON'T: Tests depending on each other
+def test_create_user():
+    # Creates user for next test
+    pass
+
+def test_update_user():
+    # Depends on test_create_user running first
+    pass
+```
+
+```python
+# ✅ DO: Independent tests
+def test_create_user():
+    # Self-contained test
+    pass
+
+def test_update_user():
+    # Sets up its own prerequisites
+    pass
+```
+
+### 2. Over-Mocking
+```python
+# ❌ DON'T: Mock everything
+def test_calculator_add(mocker):
+    calc_mock = mocker.Mock()
+    calc_mock.add.return_value = 5
+    assert calc_mock.add(2, 3) == 5  # Testing the mock, not the code
+```
+
+### 3. Flaky Tests
+- Avoid tests that sometimes pass and sometimes fail
+- Don't depend on external services without proper mocking
+- Avoid relying on timing or ordering when possible
+
+## Performance Considerations
+
+### Fast Tests
+- Keep individual tests under 100ms when possible
+- Use fixtures to share expensive setup
+- Separate slow integration tests from fast unit tests
+- Consider using pytest markers to run subsets of tests
+
+### Resource Management
+- Use fixtures with proper teardown for resource cleanup
+- Close file handles, database connections, and network resources
+- Consider using `tmp_path` fixture for temporary files
+
 ---
 
-> **Your mandate: Be the enforcer of testing excellence. Ensure every line of code is covered by quality tests. Nothing more, nothing less.**
+**Note**: This document should be referenced by testing-related skills and agents to ensure consistent testing practices across projects.

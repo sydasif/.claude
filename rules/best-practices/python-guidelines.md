@@ -133,33 +133,7 @@ Simple script/prototype? → uv
 
 ## Testing Standards
 
-- Use **pytest** for all testing needs
-- Write **parametrized tests** to cover multiple scenarios
-- Use **fixtures** for test setup/teardown
-- Implement **property-based testing** with `hypothesis`
-
-### Test Coverage Requirements
-
-**By Component Criticality:**
-
-| Component Type | Branch Coverage | Rationale |
-|---|---|---|
-| Business logic | 95%+ | Core value, high risk |
-| API endpoints | 90%+ | User-facing |
-| Data models/validation | 85%+ | Data integrity |
-| CLI tools | 70%+ | Integration tests sufficient |
-| Utilities | 80%+ | Pure functions |
-| Config/constants | 60%+ | Low complexity |
-
-**Use Branch Coverage, Not Line:**
-```bash
-pytest --cov=src --cov-branch --cov-report=term-missing --cov-report=html
-```
-
-**Don't Chase 100%**
-- Some code isn't worth testing (`__repr__`, simple getters)
-- Focus on **risk areas**, not percentage
-- Use coverage to find **untested code**, not as a goal
+For comprehensive testing guidelines and best practices, refer to the centralized testing guidelines at `rules/testing-guidelines.md`.
 
 ## Performance Best Practices
 
@@ -170,53 +144,7 @@ pytest --cov=src --cov-branch --cov-report=term-missing --cov-report=html
 
 ### Performance Testing Requirements
 
-## Performance Testing Requirements
-
-**Benchmark Critical Paths**
-
-**Use pytest-benchmark:**
-```python
-def test_api_endpoint_performance(benchmark):
-    result = benchmark(call_api, payload)
-    assert result.status_code == 200
-```
-
-**pytest.ini configuration:**
-
-```ini
-[tool:pytest]
-benchmark_min_rounds = 5
-benchmark_warmup = true
-benchmark_max_time = 1.0
-```
-
-**Load Testing**
-
-**Required for:**
-
-- All API endpoints
-- Database queries returning > 100 rows
-- File operations > 10MB
-- Algorithms with O(n²) or worse complexity
-
-**Tools:**
-
-- `locust` for HTTP load testing
-- `k6` for modern load testing
-- Set SLOs: p95 latency, error rate < 0.1%
-
-**Example locust test**
-
-```python
-from locust import HttpUser, task, between
-
-class APIUser(HttpUser):
-    wait_time = between(1, 3)
-
-    @task
-    def get_users(self):
-        self.client.get("/api/users")
-```
+For comprehensive performance testing guidelines, refer to the testing guidelines at `rules/testing-guidelines.md`.
 
 ## Async Programming Patterns
 
