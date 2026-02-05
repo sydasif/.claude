@@ -5,11 +5,13 @@ This document contains centralized tool usage guidelines to be referenced by var
 ## Python Development Tools
 
 ### uv (Universal Virtual Environment)
+
 - Use `uv` for fast dependency management and execution (recommended)
 - Faster alternative to `pip` and `virtualenv`
 - Compatible with `pyproject.toml`, `requirements.txt`, and `setup.py`
 
-#### Common uv Commands:
+#### Common uv Commands
+
 ```bash
 # Initialize a new project
 uv init my-project
@@ -29,11 +31,13 @@ uv run black .
 ```
 
 ### Ruff (Fast Python Linter)
+
 - Blazingly fast Python linter and formatter
 - Drop-in replacement for multiple tools
 - Supports most common linting rules
 
-#### Common Ruff Commands:
+#### Common Ruff Commands
+
 ```bash
 # Check code for issues
 uv run ruff check src/
@@ -46,10 +50,12 @@ uv run ruff format src/
 ```
 
 ### MyPy (Static Type Checker)
+
 - Static type checker for Python
 - Catches type-related errors before runtime
 
-#### Common MyPy Commands:
+#### Common MyPy Commands
+
 ```bash
 # Run type checking
 uv run mypy src/
@@ -59,10 +65,12 @@ uv run mypy --show-error-codes src/
 ```
 
 ### Black (Code Formatter)
+
 - Opinionated code formatter
 - Ensures consistent code style
 
-#### Common Black Commands:
+#### Common Black Commands
+
 ```bash
 # Format code
 uv run black src/
@@ -72,10 +80,12 @@ uv run black --check src/
 ```
 
 ### PyTest (Testing Framework)
+
 - Feature-rich testing framework
 - Supports simple unit tests and complex functional testing
 
-#### Common PyTest Commands:
+#### Common PyTest Commands
+
 ```bash
 # Run all tests
 uv run pytest
@@ -93,6 +103,7 @@ uv run pytest -v
 ## Git Best Practices
 
 ### Commit Messages
+
 - Use imperative mood: "Add feature" not "Added feature"
 - Start with capital letter
 - Don't end with period
@@ -101,6 +112,7 @@ uv run pytest -v
 - Wrap body at 72 characters
 
 ### Branch Naming
+
 - Use lowercase with hyphens
 - Prefix with type: `feat/`, `bugfix/`, `chore/`, `docs/`
 - Example: `feat/add-user-authentication`
@@ -108,6 +120,7 @@ uv run pytest -v
 ## Docker Guidelines
 
 ### Dockerfile Best Practices
+
 - Use specific base image tags
 - Multi-stage builds for smaller final images
 - RUN apt-get update && apt-get install together
@@ -116,11 +129,13 @@ uv run pytest -v
 ## Package Management Tools
 
 ### Poetry
+
 - Dependency management and packaging tool
 - Handles virtual environments automatically
 - Uses poetry.lock for reproducible builds
 
 ### PDM
+
 - Modern Python package manager
 - Uses PEP 582 approach (no virtual env required)
 - Fast dependency resolution
@@ -128,18 +143,23 @@ uv run pytest -v
 ## Code Quality Tools
 
 ### Safety
+
 - Scans dependencies for known security vulnerabilities
+
 ```bash
 uv run safety check
 ```
 
 ### Bandit
+
 - Security-oriented static analysis tool for Python
+
 ```bash
 uv run bandit -r src/
 ```
 
 ### Pre-commit Hooks
+
 - Automate code quality checks
 - Configure in `.pre-commit-config.yaml`
 - Run checks before commits
@@ -147,6 +167,7 @@ uv run bandit -r src/
 ## Development Environment Setup
 
 ### IDE Configuration
+
 - Configure auto-formatters to run on save
 - Set up linters with proper configuration
 - Use virtual environments consistently

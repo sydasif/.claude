@@ -8,7 +8,7 @@ user-invocable: false
 
 This skill provides comprehensive Python package management using `uv`, the modern replacement for `pip`.
 
-For comprehensive tool usage guidelines, refer to: [Tool Guidelines](../../rules/tool-guidelines.md)
+For comprehensive tool usage guidelines, refer to: [Tool Guidelines](~/.claude/rules/tool-guidelines.md)
 
 ## Available Commands
 

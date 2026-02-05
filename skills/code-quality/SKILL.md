@@ -8,11 +8,11 @@ user-invocable: false
 
 This skill ensures Python code meets the highest quality standards using modern tools and best practices.
 
-For comprehensive Python best practices, refer to: [Python Guidelines](../../rules/best-practices/python-guidelines.md)
+For comprehensive Python best practices, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
 
-For security guidelines, refer to: [Security Guidelines](../../rules/security-guidelines.md)
+For security guidelines, refer to: [Security Guidelines](~/.claude/rules/security-guidelines.md)
 
-For tool usage guidelines, refer to: [Tool Guidelines](../../rules/tool-guidelines.md)
+For tool usage guidelines, refer to: [Tool Guidelines](~/.claude/rules/tool-guidelines.md)
 
 ## Available Commands
 
@@ -71,8 +71,6 @@ uv run safety check
 uv run safety check --json
 ```
 
-
-
 ## Integration with Development Workflow
 
 ### Pre-commit Hooks
@@ -116,7 +114,7 @@ jobs:
 
 ## Performance Optimization
 
-For comprehensive performance best practices, refer to: [Python Guidelines](../../rules/best-practices/python-guidelines.md)
+For comprehensive performance best practices, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
 
 ### Avoid Common Pitfalls
 
@@ -149,7 +147,7 @@ with open('data.txt', 'r') as file:
 
 ## Security Best Practices
 
-For comprehensive security guidelines, refer to: [Security Guidelines](../../rules/security-guidelines.md)
+For comprehensive security guidelines, refer to: [Security Guidelines](~/.claude/rules/security-guidelines.md)
 
 ### Input Validation
 

@@ -8,7 +8,7 @@ user-invocable: false
 
 These are Python-specific code review rules. Follow these guidelines to maintain high-quality Python code.
 
-For comprehensive Python best practices, refer to: [Python Guidelines](../../rules/best-practices/python-guidelines.md)
+For comprehensive Python best practices, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
 
 ---
 
@@ -193,7 +193,7 @@ from myapp.utils import helper_function
 
 Implement secure coding practices to prevent vulnerabilities.
 
-For comprehensive security guidelines, refer to: [Security Guidelines](../../rules/security-guidelines.md)
+For comprehensive security guidelines, refer to: [Security Guidelines](~/.claude/rules/security-guidelines.md)
 
 ❌ **Forbidden:**
 
@@ -225,7 +225,7 @@ For comprehensive security guidelines, refer to: [Security Guidelines](../../rul
 
 Leverage modern Python features for cleaner, more efficient code.
 
-For comprehensive modern Python practices, refer to: [Python Guidelines](../../rules/best-practices/python-guidelines.md)
+For comprehensive modern Python practices, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
 
 ❌ **Forbidden:**
 
@@ -250,7 +250,7 @@ For comprehensive modern Python practices, refer to: [Python Guidelines](../../r
 
 Write efficient code that minimizes resource consumption.
 
-For comprehensive performance best practices, refer to: [Python Guidelines](../../rules/best-practices/python-guidelines.md)
+For comprehensive performance best practices, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
 
 ❌ **Forbidden:**
 
@@ -273,7 +273,7 @@ For comprehensive performance best practices, refer to: [Python Guidelines](../.
 
 Use appropriate patterns for handling asynchronous operations efficiently.
 
-For comprehensive async best practices, refer to: [Python Guidelines](../../rules/best-practices/python-guidelines.md)
+For comprehensive async best practices, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
 
 ❌ **Forbidden:**
 
@@ -297,41 +297,41 @@ For comprehensive async best practices, refer to: [Python Guidelines](../../rule
 
 ---
 
- ## Rule 11: Dependency and Execution Best Practices
+## Rule 11: Dependency and Execution Best Practices
 
- For comprehensive dependency management guidelines, refer to: [Python Guidelines](../../rules/best-practices/python-guidelines.md) and [Tool Guidelines](../../rules/tool-guidelines.md)
+ For comprehensive dependency management guidelines, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md) and [Tool Guidelines](~/.claude/rules/tool-guidelines.md)
 
  Always use modern, reproducible dependency management and execution patterns.
 
  ❌ **Forbidden:**
 
- - Using `pip install` directly in projects
- - Running Python scripts with `python script.py` without proper environment
- - Using `pip` for project dependencies (in favor of modern tools)
- - Direct execution without proper environment isolation
- - Committing `requirements.txt` when using modern tools like Poetry or uv
+- Using `pip install` directly in projects
+- Running Python scripts with `python script.py` without proper environment
+- Using `pip` for project dependencies (in favor of modern tools)
+- Direct execution without proper environment isolation
+- Committing `requirements.txt` when using modern tools like Poetry or uv
 
  ✅ **Required:**
 
- - Use `uv` for fast dependency management and execution (recommended)
- - Use `Poetry` or `PDM` for project dependency management with lock files
- - Always use `uv run` or `poetry run` to execute Python scripts and commands
- - For ad-hoc Python execution, use `uv run python -c "your code"` or `poetry run python -c "your code"`
- - Use virtual environments for project isolation
- - Use `pyproject.toml` for project configuration and dependency specifications
- - Pin dependencies in lock files (`uv.lock`, `poetry.lock`, or `pdm.lock`)
- - Scan dependencies for security vulnerabilities with `pip-audit`, `safety`, or similar tools
- - Use `uv pip compile` or `poetry export` to generate requirements files for deployment
+- Use `uv` for fast dependency management and execution (recommended)
+- Use `Poetry` or `PDM` for project dependency management with lock files
+- Always use `uv run` or `poetry run` to execute Python scripts and commands
+- For ad-hoc Python execution, use `uv run python -c "your code"` or `poetry run python -c "your code"`
+- Use virtual environments for project isolation
+- Use `pyproject.toml` for project configuration and dependency specifications
+- Pin dependencies in lock files (`uv.lock`, `poetry.lock`, or `pdm.lock`)
+- Scan dependencies for security vulnerabilities with `pip-audit`, `safety`, or similar tools
+- Use `uv pip compile` or `poetry export` to generate requirements files for deployment
 
  **Why:** Modern tools like `uv`, `Poetry`, and `PDM` ensure consistent, fast, and reproducible environments across all development machines and CI/CD pipelines.
 
  ---
 
- ## Framework Selection (2025)
+## Framework Selection (2025)
 
- ### Decision Tree
+### Decision Tree
 
- ```
+ ```text
  What are you building?
  │
  ├── API-first / Microservices
@@ -350,28 +350,28 @@ For comprehensive async best practices, refer to: [Python Guidelines](../../rule
      └── Celery + any framework
  ```
 
- ### Comparison Principles
+### Comparison Principles
 
  | Factor | FastAPI | Django | Flask |
- |--------|---------|--------|-------|
+ | -------- | --------- | -------- | ------- |
  | **Best for** | APIs, microservices | Full-stack, CMS | Simple, learning |
  | **Async** | Native | Django 5.0+ | Via extensions |
  | **Admin** | Manual | Built-in | Via extensions |
  | **ORM** | Choose your own | Django ORM | Choose your own |
  | **Learning curve** | Low | Medium | Low |
 
- ### Selection Questions to Ask
+### Selection Questions to Ask
 
  1. Is this API-only or full-stack?
  2. Need admin interface?
  3. Team familiar with async?
  4. Existing infrastructure?
 
- ## Async vs Sync Decision
+## Async vs Sync Decision
 
- ### When to Use Async
+### When to Use Async
 
- ```
+ ```text
  async def is better when:
  ├── I/O-bound operations (database, HTTP, file)
  ├── Many concurrent connections
@@ -387,9 +387,9 @@ For comprehensive async best practices, refer to: [Python Guidelines](../../rule
  └── Blocking libraries (no async version)
  ```
 
- ### The Golden Rule
+### The Golden Rule
 
- ```
+ ```text
  I/O-bound → async (waiting for external)
  CPU-bound → sync + multiprocessing (computing)
 
@@ -399,10 +399,10 @@ For comprehensive async best practices, refer to: [Python Guidelines](../../rule
  └── Force async for CPU work
  ```
 
- ### Async Library Selection
+### Async Library Selection
 
  | Need | Async Library |
- |------|---------------|
+ | ------ | --------------- |
  | HTTP client | httpx |
  | PostgreSQL | asyncpg |
  | Redis | aioredis / redis-py async |
@@ -411,7 +411,7 @@ For comprehensive async best practices, refer to: [Python Guidelines](../../rule
 
  ---
 
- ## Review Procedure
+## Review Procedure
 
 For each Python file:
 
