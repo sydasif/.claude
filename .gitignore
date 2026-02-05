@@ -19,3 +19,4 @@ cache/
 paste-cache/
 tasks/
 .update.lock
+.claude/
