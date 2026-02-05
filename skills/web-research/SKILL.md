@@ -1,6 +1,7 @@
 ---
 name: web-research
 description: Web research and information gathering patterns. Search strategies, location services, content extraction, real-time data access. Effective research techniques, not just tool usage.
+user-invocable: true
 ---
 
 # Web Research Patterns

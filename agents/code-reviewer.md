@@ -54,6 +54,9 @@ For detailed review checklists, ensure you are familiar with the following guide
 
 - **Python Best Practices**: Review the guidelines in `~/.claude/rules/best-practices/python-guidelines.md`
 - **Security Guidelines**: Review the guidelines in `~/.claude/rules/security-guidelines.md`
+- **Database Guidelines**: Review the guidelines in `~/.claude/rules/best-practices/database-guidelines.md`
+- **API Design**: Review the guidelines in `~/.claude/rules/best-practices/api-design-guidelines.md`
+- **Documentation Standards**: Review the guidelines in `~/.claude/rules/documentation-guidelines.md`
 
 **Important**: Before starting your review, manually load these files using the Read tool to ensure you have access to the latest guidelines.
 

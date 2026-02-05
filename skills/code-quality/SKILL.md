@@ -16,59 +16,23 @@ For tool usage guidelines, refer to: [Tool Guidelines](~/.claude/rules/tool-guid
 
 ## Available Commands
 
-### Linting with Ruff
+For detailed command reference and all available options, see [Tool Guidelines](~/.claude/rules/tool-guidelines.md).
+
+### Quick Reference
 
 ```bash
-# Check code for issues
+# Linting with Ruff
 uv run ruff check src/
-
-# Auto-fix linting issues
 uv run ruff check --fix src/
 
-# Check specific files
-uv run ruff check file.py
-
-# Check with specific rules
-uv run ruff check --select E,W src/
-```
-
-### Type Checking with MyPy
-
-```bash
-# Run type checking
+# Type checking with MyPy
 uv run mypy src/
 
-# Check specific files
-uv run mypy file.py
-
-# Show detailed error messages
-uv run mypy --show-error-codes src/
-
-# Ignore missing imports (for now)
-uv run mypy --ignore-missing-imports src/
-```
-
-### Formatting with Black
-
-```bash
-# Format code
+# Formatting with Black
 uv run black src/
 
-# Check formatting without changing
-uv run black --check src/
-
-# Format specific file
-uv run black file.py
-```
-
-### Security Scanning with Safety
-
-```bash
-# Scan dependencies for vulnerabilities
+# Security scanning
 uv run safety check
-
-# Check with JSON output
-uv run safety check --json
 ```
 
 ## Integration with Development Workflow
@@ -147,56 +111,13 @@ with open('data.txt', 'r') as file:
 
 ## Security Best Practices
 
-For comprehensive security guidelines, refer to: [Security Guidelines](~/.claude/rules/security-guidelines.md)
+For comprehensive security guidelines and code examples, refer to: [Security Guidelines](~/.claude/rules/security-guidelines.md) and [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
 
-### Input Validation
-
-```python
-import re
-from typing import Union
-
-def validate_email(email: str) -> Union[str, None]:
-    """Validate email address format.
-
-    Args:
-        email: Email address to validate.
-
-    Returns:
-        Validated email or None if invalid.
-    """
-    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-    if re.match(pattern, email):
-        return email
-    return None
-```
-
-### Safe Database Operations
-
-```python
-import sqlite3
-from typing import List, Dict, Any
-
-def get_users_by_age(min_age: int) -> List[Dict[str, Any]]:
-    """Get users older than minimum age.
-
-    Args:
-        min_age: Minimum age to filter users.
-
-    Returns:
-        List of user dictionaries.
-    """
-    conn = sqlite3.connect('users.db')
-    cursor = conn.cursor()
-
-    # Use parameterized query to prevent SQL injection
-    query = "SELECT * FROM users WHERE age > ?"
-    cursor.execute(query, (min_age,))
-
-    results = cursor.fetchall()
-    conn.close()
-
-    return results
-```
+Key principles:
+- Validate and sanitize all user inputs
+- Use parameterized queries to prevent SQL injection
+- Never hardcode secrets or API keys
+- Use environment variables for configuration
 
 ---
 

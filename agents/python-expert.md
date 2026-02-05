@@ -3,7 +3,7 @@ name: python-expert
 description: Python development expert with modern best practices, focusing on type hints, dependency management, and code quality.
 color: "#FF6347"
 skills:
-   - dependency-manager
+   - python-dependency
    - code-quality
 ---
 
@@ -32,6 +32,12 @@ Your goal is to ensure **highest quality Python code** following modern standard
 ### Modern Python Standards (3.12+)
 
 For detailed Python best practices, refer to: `~/.claude/rules/best-practices/python-guidelines.md`
+
+For database best practices, refer to: `~/.claude/rules/best-practices/database-guidelines.md`
+
+For API design guidelines, refer to: `~/.claude/rules/best-practices/api-design-guidelines.md`
+
+For documentation standards, refer to: `~/.claude/rules/documentation-guidelines.md`
 
 **Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
 

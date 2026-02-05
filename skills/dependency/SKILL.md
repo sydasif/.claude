@@ -12,54 +12,24 @@ For comprehensive tool usage guidelines, refer to: [Tool Guidelines](~/.claude/r
 
 ## Available Commands
 
-### Add Dependencies
+> For complete command reference including all flags and options, see [Tool Guidelines](~/.claude/rules/tool-guidelines.md).
+
+### Essential Commands
 
 ```bash
+# Add dependencies
 uv add package-name
-# Add specific version
-uv add package-name==1.2.3
-# Add with extras
-uv add package-name[extra1,extra2]
-```
-
-### Add Development Dependencies
-
-```bash
-uv add --dev package-name
-# Add multiple dev packages
 uv add --dev pytest ruff mypy
-```
 
-### Remove Dependencies
-
-```bash
+# Remove dependencies
 uv remove package-name
-# Remove with extras
-uv remove package-name[extra1]
-```
 
-### Update Dependencies
-
-```bash
-uv add package-name --upgrade
-# Update all packages
-uv sync --reinstall
-```
-
-### Install from Lock File
-
-```bash
+# Sync and update
 uv sync
-# Sync with specific Python version
-uv sync --python 3.12
-```
+uv sync --reinstall
 
-### List Dependencies
-
-```bash
+# List dependencies
 uv pip list
-# List outdated packages
-uv pip list --outdated
 ```
 
 ## pyproject.toml Management

@@ -10,6 +10,8 @@ These are Python-specific code review rules. Follow these guidelines to maintain
 
 For comprehensive Python best practices, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
 
+For testing standards and requirements, refer to: [Testing Guidelines](~/.claude/rules/testing-guidelines.md)
+
 ---
 
 ## Rule 1: Google-Style Docstrings (PEP 257)
