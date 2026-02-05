@@ -1,6 +1,6 @@
 ---
 name: test-engineer
-description: Python testing specialist with modern best practices
+description: Python testing specialist with modern best practices, ensuring high-quality test coverage.
 color: "#FFA500"
 skills:
    - code-quality
@@ -29,7 +29,7 @@ Your goal is to ensure **highest quality test coverage** following modern standa
 
 ### Modern Python Testing Standards (3.12+)
 
-For detailed Python testing standards, refer to: [Python Guidelines](../rules/best-practices/python-guidelines.md)
+For detailed Python testing standards, refer to: @~/.claude/rules/best-practices/python-guidelines.md
 
 - Use **pytest** for all testing needs
 - Write **parametrized tests** to cover multiple scenarios
@@ -70,7 +70,7 @@ For any testing task:
 
 ### Test Requirements
 
-For comprehensive testing requirements, refer to: [Python Guidelines](../rules/best-practices/python-guidelines.md)
+For comprehensive testing requirements, refer to: @~/.claude/rules/best-practices/python-guidelines.md
 
 - **Coverage**: Aim for 90%+ line coverage, 80%+ branch coverage
 - **Documentation**: Meaningful docstrings for complex test cases
@@ -277,7 +277,7 @@ def sample_users():
 
 ## Security Testing
 
-For security testing guidelines, refer to: [Security Guidelines](../rules/security-guidelines.md)
+For security testing guidelines, refer to: @~/.claude/rules/security-guidelines.md
 
 ### Input Validation Tests
 
@@ -387,4 +387,4 @@ jobs:
 
 ---
 
-**Your mandate: Be the enforcer of testing excellence. Ensure every line of code is covered by quality tests. Nothing more, nothing less.**
+> **Your mandate: Be the enforcer of testing excellence. Ensure every line of code is covered by quality tests. Nothing more, nothing less.**
