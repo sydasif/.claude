@@ -6,21 +6,23 @@ This document contains centralized security best practices to be referenced by v
 
 ### 1. Input Validation and Sanitization
 
-- Validate and sanitize all user inputs using libraries like `validators` or custom validation
+- Validate and sanitize all user inputs
 - Implement proper input length limits to prevent buffer overflow attacks
-- Use parameterized queries or ORM to prevent SQL injection
-- Use `html.escape()` when displaying user-generated content to prevent XSS
+- Use parameterized queries or ORM to prevent SQL injection (see Database Guidelines)
+- Escape user-generated content to prevent XSS
 
 ### 2. Secret Management
 
 - Never commit secrets, API keys, or passwords to code repositories
-- Store secrets in environment variables, secure vaults, or use libraries like `python-dotenv` with proper `.gitignore`
-- Use secure random generators for tokens: `secrets` module instead of `random`
-- Hash passwords with bcrypt, Argon2, or similar: `bcrypt.hashpw(password.encode(), bcrypt.gensalt())`
+- Store secrets in environment variables or secure vaults
+- Use secure random generators for tokens (not pseudo-random)
+- Hash passwords with bcrypt, Argon2, or similar
+
+For language-specific implementations, see [Python Guidelines](~/.claude/shared/python.md).
 
 ### 3. Dependency Security
 
-- Regularly update dependencies and scan for vulnerabilities with tools like `safety` or `pip-audit`
+- Regularly update dependencies and scan for vulnerabilities
 - Verify the authenticity of third-party packages before installation
 - Limit the scope of dependencies to only what's needed
 
@@ -33,10 +35,12 @@ This document contains centralized security best practices to be referenced by v
 
 ### 5. Secure Coding Practices
 
-- Avoid using `eval()`, `exec()`, or `compile()` with user input
-- Use `defusedxml` instead of standard XML libraries to prevent XXE attacks
+- Avoid dynamic code execution with user input (eval, exec)
+- Use secure XML parsing libraries to prevent XXE attacks
 - Implement proper error handling that doesn't leak sensitive information
 - Use HTTPS for all communications
+
+For language-specific secure coding practices, see [Python Guidelines](~/.claude/shared/python.md).
 
 ### 6. File and Resource Security
 
@@ -54,13 +58,7 @@ This document contains centralized security best practices to be referenced by v
 
 ## Language-Specific Security Guidelines
 
-### Python Security
-
-- Insecure deserialization (pickle) with untrusted data
-- Using `input()` or similar functions without validation in production
-- Importing modules from untrusted sources
-- Direct use of `eval()`, `exec()`, or `compile()` with user input
-- Unsanitized input in SQL queries
+For Python-specific security guidelines and examples, see [Python Guidelines](~/.claude/shared/python.md).
 
 ### Web Application Security
 

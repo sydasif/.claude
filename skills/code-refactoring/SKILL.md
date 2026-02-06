@@ -7,11 +7,11 @@ description: Modernize legacy Python code with best practices, type hints, and e
 
 This skill transforms legacy Python code into modern, maintainable, and efficient implementations following current best practices.
 
-For comprehensive Python best practices, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md)
+For comprehensive Python best practices, refer to: [Python Guidelines](../../shared/python.md)
 
-For security guidelines, refer to: [Security Guidelines](../../shared/security-guidelines.md)
+For security guidelines, refer to: [Security Guidelines](../../shared/security.md)
 
-For tool usage guidelines, refer to: [Tool Guidelines](../../shared/tool-guidelines.md)
+For tool usage guidelines, refer to: [Tool Guidelines](../../shared/tools.md)
 
 ## Refactoring Process
 
@@ -43,24 +43,19 @@ For tool usage guidelines, refer to: [Tool Guidelines](../../shared/tool-guideli
 
 ## Quality Assurance
 
+For detailed tool commands, see [Tool Guidelines](../../shared/tools.md).
+
 ### Before Refactoring
 
-```bash
-# Ensure code quality tools are available
-uv run mypy src/
-uv run ruff check src/
-uv run pytest tests/
-```
+Run type checking, linting, and tests to establish baseline.
 
 ### After Refactoring
 
-```bash
-# Verify refactored code passes all checks
-uv run mypy src/
-uv run ruff check src/
-uv run pytest tests/
-uv run pytest --cov=src --cov-report=term-missing
-```
+Verify refactored code passes all checks:
+- Type checking
+- Linting  
+- Unit tests
+- Coverage analysis
 
 ## Common Refactoring Scenarios
 

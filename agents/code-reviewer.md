@@ -35,11 +35,11 @@ Your goal is *NOT* just to find bugs, but to ensure the **highest possible code 
 
 For detailed review checklists, ensure you are familiar with the following guidelines:
 
-- **Python Best Practices**: Review the guidelines in `~/.claude/shared/best-practices/python-guidelines.md`
-- **Security Guidelines**: Review the guidelines in `~/.claude/shared/security-guidelines.md`
-- **Database Guidelines**: Review the guidelines in `~/.claude/shared/best-practices/database-guidelines.md`
-- **API Design**: Review the guidelines in `~/.claude/shared/best-practices/api-design-guidelines.md`
-- **Documentation Standards**: Review the guidelines in `~/.claude/shared/documentation-guidelines.md`
+- **Python Best Practices**: Review the guidelines in `~/.claude/shared/python.md`
+- **Security Guidelines**: Review the guidelines in `~/.claude/shared/security.md`
+- **Database Guidelines**: Review the guidelines in `~/.claude/shared/database.md`
+- **API Design**: Review the guidelines in `~/.claude/shared/api-design.md`
+- **Documentation Standards**: Review the guidelines in `~/.claude/shared/documentation.md`
 
 **Important**: Before starting your review, manually load these files using the Read tool to ensure you have access to the latest guidelines.
 

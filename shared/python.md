@@ -13,24 +13,11 @@ This document contains centralized Python development best practices to be refer
 
 ## Python Security Best Practices
 
-For comprehensive security guidelines, refer to the centralized security guidelines at `shared/security-guidelines.md`.
+For comprehensive security guidelines, refer to the centralized security guidelines at `security.md`.
 
 ## Security - Input Validation Requirements
 
-### SQL Injection Prevention
-
-```python
-# ❌ NEVER - String concatenation
-query = f"SELECT * FROM users WHERE id = {user_id}"
-cursor.execute(query)
-
-# ✅ ALWAYS - Parameterized queries
-query = "SELECT * FROM users WHERE id = %s"
-cursor.execute(query, (user_id,))
-
-# ✅ ORM (safest)
-user = User.objects.filter(id=user_id).first()
-```
+For SQL injection prevention and database security patterns, see [Database Guidelines](~/.claude/shared/database.md).
 
 ### Path Traversal Prevention
 
@@ -142,7 +129,7 @@ Simple script/prototype? → uv
 
 ## Testing Standards
 
-For comprehensive testing guidelines and best practices, refer to the centralized testing guidelines at `shared/testing-guidelines.md`.
+For comprehensive testing guidelines and best practices, refer to the centralized testing guidelines at `testing.md`.
 
 ## Performance Best Practices
 
@@ -153,7 +140,7 @@ For comprehensive testing guidelines and best practices, refer to the centralize
 
 ### Performance Testing Requirements
 
-For comprehensive performance testing guidelines, refer to the testing guidelines at `shared/testing-guidelines.md`.
+For comprehensive performance testing guidelines, refer to the testing guidelines at `testing.md`.
 
 ## Async Programming Patterns
 
@@ -324,10 +311,10 @@ def (sync) is better when:
 
 ### Execution Patterns
 
-- Always use `uv run`, `poetry run`, or `pdm run` to execute Python scripts and commands
-- For ad-hoc Python execution, use `uv run python -c "your code"`, `poetry run python -c "your code"`, or `pdm run python -c "your code"`
-- Use virtual environments for project isolation (automatic with `uv`, `Poetry`, and `PDM`)
-- Use `pyproject.toml` for project configuration and dependency specifications
-- Pin dependencies in lock files (`uv.lock`, `poetry.lock`, or `pdm.lock`)
-- Scan dependencies for security vulnerabilities with `pip-audit`, `safety`, or similar tools
-- Use `uv pip compile`, `poetry export`, or `pdm export` to generate requirements files for deployment
+For detailed tool usage and commands, see [Tool Guidelines](~/.claude/shared/tools.md).
+
+Key principles:
+- Always use `uv run`, `poetry run`, or `pdm run` to execute Python scripts
+- Use virtual environments for project isolation
+- Pin dependencies in lock files
+- Scan dependencies for security vulnerabilities

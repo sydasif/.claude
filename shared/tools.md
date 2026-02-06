@@ -93,6 +93,9 @@ uv run pytest
 # Run with coverage
 uv run pytest --cov=src
 
+# Run with coverage and generate reports
+uv run pytest --cov=src --cov-branch --cov-report=term-missing --cov-report=html
+
 # Run specific test file
 uv run pytest tests/test_example.py
 

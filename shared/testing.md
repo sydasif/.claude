@@ -34,9 +34,8 @@ This document contains centralized Python testing best practices to be reference
 | Config/constants | 60%+ | Low complexity |
 
 **Use Branch Coverage, Not Line:**
-```bash
-pytest --cov=src --cov-branch --cov-report=term-missing --cov-report=html
-```
+
+For coverage commands, see [Tool Guidelines](~/.claude/shared/tools.md).
 
 **Don't Chase 100%**
 - Some code isn't worth testing (`__repr__`, simple getters, logging)
@@ -258,9 +257,13 @@ def test_unauthorized_access():
 ## Continuous Integration and Delivery
 
 ### Pre-commit Checks
+
+For testing commands, see [Tool Guidelines](~/.claude/shared/tools.md).
+
 ```bash
 # Run tests before committing
 pytest
+# With coverage (see tools.md for full command examples)
 pytest --cov=src --cov-fail-under=90
 ```
 
