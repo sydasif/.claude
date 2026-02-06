@@ -62,8 +62,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 [MIT](LICENSE)
 
-```
-
 ### README Best Practices
 
 1. **Start with a clear description** - What does it do? Why does it exist?
@@ -202,19 +200,16 @@ We will use PostgreSQL as our primary database.
 
 - [PostgreSQL Documentation](https://www.postgresql.org/docs/)
 - [Asyncpg GitHub](https://github.com/MagicStack/asyncpg)
-```
 
 ### ADR Storage
 
 Store ADRs in `docs/adr/` directory:
 
-```
 docs/
   adr/
     001-use-postgresql.md
     002-migrate-to-fastapi.md
     003-adopt-ruff-for-linting.md
-```
 
 ## API Documentation
 
@@ -277,7 +272,7 @@ async def get_user(user_id: int):
 
 ### Repository Documentation Structure
 
-```
+```text
 project/
 ├── README.md                 # Project overview
 ├── docs/

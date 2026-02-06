@@ -1,9 +1,9 @@
 # Claude Engineering Guidelines
 
-**Role:** Senior + Autonomous Software Engineer (Claude Agent)
-**Mandate:** Discover `deeply`, plan `strategically`, execute `surgically`, and verify `ruthlessly`.
-**Task Delegation:** Use Subagents for `isolated`, `deterministic` subtasks only.
-**Skills Usage:** Use all available skills for related tasks (e.g., `Testing`, `Security`, `Quality Assurance`, `Refactoring`).
+- **Role:** Senior + Autonomous Software Engineer (Claude Agent)
+- **Mandate:** Discover `deeply`, plan `strategically`, execute `surgically`, and verify `ruthlessly`.
+- **Task Delegation:** Use Subagents for `isolated`, `deterministic` subtasks only.
+- **Skills Usage:** Use all available skills for related tasks (e.g., `Testing`, `Security`, `Quality Assurance`, `Refactoring`).
 
 ---
 
@@ -66,6 +66,7 @@
 ### 1. Security-First Engineering
 
 **Core Principles:**
+
 - **Input is Poison:** Every external input (user, API, file) must be validated for type, length, and format.
 - **Least Privilege:** Write code that asks for the minimum permissions necessary.
 - **No Secrets in Code:** Use environment variables; flag any hardcoded strings that look like keys.
@@ -140,34 +141,12 @@ If a task is impossible or fails:
 
 *When I complete a task, I am not just `done`. I am `verified`. My success is measured by the clarity of my evidence, not the confidence of my claims.*
 
----
+## 7. Resources to consult
 
-## 7. Loading Guidelines
-
-**CRITICAL:** This file auto-loads detailed guidelines from `~/.claude/rules/rule-index.md`.
-
-The `~/.claude/shared/` folder contains domain-specific best practices loaded **on-demand** to reduce context token consumption.
-
-**Quick Summary:**
-- **Always load** (session start): security, testing, tools, documentation
-- **Load as needed**: python, database, api-design (based on work type)
-
-See `~/.claude/rules/rule-index.md` for complete loading instructions and when to load each file.
-
----
-
-## 8. Configuration Sources
-
-This instance is configured to use:
-
-- **CLAUDE.md:** Master guidelines (always loaded)
-- **Rules:** Auto-loaded from `~/.claude/rules/` (loading instructions, high priority)
-- **Shared:** On-demand from `~/.claude/shared/` (detailed best practices)
-- **Agents:** Defined in `~/.claude/agents/` (code-reviewer, etc.)
-- **Skills:** Auto-discovered from `~/.claude/skills/` (on-demand workflows)
-
-All configuration maintains a single source of truth in `~/.claude/` for consistency.
-
----
-
-*Last updated: Consolidated from CLAUDE.md and AGENTS.md to eliminate duplication*
+- **Python Best Practices**: guidelines in `~/.claude/shared/python.md`
+- **Security Guidelines**: guidelines in `~/.claude/shared/security.md`
+- **Database Guidelines**: guidelines in `~/.claude/shared/database.md`
+- **API Design**: guidelines in `~/.claude/shared/api-design.md`
+- **Documentation Standards**: guidelines in `~/.claude/shared/documentation.md`
+- **Tools**: guidelines in `~/.claude/shared/tools.md`
+- **Testing**: guidelines in `~/.claude/shared/testing.md`

@@ -95,20 +95,20 @@ def transform_records(
 
 ### Dependency Management - Tool Selection
 
-**Primary Recommendation: uv**
+#### Primary Recommendation: `uv`
 
 - Fastest package installer (10-100x faster than pip)
 - Built-in Python version management
 - Compatible with pip/PyPI
 - Use for: New projects, speed-critical workflows
 
-**Alternative: Poetry (if team already uses it)**
+#### Alternative: Poetry (if team already uses it)
 
 - Mature, stable, large ecosystem
 - Excellent documentation
 - Use for: Existing Poetry projects, team familiarity
 
-**Alternative: PDM (PEP 582)**
+#### Alternative: PDM (PEP 582)
 
 - Standards-compliant
 - Use for: Strict PEP adherence requirements
@@ -185,7 +185,7 @@ For comprehensive performance testing guidelines, refer to the testing guideline
 
 ## Framework Selection Guidelines
 
-### Decision Tree
+### Decision Tree (Python Web Frameworks)
 
 ```text
 What are you building?
@@ -244,13 +244,12 @@ def render(item: Drawable) -> None:
 
 **Avoid overly complex type annotations that reduce readability. When type hints become longer than the function implementation, consider simplifying or using TypeAlias.**
 
-```
-
 ### Async vs Sync Decision
 
 ## Async vs Sync - Quantitative Decision Matrix
 
 **Use ASYNC when:**
+
 - Handling **10+ concurrent** I/O operations
 - Building web APIs/servers (FastAPI, Starlette)
 - WebSocket/SSE long-lived connections
@@ -258,6 +257,7 @@ def render(item: Drawable) -> None:
 - Integrating with async libraries (aiohttp, asyncpg)
 
 **Use SYNC when:**
+
 - Sequential processing (< 10 operations)
 - Simple CLI scripts
 - Batch jobs (not latency-sensitive)
@@ -267,6 +267,7 @@ def render(item: Drawable) -> None:
 **Examples:**
 
 **Sequential file processing → SYNC:**
+
 ```python
 for file in files[:5]:
     process_file(file)  # Simple, readable
@@ -291,7 +292,7 @@ async with db.transaction():
     await User.async_get(id=user_id)
 ```
 
-#### When to Use Async
+### When to Use Async
 
 ```text
 async def is better when:
@@ -314,6 +315,7 @@ def (sync) is better when:
 For detailed tool usage and commands, see [Tool Guidelines](~/.claude/shared/tools.md).
 
 Key principles:
+
 - Always use `uv run`, `poetry run`, or `pdm run` to execute Python scripts
 - Use virtual environments for project isolation
 - Pin dependencies in lock files

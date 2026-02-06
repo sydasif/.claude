@@ -5,6 +5,7 @@ This document contains centralized Python testing best practices to be reference
 ## Modern Python Testing Standards (3.12+)
 
 ### Core Testing Framework
+
 - Use **pytest** for all testing needs (the de facto standard as of 2026)
 - Write **parametrized tests** to cover multiple scenarios efficiently
 - Use **fixtures** for test setup/teardown and resource management
@@ -12,6 +13,7 @@ This document contains centralized Python testing best practices to be reference
 - Maintain **high test coverage** with emphasis on branch coverage over line coverage
 
 ### Test Organization
+
 - Place tests in `tests/` directory
 - Mirror source structure: `src/module.py` → `tests/test_module.py`
 - Use descriptive test names: `test_calculate_total_with_discount()`
@@ -25,7 +27,7 @@ This document contains centralized Python testing best practices to be reference
 **By Component Criticality:**
 
 | Component Type | Branch Coverage | Rationale |
-|---|---|---|
+| --- | --- | --- |
 | Business logic | 95%+ | Core value, high risk |
 | API endpoints | 90%+ | User-facing |
 | Data models/validation | 85%+ | Data integrity |
@@ -37,7 +39,8 @@ This document contains centralized Python testing best practices to be reference
 
 For coverage commands, see [Tool Guidelines](~/.claude/shared/tools.md).
 
-**Don't Chase 100%**
+#### Don't Chase 100%
+
 - Some code isn't worth testing (`__repr__`, simple getters, logging)
 - Focus on **risk areas**, not percentage
 - Use coverage to find **untested code**, not as a goal
@@ -45,6 +48,7 @@ For coverage commands, see [Tool Guidelines](~/.claude/shared/tools.md).
 ### Test Patterns and Examples
 
 #### Basic Unit Test
+
 ```python
 def test_addition():
     """Test basic addition."""
@@ -52,6 +56,7 @@ def test_addition():
 ```
 
 #### Parametrized Test
+
 ```python
 @pytest.mark.parametrize("a,b,expected", [
     (2, 3, 5),
@@ -64,6 +69,7 @@ def test_addition_parametrized(a, b, expected):
 ```
 
 #### Property-Based Test
+
 ```python
 from hypothesis import given, strategies as st
 
@@ -74,6 +80,7 @@ def test_addition_commutative(a, b):
 ```
 
 #### Test with Fixture
+
 ```python
 @pytest.fixture
 def calculator():
@@ -86,6 +93,7 @@ def test_calculator_initial_state(calculator):
 ```
 
 #### Mock Test
+
 ```python
 def test_save_to_database(mocker):
     """Test saving data to database."""
@@ -100,6 +108,7 @@ def test_save_to_database(mocker):
 ## Advanced Testing Patterns
 
 ### Testing Classes
+
 ```python
 class TestCalculator:
     def setup_method(self):
@@ -118,6 +127,7 @@ class TestCalculator:
 ```
 
 ### Testing Async Code
+
 ```python
 import asyncio
 import pytest
@@ -133,6 +143,7 @@ async def test_async_api_call():
 ```
 
 ### Testing Error Conditions
+
 ```python
 def test_division_by_zero():
     """Test division by zero raises error."""
@@ -145,6 +156,7 @@ def test_division_by_zero():
 ## Integration Testing
 
 ### Database Integration Tests
+
 ```python
 @pytest.fixture(scope="session")
 def db_connection():
@@ -165,6 +177,7 @@ def test_create_user(db_connection):
 ```
 
 ### API Integration Tests
+
 ```python
 @pytest.fixture
 def api_client():
@@ -186,6 +199,7 @@ def test_get_user_endpoint(api_client):
 ## Performance and Load Testing
 
 ### Benchmark Tests
+
 ```python
 import pytest_benchmark
 
@@ -199,6 +213,7 @@ def test_heavy_calculation_performance(benchmark):
 ```
 
 ### Load Testing Preparation
+
 ```python
 # Prepare test data for load testing
 @pytest.fixture
@@ -213,6 +228,7 @@ def sample_users():
 ## Security Testing
 
 ### Input Validation Tests
+
 ```python
 def test_sql_injection_prevention():
     """Test that SQL injection attempts are prevented."""
@@ -226,6 +242,7 @@ def test_sql_injection_prevention():
 ```
 
 ### Authentication Tests
+
 ```python
 def test_unauthorized_access():
     """Test that unauthorized access is prevented."""
@@ -239,17 +256,20 @@ def test_unauthorized_access():
 ## Test Quality Standards
 
 ### AAA Pattern (Arrange, Act, Assert)
+
 1. **Arrange**: Set up test data and preconditions
 2. **Act**: Execute the function or method under test
 3. **Assert**: Verify the expected outcome
 
 ### Test Isolation
+
 - Each test should be independent and not rely on others
 - Use fixtures for setup/teardown
 - Clean up after tests to avoid side effects
 - Avoid shared mutable state between tests
 
 ### Test Documentation
+
 - Include meaningful docstrings for complex test cases
 - Document the purpose and expected behavior
 - Explain why certain edge cases are important to test
@@ -268,6 +288,7 @@ pytest --cov=src --cov-fail-under=90
 ```
 
 ### CI/CD Pipeline Example
+
 ```yaml
 name: Python Test Suite
 
@@ -314,6 +335,7 @@ jobs:
 ## Testing Anti-Patterns to Avoid
 
 ### 1. Test Chaining
+
 ```python
 # ❌ DON'T: Tests depending on each other
 def test_create_user():
@@ -337,6 +359,7 @@ def test_update_user():
 ```
 
 ### 2. Over-Mocking
+
 ```python
 # ❌ DON'T: Mock everything
 def test_calculator_add(mocker):
@@ -346,6 +369,7 @@ def test_calculator_add(mocker):
 ```
 
 ### 3. Flaky Tests
+
 - Avoid tests that sometimes pass and sometimes fail
 - Don't depend on external services without proper mocking
 - Avoid relying on timing or ordering when possible
@@ -353,12 +377,14 @@ def test_calculator_add(mocker):
 ## Performance Considerations
 
 ### Fast Tests
+
 - Keep individual tests under 100ms when possible
 - Use fixtures to share expensive setup
 - Separate slow integration tests from fast unit tests
 - Consider using pytest markers to run subsets of tests
 
 ### Resource Management
+
 - Use fixtures with proper teardown for resource cleanup
 - Close file handles, database connections, and network resources
 - Consider using `tmp_path` fixture for temporary files

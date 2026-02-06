@@ -7,7 +7,7 @@ This document contains centralized API design best practices to be referenced by
 ### HTTP Methods
 
 | Method | Action | Idempotent | Safe |
-|--------|--------|------------|------|
+| -------- | -------- | ------------ | ------ |
 | GET | Retrieve resource | Yes | Yes |
 | POST | Create resource | No | No |
 | PUT | Replace resource | Yes | No |
@@ -88,7 +88,7 @@ GET /api/v1/orderItems
 ### HTTP Status Codes
 
 | Code | Meaning | Use Case |
-|------|---------|----------|
+| ------ | --------- | ---------- |
 | 200 | OK | Successful GET, PUT, PATCH |
 | 201 | Created | Successful POST |
 | 204 | No Content | Successful DELETE |
@@ -107,21 +107,21 @@ GET /api/v1/orderItems
 
 1. **URL Path** (Recommended)
 
-   ```
+   ```text
    /api/v1/users
    /api/v2/users
    ```
 
 2. **Header**
 
-   ```
+   ```text
    Accept: application/vnd.api+json;version=1
    X-API-Version: 2
    ```
 
 3. **Query Parameter**
 
-   ```
+   ```text
    /api/users?version=2
    ```
 
@@ -253,4 +253,5 @@ async def rate_limit(request: Request, max_requests: int = 100, window: int = 60
 @app.get("/api/data")
 async def get_data(request: Request):
     await rate_limit(request, max_requests=100, window=60)
-    return {"data": "...
+    return {"data": "..."}
+```
