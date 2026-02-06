@@ -1,17 +1,20 @@
 ---
 name: code-refactoring
-description: Modernize legacy Python code with best practices, type hints, and efficient patterns.
+description: |
+  Modernize legacy Python code with best practices,
+  type hints, and efficient patterns.
 ---
 
 # Python Refactoring Specialist
 
-This skill transforms legacy Python code into modern, maintainable, and efficient implementations following current best practices.
+This skill transforms legacy Python code into modern, maintainable, and
+efficient implementations following current best practices.
 
-For comprehensive Python best practices, refer to: [Python Guidelines](../../shared/python.md)
+For comprehensive Python best practices, see [Python Guidelines](../../guidelines/python.md)
 
-For security guidelines, refer to: [Security Guidelines](../../shared/security.md)
+For security requirements, refer to: [Security Rules](../../rules/security.md)
 
-For tool usage guidelines, refer to: [Tool Guidelines](../../shared/tools.md)
+For tool usage, refer to: [Tool Commands](../../rules/tools.md)
 
 ## Refactoring Process
 
@@ -43,7 +46,7 @@ For tool usage guidelines, refer to: [Tool Guidelines](../../shared/tools.md)
 
 ## Quality Assurance
 
-For detailed tool commands, see [Tool Guidelines](../../shared/tools.md).
+For detailed tool commands, see [Tool Commands](../../rules/tools.md).
 
 ### Before Refactoring
 
@@ -87,4 +90,5 @@ Verify refactored code passes all checks:
 
 ---
 
-Use this skill to modernize legacy Python code into clean, maintainable, and efficient implementations using contemporary Python features and best practices.
+Use this skill to modernize legacy Python code into clean, maintainable,
+and efficient implementations using contemporary Python features and best practices.

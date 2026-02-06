@@ -1,11 +1,13 @@
 ---
 name: web-research
-description: Web research and information gathering, search strategies, content extraction, real-time data access and effective research techniques.
+description: Web research and information gathering, search strategies,
+content extraction, real-time data access and effective research techniques.
 ---
 
 # Web Research Patterns
 
-Web research principles and decision-making for effective information gathering. **Learn to THINK strategically about research, not just use tools blindly.**
+Web research principles and decision-making for effective information gathering.
+**Learn to THINK strategically about research, not just use tools blindly.**
 
 ---
 
@@ -22,7 +24,10 @@ This skill teaches **research strategy principles**, not just tool usage pattern
 
 ## Overview
 
-The Web Research Skill enables access to multiple research tools including web search, location geocoding, weather data retrieval, content extraction, and domain-specific research. It provides integrated real-world data access through a standardized interface.
+The Web Research Skill enables access to multiple research tools including web
+search, location geocoding, weather data retrieval, content extraction, and
+domain-specific research. It provides integrated real-world data access through
+a standardized interface.
 
 ---
 
@@ -30,7 +35,7 @@ The Web Research Skill enables access to multiple research tools including web s
 
 ### Decision Tree
 
-```
+```text
 What information do you need?
 │
 ├── General knowledge / news / trending topics
@@ -53,10 +58,10 @@ What information do you need?
 
 | Capability | search_web | geocode_location | get_weather | fetch_page | search_domain |
 |------------|------------|------------------|-------------|------------|---------------|
-| **Best for** | Broad topics, news | Addresses to coordinates | Weather data | Specific pages | Site-limited search |
+| **Best for** | Broad topics | Addresses to coords | Weather | Specific pages | Site-limited |
 | **Scope** | Global | Geographic | Geographic | Single URL | Specific domain |
 | **Real-time** | Yes | No | Current/forecast | No | Yes |
-| **Parameters** | Rich (time, region, type) | Simple (address, limit) | Rich (lat/lon, mode, days) | Rich (format, meta, etc.) | Simple (query, domain) |
+| **Parameters** | Rich | Simple | Rich | Rich | Simple |
 
 ### Selection Questions to Ask
 
@@ -71,7 +76,7 @@ What information do you need?
 
 ### When to Chain Tools Together
 
-```
+```text
 Multi-tool research is better when:
 ├── Need location-specific information
 │   └── geocode_location → get_weather / search_web
@@ -91,7 +96,7 @@ Single-tool usage is sufficient when:
 
 ### The Golden Rule of Web Research
 
-```
+```text
 Strategy first → tools second:
 ├── Define research goal clearly
 ├── Identify the best tool(s) for the job
@@ -122,7 +127,7 @@ Don't:
 
 ### search_web Strategy
 
-```
+```text
 When to use search_web:
 ├── Exploring broad topics
 ├── Finding recent news
@@ -139,7 +144,7 @@ Parameter optimization:
 
 ### geocode_location Strategy
 
-```
+```text
 When to use geocode_location:
 ├── Converting addresses to coordinates
 ├── Planning location-based research
@@ -155,7 +160,7 @@ Best practices:
 
 ### get_weather Strategy
 
-```
+```text
 When to use get_weather:
 ├── Current conditions for specific location
 ├── Forecasts for planning
@@ -171,7 +176,7 @@ Workflow:
 
 ### fetch_page Strategy
 
-```
+```text
 When to use fetch_page:
 ├── Extracting detailed content from URLs
 ├── Converting web content to usable formats
@@ -193,7 +198,7 @@ Quality considerations:
 
 ### search_domain Strategy
 
-```
+```text
 When to use search_domain:
 ├── Looking for specific documentation
 ├── Searching within trusted domains
@@ -277,32 +282,32 @@ Parameters:
 
 ### Web Search
 
-```
+```python
 search_web(query="Python asyncio tutorial", search_type="text", max_results=5)
 ```
 
 ### Weather Information
 
-```
+```python
 geocode_location(query="Paris, France")
 get_weather(latitude=48.8566, longitude=2.3522, mode="current")
 ```
 
 ### Content Extraction
 
-```
+```python
 fetch_page(url="https://docs.python.org/3/library/asyncio.html", output_format="markdown", include_metadata=True)
 ```
 
 ### Domain-Specific Search
 
-```
+```python
 search_domain(query="pandas DataFrame methods", domain="pandas.pydata.org")
 ```
 
 ### Comprehensive Research Example
 
-```
+```python
 # Find location coordinates
 location_result = geocode_location(query="Tokyo, Japan")
 coords = location_result['results'][0]
@@ -320,7 +325,7 @@ news_result = search_web(query="Tokyo Japan", search_type="news", max_results=3)
 
 ### Source Evaluation Strategy
 
-```
+```text
 Evaluate sources by:
 ├── Authority (who published it?)
 ├── Accuracy (does it cite reliable sources?)
@@ -331,7 +336,7 @@ Evaluate sources by:
 
 ### Effective Query Construction
 
-```
+```text
 Query optimization principles:
 ├── Be specific (avoid vague terms)
 ├── Use precise terminology
@@ -342,7 +347,7 @@ Query optimization principles:
 
 ### Research Verification Approach
 
-```
+```text
 Verify information by:
 ├── Cross-referencing multiple sources
 ├── Checking publication dates
@@ -353,7 +358,7 @@ Verify information by:
 
 ### Data Freshness Considerations
 
-```
+```text
 Consider data timeliness:
 ├── Some topics change rapidly (news, stock prices)
 ├── Others remain stable (historical facts)
@@ -408,7 +413,7 @@ Before conducting research:
 
 ### Academic Research Workflow
 
-```
+```text
 1. search_web(query="topic", max_results=10, time_range="y")  # Recent academic interest
 2. Scan for university sites, journals, academic papers
 3. search_domain(query="specific topic", domain="edu/journal-domain")  # Authoritative sources
@@ -418,7 +423,7 @@ Before conducting research:
 
 ### Technical Problem-Solving Workflow
 
-```
+```text
 1. search_domain(query="problem", domain="official-doc-site")  # Official documentation
 2. fetch_page(url=doc_url, output_format="html", include_code=True)  # Detailed examples
 3. search_web(query="problem + community solutions", max_results=5)  # Community insights
@@ -427,7 +432,7 @@ Before conducting research:
 
 ### Location-Based Research Workflow
 
-```
+```text
 1. geocode_location(query="location")  # Get coordinates
 2. get_weather(latitude=lat, longitude=lon, mode="current")  # Current conditions
 3. search_web(query="location + current events", max_results=5)  # Local news
@@ -437,4 +442,6 @@ Before conducting research:
 
 ---
 
-> **Remember**: Web research patterns are about strategic information gathering for YOUR specific context. Don't just use tools randomly—think about what approach will yield the best, most reliable information for your needs.
+> **Remember**: Web research patterns are about strategic information gathering
+> for YOUR specific context. Don't just use tools randomly—think about what
+> approach will yield the best, most reliable information for your needs.

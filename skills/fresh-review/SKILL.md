@@ -1,6 +1,7 @@
 ---
 name: fresh-review
-description: Review changes with fresh eyes using systematic verification approach
+description: Review changes with fresh eyes using systematic
+verification approach
 ---
 
 # Fresh Review Command
@@ -9,7 +10,8 @@ This command helps you review your changes with a fresh perspective using a syst
 
 ## Purpose
 
-Provides a structured methodology for reviewing work to catch errors, verify completeness, and ensure quality standards are met.
+Provides a structured methodology for reviewing work to catch errors,
+verify completeness, and ensure quality standards are met.
 
 ## Review Process
 
@@ -44,7 +46,9 @@ cat important_file.md
 
 ## Usage
 
-Use `/fresh-review` when you want to systematically review your work with a fresh perspective. This is especially useful after completing complex tasks or before submitting work.
+Use `/fresh-review` when you want to systematically review your work with a
+fresh perspective. This is especially useful after completing complex tasks
+or before submitting work.
 
 ## Best Practices
 
