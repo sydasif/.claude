@@ -13,11 +13,12 @@ This document contains centralized Python development best practices to be refer
 
 ## Python Security Best Practices
 
-For comprehensive security guidelines, refer to the centralized security guidelines at `rules/security-guidelines.md`.
+For comprehensive security guidelines, refer to the centralized security guidelines at `shared/security-guidelines.md`.
 
 ## Security - Input Validation Requirements
 
 ### SQL Injection Prevention
+
 ```python
 # ❌ NEVER - String concatenation
 query = f"SELECT * FROM users WHERE id = {user_id}"
@@ -68,12 +69,14 @@ safe_output = escape(user_input)
 ### Type Hints - Pragmatic Approach
 
 **REQUIRED:**
+
 - Public API functions (in `__all__`)
 - Functions with 2+ parameters
 - Non-obvious return types
 - Library/package code
 
 **OPTIONAL:**
+
 - Private functions with obvious signatures
 - Lambda functions
 - Simple property getters/setters
@@ -81,6 +84,7 @@ safe_output = escape(user_input)
 - Script-level code
 
 **Examples:**
+
 ```python
 # ❌ Low value - obvious from name
 def is_valid(email: str) -> bool:
@@ -105,25 +109,30 @@ def transform_records(
 ### Dependency Management - Tool Selection
 
 **Primary Recommendation: uv**
+
 - Fastest package installer (10-100x faster than pip)
 - Built-in Python version management
 - Compatible with pip/PyPI
 - Use for: New projects, speed-critical workflows
 
 **Alternative: Poetry (if team already uses it)**
+
 - Mature, stable, large ecosystem
 - Excellent documentation
 - Use for: Existing Poetry projects, team familiarity
 
 **Alternative: PDM (PEP 582)**
+
 - Standards-compliant
 - Use for: Strict PEP adherence requirements
 
 **Never Use:**
+
 - Bare `pip` for project management (only for Docker/CI)
 - `requirements.txt` without lock files
 
-### Decision Tree:
+### Decision Tree
+
 ```text
 Starting new project? → uv
 Team already uses Poetry? → Poetry
@@ -133,7 +142,7 @@ Simple script/prototype? → uv
 
 ## Testing Standards
 
-For comprehensive testing guidelines and best practices, refer to the centralized testing guidelines at `rules/testing-guidelines.md`.
+For comprehensive testing guidelines and best practices, refer to the centralized testing guidelines at `shared/testing-guidelines.md`.
 
 ## Performance Best Practices
 
@@ -144,13 +153,14 @@ For comprehensive testing guidelines and best practices, refer to the centralize
 
 ### Performance Testing Requirements
 
-For comprehensive performance testing guidelines, refer to the testing guidelines at `rules/testing-guidelines.md`.
+For comprehensive performance testing guidelines, refer to the testing guidelines at `shared/testing-guidelines.md`.
 
 ## Async Programming Patterns
 
 - Use `async`/`await` syntax for asynchronous operations: `async def fetch_data():`
 - Proper error handling with try/catch in async functions: Always handle potential exceptions from async operations
 - Use `asyncio.gather()` for concurrent operations with proper error handling:
+
   ```python
   # Safe pattern - collect results and exceptions separately
   import asyncio
@@ -165,8 +175,10 @@ For comprehensive performance testing guidelines, refer to the testing guideline
 
   # Example usage: await safe_gather(task1, task2)
   ```
+
 - Use `asyncio.create_task()` to schedule concurrent tasks
 - Use `asyncio.timeout()` (Python 3.11+) or `asyncio.wait_for()` for timeouts:
+
   ```python
   async def with_timeout():
       try:
@@ -177,6 +189,7 @@ For comprehensive performance testing guidelines, refer to the testing guideline
           print("Operation timed out")
           raise
   ```
+
 - Implement proper cleanup with async context managers: `async with`
 - Avoid `asyncio.run()` in libraries; reserve for main entry points
 - Use `asyncio.sleep()` instead of `time.sleep()` in async functions
@@ -209,7 +222,9 @@ What are you building?
 ### Type Hint Complexity Guidelines
 
 **When Type Hints Become Too Complex:**
+
 - Use `TypeAlias` for complex type definitions:
+
   ```python
   from typing import TypeAlias
 
@@ -218,6 +233,7 @@ What are you building?
   ```
 
 **TypedDict for Dictionary Structures:**
+
 ```python
 from typing import TypedDict
 
@@ -228,6 +244,7 @@ class User(TypedDict):
 ```
 
 **Protocol for Interface Definitions:**
+
 ```python
 from typing import Protocol
 
@@ -239,6 +256,7 @@ def render(item: Drawable) -> None:
 ```
 
 **Avoid overly complex type annotations that reduce readability. When type hints become longer than the function implementation, consider simplifying or using TypeAlias.**
+
 ```
 
 ### Async vs Sync Decision
@@ -305,6 +323,7 @@ def (sync) is better when:
 ```
 
 ### Execution Patterns
+
 - Always use `uv run`, `poetry run`, or `pdm run` to execute Python scripts and commands
 - For ad-hoc Python execution, use `uv run python -c "your code"`, `poetry run python -c "your code"`, or `pdm run python -c "your code"`
 - Use virtual environments for project isolation (automatic with `uv`, `Poetry`, and `PDM`)

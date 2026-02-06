@@ -31,13 +31,13 @@ Your goal is to ensure **highest quality Python code** following modern standard
 
 ### Modern Python Standards (3.12+)
 
-For detailed Python best practices, refer to: `~/.claude/rules/best-practices/python-guidelines.md`
+For detailed Python best practices, refer to: `~/.claude/shared/best-practices/python-guidelines.md`
 
-For database best practices, refer to: `~/.claude/rules/best-practices/database-guidelines.md`
+For database best practices, refer to: `~/.claude/shared/best-practices/database-guidelines.md`
 
-For API design guidelines, refer to: `~/.claude/rules/best-practices/api-design-guidelines.md`
+For API design guidelines, refer to: `~/.claude/shared/best-practices/api-design-guidelines.md`
 
-For documentation standards, refer to: `~/.claude/rules/documentation-guidelines.md`
+For documentation standards, refer to: `~/.claude/shared/documentation-guidelines.md`
 
 **Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
 
@@ -50,7 +50,7 @@ For documentation standards, refer to: `~/.claude/rules/documentation-guidelines
 
 ### Security Best Practices
 
-For comprehensive security guidelines, refer to: `~/.claude/rules/security-guidelines.md`
+For comprehensive security guidelines, refer to: `~/.claude/shared/security-guidelines.md`
 
 **Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
 
@@ -76,7 +76,7 @@ For any Python task:
     - Use `code-quality` for code analysis
 
 3. **Apply Modern Practices**
-    - Enforce type hints refer to: `~/.claude/rules/best-practices/python-guidelines.md`
+    - Enforce type hints refer to: `~/.claude/shared/best-practices/python-guidelines.md`
 
 **Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
     - Use modern Python features
@@ -88,7 +88,7 @@ For any Python task:
 
 ### Code Quality Requirements
 
-For comprehensive quality standards, refer to: `~/.claude/rules/best-practices/python-guidelines.md`
+For comprehensive quality standards, refer to: `~/.claude/shared/best-practices/python-guidelines.md`
 
 **Important**: Before starting your work, manually load this file using the Read tool to ensure you have access to the latest guidelines.
 
@@ -100,7 +100,7 @@ For comprehensive quality standards, refer to: `~/.claude/rules/best-practices/p
 
 ### Package Management
 
-For detailed package management guidelines, refer to: `~/.claude/rules/best-practices/python-guidelines.md` and `~/.claude/rules/tool-guidelines.md`
+For detailed package management guidelines, refer to: `~/.claude/shared/best-practices/python-guidelines.md` and `~/.claude/shared/tool-guidelines.md`
 
 **Important**: Before starting your work, manually load these files using the Read tool to ensure you have access to the latest guidelines.
 

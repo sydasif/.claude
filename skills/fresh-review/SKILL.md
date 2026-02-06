@@ -1,7 +1,6 @@
 ---
 name: fresh-review
 description: Review changes with fresh eyes using systematic verification approach
-user-invocable: true
 ---
 
 # Fresh Review Command

@@ -1,10 +1,4 @@
----
-name: default-rules
-description: General code quality rules applied to all file types for universal best practices
-user-invocable: false
----
-
-# Default Rules Skill
+# Default Rules
 
 General code quality rules applied to all file types that don't have language-specific rules. These rules represent universal software engineering best practices.
 
@@ -25,15 +19,17 @@ There are no direct commands for this skill. It provides rules that are applied 
 
 ## Error Handling Standards
 
-**Requirements**
+### Requirements
+
 - Use specific exception types
 - Log at appropriate level (debug/info/warning/error/critical)
 - Take explicit action (return default, retry, raise, fallback)
 - Include context in log messages
 
-#### ❌ VIOLATIONS:
+#### ❌ VIOLATIONS
 
 **Silent failure:**
+
 ```python
 try:
     critical_operation()

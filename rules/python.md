@@ -1,16 +1,10 @@
----
-name: python-rules
-description: Python-specific code review rules to ensure best practices.
-user-invocable: false
----
-
 # Python Code Review Rules
 
 These are Python-specific code review rules. Follow these guidelines to maintain high-quality Python code.
 
-For comprehensive Python best practices, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
+For comprehensive Python best practices, refer to: [Python Guidelines](~/.claude/shared/best-practices/python-guidelines.md)
 
-For testing standards and requirements, refer to: [Testing Guidelines](~/.claude/rules/testing-guidelines.md)
+For testing standards and requirements, refer to: [Testing Guidelines](~/.claude/shared/testing-guidelines.md)
 
 ---
 
@@ -195,7 +189,7 @@ from myapp.utils import helper_function
 
 Implement secure coding practices to prevent vulnerabilities.
 
-For comprehensive security guidelines, refer to: [Security Guidelines](~/.claude/rules/security-guidelines.md)
+For comprehensive security guidelines, refer to: [Security Guidelines](~/.claude/shared/security-guidelines.md)
 
 ❌ **Forbidden:**
 
@@ -227,7 +221,7 @@ For comprehensive security guidelines, refer to: [Security Guidelines](~/.claude
 
 Leverage modern Python features for cleaner, more efficient code.
 
-For comprehensive modern Python practices, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
+For comprehensive modern Python practices, refer to: [Python Guidelines](~/.claude/shared/best-practices/python-guidelines.md)
 
 ❌ **Forbidden:**
 
@@ -252,7 +246,7 @@ For comprehensive modern Python practices, refer to: [Python Guidelines](~/.clau
 
 Write efficient code that minimizes resource consumption.
 
-For comprehensive performance best practices, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
+For comprehensive performance best practices, refer to: [Python Guidelines](~/.claude/shared/best-practices/python-guidelines.md)
 
 ❌ **Forbidden:**
 
@@ -275,7 +269,7 @@ For comprehensive performance best practices, refer to: [Python Guidelines](~/.c
 
 Use appropriate patterns for handling asynchronous operations efficiently.
 
-For comprehensive async best practices, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
+For comprehensive async best practices, refer to: [Python Guidelines](~/.claude/shared/best-practices/python-guidelines.md)
 
 ❌ **Forbidden:**
 
@@ -301,7 +295,7 @@ For comprehensive async best practices, refer to: [Python Guidelines](~/.claude/
 
 ## Rule 11: Dependency and Execution Best Practices
 
- For comprehensive dependency management guidelines, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md) and [Tool Guidelines](~/.claude/rules/tool-guidelines.md)
+ For comprehensive dependency management guidelines, refer to: [Python Guidelines](~/.claude/shared/best-practices/python-guidelines.md) and [Tool Guidelines](~/.claude/shared/tool-guidelines.md)
 
  Always use modern, reproducible dependency management and execution patterns.
 

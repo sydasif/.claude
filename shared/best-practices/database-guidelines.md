@@ -40,12 +40,14 @@ pool = await asyncpg.create_pool(
 ### When to Use ORM
 
 **Use ORM when:**
+
 - Complex object relationships
 - Rapid prototyping
 - CRUD-heavy applications
 - Team familiar with ORM
 
 **Use raw SQL when:**
+
 - Complex queries (JOINs, aggregations, window functions)
 - Performance-critical paths
 - Database-specific features needed
@@ -169,6 +171,7 @@ def downgrade():
 - **3NF**: No transitive dependencies
 
 **When to denormalize:**
+
 - Read-heavy workloads
 - Complex reporting queries
 - Performance-critical paths
@@ -183,7 +186,7 @@ CREATE INDEX idx_users_active ON users(is_active) WHERE is_active = true;
 CREATE INDEX idx_orders_date_status ON orders(created_at, status);
 
 -- Good - Partial index for common queries
-CREATE INDEX idx_posts_published ON posts(published_at) 
+CREATE INDEX idx_posts_published ON posts(published_at)
 WHERE status = 'published';
 ```
 
@@ -242,6 +245,7 @@ async with db.begin() as session:
 | SERIALIZABLE | No | No | No |
 
 **Default choices:**
+
 - PostgreSQL: READ COMMITTED
 - MySQL (InnoDB): REPEATABLE READ
 
@@ -268,7 +272,7 @@ pool = await asyncpg.create_pool(dsn="postgresql://...")
 async with pool.acquire() as conn:
     # Single query
     row = await conn.fetchrow("SELECT * FROM users WHERE id = $1", user_id)
-    
+
     # Multiple queries in transaction
     async with conn.transaction():
         await conn.execute("INSERT INTO logs ...")
@@ -333,13 +337,13 @@ def get_user(user_id):
     cached = r.get(f"user:{user_id}")
     if cached:
         return json.loads(cached)
-    
+
     # Fetch from database
     user = db.query(User).get(user_id)
-    
+
     # Cache for future requests (TTL: 1 hour)
     r.setex(f"user:{user_id}", 3600, json.dumps(user.to_dict()))
-    
+
     return user
 ```
 
@@ -365,6 +369,7 @@ def get_user(user_id):
 ---
 
 **Related Guidelines:**
-- [Security Guidelines](~/.claude/rules/security-guidelines.md)
-- [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
-- [Testing Guidelines](~/.claude/rules/testing-guidelines.md)
+
+- [Security Guidelines](~/.claude/shared/security-guidelines.md)
+- [Python Guidelines](~/.claude/shared/best-practices/python-guidelines.md)
+- [Testing Guidelines](~/.claude/shared/testing-guidelines.md)

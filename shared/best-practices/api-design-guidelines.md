@@ -16,7 +16,7 @@ This document contains centralized API design best practices to be referenced by
 
 ### URL Design
 
-```
+```text
 # Good - Resource-oriented
 collection:       /api/v1/users
 single resource:  /api/v1/users/123
@@ -106,18 +106,21 @@ GET /api/v1/orderItems
 ### Versioning Strategies
 
 1. **URL Path** (Recommended)
+
    ```
    /api/v1/users
    /api/v2/users
    ```
 
 2. **Header**
+
    ```
    Accept: application/vnd.api+json;version=1
    X-API-Version: 2
    ```
 
 3. **Query Parameter**
+
    ```
    /api/users?version=2
    ```
@@ -171,8 +174,8 @@ security = HTTPBearer()
 async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
     try:
         payload = jwt.decode(
-            credentials.credentials, 
-            SECRET_KEY, 
+            credentials.credentials,
+            SECRET_KEY,
             algorithms=["HS256"]
         )
         user_id = payload.get("sub")
@@ -233,7 +236,7 @@ r = redis.Redis(host='localhost', port=6379)
 async def rate_limit(request: Request, max_requests: int = 100, window: int = 60):
     client_ip = request.client.host
     key = f"rate_limit:{client_ip}"
-    
+
     current = r.get(key)
     if current and int(current) >= max_requests:
         raise HTTPException(
@@ -241,7 +244,7 @@ async def rate_limit(request: Request, max_requests: int = 100, window: int = 60
             detail="Rate limit exceeded",
             headers={"Retry-After": str(window)}
         )
-    
+
     pipe = r.pipeline()
     pipe.incr(key)
     pipe.expire(key, window)

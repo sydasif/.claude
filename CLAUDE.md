@@ -59,9 +59,10 @@
 
 ### 1. Security-First Engineering
 
-For comprehensive security guidelines, refer to the centralized security guidelines at `rules/security-guidelines.md`.
+For comprehensive security guidelines, refer to the centralized security guidelines at `shared/security-guidelines.md`.
 
 **Core Principles:**
+
 - **Input is Poison:** Every external input (user, API, file) must be validated for type, length, and format.
 - **Least Privilege:** Write code that asks for the minimum permissions necessary.
 - **No Secrets in Code:** Use environment variables; flag any hardcoded strings that look like keys.

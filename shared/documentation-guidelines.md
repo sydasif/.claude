@@ -61,6 +61,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 ## License
 
 [MIT](LICENSE)
+
 ```
 
 ### README Best Practices
@@ -236,7 +237,7 @@ class User(BaseModel):
     id: int
     name: str
     email: str
-    
+
     class Config:
         schema_extra = {
             "example": {
@@ -249,15 +250,15 @@ class User(BaseModel):
 @app.get("/users/{user_id}", response_model=User)
 async def get_user(user_id: int):
     """Retrieve a user by ID.
-    
+
     Returns detailed information about a specific user.
-    
+
     Args:
         user_id: The unique identifier of the user
-        
+
     Returns:
         User object with all profile information
-        
+
     Raises:
         HTTPException: If user not found (404)
     """
@@ -385,6 +386,7 @@ markdown_extensions:
 ---
 
 **Related Guidelines:**
-- [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md) - Code style and docstrings
-- [API Design Guidelines](~/.claude/rules/best-practices/api-design-guidelines.md) - API documentation
-- [Testing Guidelines](~/.claude/rules/testing-guidelines.md) - Testing documentation
+
+- [Python Guidelines](~/.claude/shared/best-practices/python-guidelines.md) - Code style and docstrings
+- [API Design Guidelines](~/.claude/shared/best-practices/api-design-guidelines.md) - API documentation
+- [Testing Guidelines](~/.claude/shared/testing-guidelines.md) - Testing documentation

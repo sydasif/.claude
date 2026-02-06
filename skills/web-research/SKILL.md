@@ -1,13 +1,11 @@
 ---
 name: web-research
-description: Web research and information gathering patterns. Search strategies, location services, content extraction, real-time data access. Effective research techniques, not just tool usage.
-user-invocable: true
+description: Web research and information gathering, search strategies, content extraction, real-time data access and effective research techniques.
 ---
 
 # Web Research Patterns
 
-> Web research principles and decision-making for effective information gathering.
-> **Learn to THINK strategically about research, not just use tools blindly.**
+Web research principles and decision-making for effective information gathering. **Learn to THINK strategically about research, not just use tools blindly.**
 
 ---
 

@@ -1,18 +1,17 @@
 ---
 name: code-refactoring
 description: Modernize legacy Python code with best practices, type hints, and efficient patterns.
-user-invocable: false
 ---
 
 # Python Refactoring Specialist
 
 This skill transforms legacy Python code into modern, maintainable, and efficient implementations following current best practices.
 
-For comprehensive Python best practices, refer to: [Python Guidelines](~/.claude/rules/best-practices/python-guidelines.md)
+For comprehensive Python best practices, refer to: [Python Guidelines](../../shared/best-practices/python-guidelines.md)
 
-For security guidelines, refer to: [Security Guidelines](~/.claude/rules/security-guidelines.md)
+For security guidelines, refer to: [Security Guidelines](../../shared/security-guidelines.md)
 
-For tool usage guidelines, refer to: [Tool Guidelines](~/.claude/rules/tool-guidelines.md)
+For tool usage guidelines, refer to: [Tool Guidelines](../../shared/tool-guidelines.md)
 
 ## Refactoring Process
 
@@ -92,14 +91,5 @@ uv run pytest --cov=src --cov-report=term-missing
 ```
 
 ---
-
-## Integration with Other Skills
-
-This skill works with:
-
-- `code-quality` to ensure refactored code meets modern standards
-- `python-dependency` to add any new dependencies if needed
-- Refer to `~/.claude/rules/testing-guidelines.md` to ensure refactored code has proper test coverage
-- `python-rules` for specific Python code review rules
 
 Use this skill to modernize legacy Python code into clean, maintainable, and efficient implementations using contemporary Python features and best practices.
