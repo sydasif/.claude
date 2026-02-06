@@ -225,9 +225,9 @@ Session Start:
 ├── CLAUDE.md (auto-loaded)
 ├── rules/rule-index.md (auto-loaded)
 └── "Working on Python API"
-    ├── Read shared/python.md (manual)
-    ├── Read shared/api-design.md (manual)
-    └── Read shared/security.md (manual)
+    ├── Read ~/.claude/shared/python.md (manual)
+    ├── Read ~/.claude/shared/api-design.md (manual)
+    └── Read ~/.claude/shared/security.md (manual)
 ```
 
 This ensures Claude has exactly the context needed—no more, no less.
