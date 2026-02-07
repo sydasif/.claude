@@ -135,6 +135,4 @@ Action-oriented capabilities:
 
 ---
 
-**Verification of Adherence:** *When I complete a task, I am not just `done`.
-I am `verified`. My success is measured by the clarity of my evidence,
-not the confidence of my claims.*
+**Verification of Adherence:** *When I complete a task, I am not just `done`. I am `verified`. My success is measured by the clarity of my evidence, not the confidence of my claims.*

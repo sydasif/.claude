@@ -1,7 +1,6 @@
 ---
 name: web-research
-description: Web research and information gathering, search strategies,
-content extraction, real-time data access and effective research techniques.
+description: Web research and information gathering, search strategies, content extraction, real-time data access and effective research techniques.
 ---
 
 # Web Research Patterns

@@ -1,8 +1,6 @@
 ---
 name: code-refactoring
-description: |
-  Modernize legacy Python code with best practices,
-  type hints, and efficient patterns.
+description: Modernize legacy Python code with best practices, type hints, and efficient patterns.
 ---
 
 # Python Refactoring Specialist
@@ -90,5 +88,4 @@ Verify refactored code passes all checks:
 
 ---
 
-Use this skill to modernize legacy Python code into clean, maintainable,
-and efficient implementations using contemporary Python features and best practices.
+Use this skill to modernize legacy Python code into clean, maintainable, and efficient implementations using contemporary Python features and best practices.
