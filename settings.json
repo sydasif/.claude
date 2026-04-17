@@ -1,8 +1,7 @@
 {
   "env": {
     "ANTHROPIC_BASE_URL": "http://127.0.0.1:3455",
-    "ANTHROPIC_AUTH_TOKEN": "sk-xxx",
-    "ANTHROPIC_MODEL": "gemma-4-31b-it"
+    "ANTHROPIC_AUTH_TOKEN": "sk-xxx"
   },
   "permissions": {
     "allow": [],
