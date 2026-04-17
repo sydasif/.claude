@@ -4,8 +4,72 @@
     "ANTHROPIC_AUTH_TOKEN": "sk-xxx"
   },
   "permissions": {
-    "allow": [],
-    "deny": []
+    "allow": [
+      "Bash(ls*)",
+      "Bash(cat *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(git status*)",
+      "Bash(git log*)",
+      "Bash(git diff*)",
+      "Bash(pwd*)",
+      "Bash(which*)",
+      "Bash(file*)",
+      "Bash(stat*)",
+      "Bash(du*)",
+      "Bash(df*)",
+      "Bash(uv run ruff check*)",
+      "Bash(uv run pytest*)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Read(*.pem)",
+      "Read(secrets.yaml)",
+      "Read(credentials.json)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "# Prevent editing on main branch\n[ \"$(git branch --show-current)\" != \"main\" ] || { echo '{\"block\": true, \"message\": \"Cannot edit files on main branch. Create a feature branch first.\"}' >&2; exit 2; }",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "# Prevent editing sensitive files\nFILE=$(cat | jq -r '.tool_input.file_path // empty')\nif [[ -n \"$FILE\" && \"$FILE\" =~ \\.(env|pem|secrets\\.yaml|credentials\\.json)$ ]]; then echo '{\"block\": true, \"message\": \"Cannot edit sensitive files.\"}' >&2; exit 2; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "# Auto-format Python files\nFILE=$(cat | jq -r '.tool_input.file_path // empty')\nif [[ \"$FILE\" =~ \\.py$ ]]; then uv run ruff format \"$FILE\" && uv run ruff check --fix \"$FILE\"; fi",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f \"${CLAUDE_PROJECT_DIR}/.claude/compaction-context.md\" ] && cat \"${CLAUDE_PROJECT_DIR}/.claude/compaction-context.md\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   },
   "statusLine": {
     "type": "command",

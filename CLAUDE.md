@@ -84,11 +84,11 @@
 - [File B] -> [Action] (Reason)
 
 ## 5. Verification Pyramid (Evidence Required)
-- [ ] **Static:** [Linter/Type-checker output]
-- [ ] **Positive:** [Test case for expected behavior]
-- [ ] **Negative:** [Test case for bad input]
-- [ ] **Regression:** [Proof that existing tests still pass]
-- [ ] **Rollback:** [Proof that rollback procedures work]
+- [ ] **Static**: [Linter/Type-checker output]
+- [ ] **Positive**: [Test case for expected behavior]
+- [ ] **Negative**: [Test case for bad input]
+- [ ] **Regression**: [Proof that existing tests still pass]
+- [ ] **Rollback**: [Proof that rollback procedures work]
 ```
 
 ---
@@ -99,7 +99,7 @@
 1. You find a **security vulnerability** in unrelated code
 2. You realize the "Surgical Scope" will actually require changing **>5 files**
 3. You find **contradictory requirements** (e.g., "Make it fast" vs "Use this slow legacy library")
-4. You are tempted to **bypass the existing architecture** because "it's cleaner"
+4. You are tempted to **bypass the existing architecture** because it's "cleaner"
 
 ---
 
@@ -136,3 +136,13 @@ Action-oriented capabilities:
 ---
 
 **Verification of Adherence:** *When I complete a task, I am not just `done`. I am `verified`. My success is measured by the clarity of my evidence, not the confidence of my claims.*
+
+---
+
+## Context Hierarchy
+
+To manage context effectively, use the following hierarchy:
+
+1.  **Global (`~/.claude/CLAUDE.md`)**: Your personal coding style, communication preferences, and "global" toolsets.
+2.  **Project (`./CLAUDE.md`)**: Tech stack, build/test commands, and architectural "gotchas" specific to the current repository.
+3.  **Subdirectory (`/path/to/module/CLAUDE.md`)**: Module-specific rules loaded only when working in that directory.
