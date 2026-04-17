@@ -35,12 +35,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "# Prevent editing on main branch\n[ \"$(git branch --show-current)\" != \"main\" ] || { echo '{\"block\": true, \"message\": \"Cannot edit files on main branch. Create a feature branch first.\"}' >&2; exit 2; }",
+            "command": "if [ \"$(git branch --show-current)\" = \"main\" ]; then echo '{\"block\": true, \"message\": \"Cannot edit files on main branch. Create a feature branch first.\"}' >&2; exit 2; fi",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "# Prevent editing sensitive files\nFILE=$(cat | jq -r '.tool_input.file_path // empty')\nif [[ -n \"$FILE\" && \"$FILE\" =~ \\.(env|pem|secrets\\.yaml|credentials\\.json)$ ]]; then echo '{\"block\": true, \"message\": \"Cannot edit sensitive files.\"}' >&2; exit 2; fi",
+            "command": "FILE=$(cat | jq -r '.tool_input.file_path // empty'); case \"$FILE\" in *.env|*.pem|*secrets.yaml|*credentials.json) echo '{\"block\": true, \"message\": \"Cannot edit sensitive files.\"}' >&2; exit 2 ;; esac",
             "timeout": 5
           }
         ]
@@ -52,7 +52,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "# Auto-format Python files\nFILE=$(cat | jq -r '.tool_input.file_path // empty')\nif [[ \"$FILE\" =~ \\.py$ ]]; then uv run ruff format \"$FILE\" && uv run ruff check --fix \"$FILE\"; fi",
+            "command": "FILE=$(cat | jq -r '.tool_input.file_path // empty'); case \"$FILE\" in *.py) uv run ruff format \"$FILE\" && uv run ruff check --fix \"$FILE\" ;; esac",
             "timeout": 30
           }
         ]
