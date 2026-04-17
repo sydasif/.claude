@@ -20,3 +20,5 @@ paste-cache/
 tasks/
 .update.lock
 .claude/
+backups/
+sessions/
