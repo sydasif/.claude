@@ -372,29 +372,6 @@ Priority levels (highest to lowest):
 | `claude` | Start Claude Code in current directory | `cd ~/project && claude` |
 | `claude -p "prompt"` | Run one-off prompt | `claude -p "Review this code"` |
 
-### Loading Guidelines
-
-```text
-# Before Python development
-Read ~/.claude/guidelines/python.md
-
-# Before API design
-Read ~/.claude/guidelines/api-design.md
-
-# Before database work
-Read ~/.claude/guidelines/database.md
-```
-
-### File Locations Quick Reference
-
-| File Type | Location | Loading |
-|-----------|----------|---------|
-| CLAUDE.md | `~/.claude/CLAUDE.md` | Auto-loaded every session |
-| Rules | `~/.claude/rules/` | Auto-loaded every session |
-| Guidelines | `~/.claude/guidelines/` | On-demand via Read tool |
-| Skills | `~/.claude/skills/` | On-demand when triggered |
-| Agents | `~/.claude/agents/` | Spawned for specific tasks |
-
 ---
 
 ## Complete Workflow Example

@@ -382,6 +382,6 @@ markdown_extensions:
 
 **Related Guidelines:**
 
-- [Python Guidelines](~/.claude/shared/python.md) - Code style and docstrings
-- [API Design Guidelines](~/.claude/shared/api-design.md) - API documentation
-- [Testing Guidelines](~/.claude/shared/testing.md) - Testing documentation
+- [Python Guidelines](~/.claude/guidelines/python.md) - Code style and docstrings
+- [API Design Guidelines](~/.claude/guidelines/api-design.md) - API documentation
+- [Testing Guidelines](~/.claude/rules/testing.md) - Testing documentation

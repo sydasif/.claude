@@ -370,6 +370,6 @@ def get_user(user_id):
 
 **Related Guidelines:**
 
-- [Security Guidelines](~/.claude/shared/security.md)
-- [Python Guidelines](~/.claude/shared/python.md)
-- [Testing Guidelines](~/.claude/shared/testing.md)
+- [Security Guidelines](~/.claude/rules/security.md)
+- [Python Guidelines](~/.claude/guidelines/python.md)
+- [Testing Guidelines](~/.claude/rules/testing.md)
