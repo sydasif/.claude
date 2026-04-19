@@ -64,6 +64,5 @@
     "pyright-lsp@claude-plugins-official": true
   },
   "effortLevel": "high",
-  "autoUpdatesChannel": "latest",
-  "model": "opus[1m]"
+  "autoUpdatesChannel": "latest"
 }

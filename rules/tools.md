@@ -30,10 +30,11 @@ uv run pytest
 uv run black .
 ```
 
-### Ruff (Fast Python Linter)
+### Ruff (Fast Python Linter & Formatter)
 
 - Blazingly fast Python linter and formatter
-- Drop-in replacement for multiple tools
+- Drop-in replacement for Black, Isort, and Flake8
+- **Preferred Tool**: Used in automated hooks for consistent code style
 - Supports most common linting rules
 
 #### Common Ruff Commands
@@ -45,7 +46,7 @@ uv run ruff check src/
 # Auto-fix issues
 uv run ruff check --fix src/
 
-# Format code (like Black)
+# Format code (Replacement for Black)
 uv run ruff format src/
 ```
 
@@ -62,21 +63,6 @@ uv run mypy src/
 
 # Show detailed error messages
 uv run mypy --show-error-codes src/
-```
-
-### Black (Code Formatter)
-
-- Opinionated code formatter
-- Ensures consistent code style
-
-#### Common Black Commands
-
-```bash
-# Format code
-uv run black src/
-
-# Check formatting without changing
-uv run black --check src/
 ```
 
 ### PyTest (Testing Framework)

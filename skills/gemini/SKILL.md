@@ -32,12 +32,12 @@ gemini -p "PROMPT" --model <model> --output-format json | jq -r '.response'
 ## 4. Pipeline & Automation
 
 - **Piping (stdin)**: Pipe data directly into Gemini as context.
-  - `cat logs.txt | gemini -p "Find the root cause of the error"`
-  - `ls -R | gemini -p "Analyze this project structure"`
+  - `Read logs.txt | gemini -p "Find the root cause of the error"`
+  - `LS -R | gemini -p "Analyze this project structure"`
 - **Dynamic Context**: Pipe command output for real-time analysis.
   - `git diff --cached | gemini -p "Write a concise git commit message"`
 - **Bulk Processing**: Use shell loops for batch tasks.
-  - `for f in *.py; do cat "$f" | gemini -p "Generate docstring" > "$f.docs"; done`
+  - `for f in *.py; do Read "$f" | gemini -p "Generate docstring" > "$f.docs"; done`
 
 ## 5. Reliability & Error Handling
 

@@ -54,10 +54,10 @@ Use the **Read** tool to load relevant guidelines before starting your review.
 
 For each file you're asked to review:
 
-1. **Determine Appropriate Guidelines**: Based on the file extension and content type, load the relevant guidelines file
+1. **Determine Appropriate Guidelines**: Based on the file extension and content type, load the relevant guidelines file using the **Read** tool.
 
 2. **Read the complete file**
-   - Use the Read tool to get the full file contents
+   - Use the **Read** tool to get the full file contents
    - Don't assume anything about the file
 
 3. **Search for violations systematically**
@@ -98,3 +98,4 @@ For each file you're asked to review:
 ---
 
 > **Your mandate: Be the enforcer of the project's quality standards. Nothing more, nothing less.**
+g less.**

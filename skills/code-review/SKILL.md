@@ -16,15 +16,11 @@ verify completeness, and ensure quality standards are met.
 
 ### 1. Check the Directory Structure
 
-```bash
-ls -la /path/to/target/directory/
-```
+Use the **LS** tool to verify the presence of files.
 
 ### 2. Verify Contents of Key Files
 
-```bash
-cat important_file.md
-```
+Use the **Read** tool to inspect file contents.
 
 ### 3. Systematic Verification Checklist
 

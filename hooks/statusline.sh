@@ -38,8 +38,8 @@ if command -v git >/dev/null 2>&1; then
     if [ -n "$git_branch" ] && [ "$git_branch" != "HEAD" ]; then
         # Count changes, ensuring we get a numeric value
         if [ -n "$git_status" ]; then
-            staged_count=$(echo "$git_status" | grep -c '^[^ ]' 2>/dev/null)
-            unstaged_count=$(echo "$git_status" | grep -c '^.[^ ]' 2>/dev/null)
+            staged_count=$(echo "$git_status" | grep -c '^[^ ?]' 2>/dev/null)
+            unstaged_count=$(echo "$git_status" | grep -v '^??' | grep -c '^.[^ ]' 2>/dev/null)
             untracked_count=$(echo "$git_status" | grep -c '^??' 2>/dev/null)
 
             # Ensure counts are numeric (in case grep -c returns error)
