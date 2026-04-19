@@ -17,17 +17,17 @@ gemini -p "PROMPT" --model <model> --output-format json | jq -r '.response'
 
 | Model                           | Best For                                 | Note                           |
 | :------------------------------ | :--------------------------------------- | :----------------------------- |
-| `gemini-3.1-flash-lite-preview` | Web search, current events, fast queries | Default for research           |
-| `gemini-3-flash-preview`        | Deep code analysis, complex reasoning    | Best for architecture/security |
+| `gemini-3-flash-preview`        | Deep code analysis, complex reasoning    | Default for research           |
+| `gemini-3.1-flash-lite-preview` | Web search, current events, fast queries | Fast queries                   |
 | `gemini-2.5-flash`              | Stable, general-purpose reasoning        | Fallback                       |
 | `gemini-2.5-flash-lite`         | Quick, simple tasks                      | Lowest latency                 |
 
 ## 3. Usage Patterns
 
-- **Web Search**: `gemini -p "Latest React 19 features" --model gemini-3-flash-preview`
-- **Single File**: `gemini -p "@src/main.ts Review for bugs" --model gemini-3-pro-preview`
-- **Directory**: `gemini -p "@src/components/ Find code smells" --model gemini-3-pro-preview`
-- **Multi-Path**: `gemini -p "@src/ @tests/ Analyze coverage" --model gemini-3-pro-preview`
+- **Web Search**: `gemini -p "Latest React 19 features" --model gemini-3.1-flash-lite-preview`
+- **Single File**: `gemini -p "@src/main.ts Review for bugs" --model gemini-3-flash-preview`
+- **Directory**: `gemini -p "@src/components/ Find code smells" --model gemini-3-flash-preview`
+- **Multi-Path**: `gemini -p "@src/ @tests/ Analyze coverage" --model gemini-3-flash-preview`
 
 ## 4. Pipeline & Automation
 
