@@ -1,5 +1,5 @@
 ---
-name: code-refactoring
+name: code-refactor
 description: Modernize legacy Python code with best practices, type hints, and efficient patterns.
 ---
 
@@ -53,8 +53,9 @@ Run type checking, linting, and tests to establish baseline.
 ### After Refactoring
 
 Verify refactored code passes all checks:
+
 - Type checking
-- Linting  
+- Linting
 - Unit tests
 - Coverage analysis
 

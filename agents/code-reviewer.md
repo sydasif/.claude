@@ -1,9 +1,9 @@
 ---
-name: code-review
+name: code-reviewer
 description: Semantic code review using specific skills after editing code files.
-color: "Blue"
 skills:
-  - code-refactoring
+  - code-refactor
+  - code-review
 model: haiku
 ---
 

@@ -1,7 +1,8 @@
 {
   "env": {
     "ANTHROPIC_BASE_URL": "http://127.0.0.1:3455",
-    "ANTHROPIC_AUTH_TOKEN": "sk-xxx"
+    "ANTHROPIC_AUTH_TOKEN": "sk-xxx",
+    "ANTHROPIC_CUSTOM_MODEL_OPTION": "gemini-3.1-flash-lite-preview"
   },
   "permissions": {
     "allow": [
@@ -35,11 +36,6 @@
         "hooks": [
           {
             "type": "command",
-            "command": "if [ \"$(git branch --show-current)\" = \"main\" ]; then echo '{\"block\": true, \"message\": \"Cannot edit files on main branch. Create a feature branch first.\"}' >&2; exit 2; fi",
-            "timeout": 5
-          },
-          {
-            "type": "command",
             "command": "FILE=$(cat | jq -r '.tool_input.file_path // empty'); case \"$FILE\" in *.env|*.pem|*secrets.yaml|*credentials.json) echo '{\"block\": true, \"message\": \"Cannot edit sensitive files.\"}' >&2; exit 2 ;; esac",
             "timeout": 5
           }
@@ -57,18 +53,6 @@
           }
         ]
       }
-    ],
-    "PostCompact": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "[ -f \"${CLAUDE_PROJECT_DIR}/.claude/compaction-context.md\" ] && cat \"${CLAUDE_PROJECT_DIR}/.claude/compaction-context.md\"",
-            "timeout": 10
-          }
-        ]
-      }
     ]
   },
   "statusLine": {
@@ -79,6 +63,7 @@
     "context7@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true
   },
-  "effortLevel": "xhigh",
-  "autoUpdatesChannel": "latest"
+  "effortLevel": "high",
+  "autoUpdatesChannel": "latest",
+  "model": "opus[1m]"
 }

@@ -1,5 +1,5 @@
 ---
-name: fresh-review
+name: code-review
 description: Review changes with fresh eyes using systematic verification approach
 ---
 
