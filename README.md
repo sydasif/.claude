@@ -111,4 +111,3 @@ All contributions to this configuration must adhere to the **Security-First Mand
 - **License:** MIT
 - **Version Tracking:** Configuration changes should be versioned alongside project code when possible.
 - **Documentation:** Updates to `rules/` or `guidelines/` must be reflected in the corresponding reference file.
-  nce file.
