@@ -8,7 +8,7 @@ This document contains centralized documentation best practices to be referenced
 
 Every project should have a README.md with at minimum:
 
-```markdown
+````markdown
 # Project Name
 
 Brief description of what the project does (1-2 sentences).
@@ -25,6 +25,7 @@ Brief description of what the project does (1-2 sentences).
 # Installation steps
 pip install project-name
 ```
+````
 
 ## Usage
 
@@ -159,7 +160,7 @@ Attributes:
 
 ### ADR Template
 
-```markdown
+````markdown
 # ADR-001: Use PostgreSQL as Primary Database
 
 ## Status
@@ -169,6 +170,7 @@ Accepted
 ## Context
 
 We need a relational database for our application. Requirements:
+
 - ACID compliance
 - JSON support for flexible schemas
 - Full-text search capabilities
@@ -181,12 +183,14 @@ We will use PostgreSQL as our primary database.
 ## Consequences
 
 ### Positive
+
 - Mature, well-supported database
 - Excellent Python ecosystem (asyncpg, SQLAlchemy)
 - Rich feature set (JSONB, full-text search)
 - Strong data integrity guarantees
 
 ### Negative
+
 - Requires database administration expertise
 - More complex than SQLite for simple use cases
 
@@ -206,10 +210,10 @@ We will use PostgreSQL as our primary database.
 Store ADRs in `docs/adr/` directory:
 
 docs/
-  adr/
-    001-use-postgresql.md
-    002-migrate-to-fastapi.md
-    003-adopt-ruff-for-linting.md
+adr/
+001-use-postgresql.md
+002-migrate-to-fastapi.md
+003-adopt-ruff-for-linting.md
 
 ## API Documentation
 
@@ -259,6 +263,7 @@ async def get_user(user_id: int):
     """
     pass
 ```
+````
 
 ### API Documentation Best Practices
 
@@ -357,14 +362,14 @@ theme:
 nav:
   - Home: index.md
   - Getting Started:
-    - Installation: getting-started/installation.md
-    - Quick Start: getting-started/quickstart.md
+      - Installation: getting-started/installation.md
+      - Quick Start: getting-started/quickstart.md
   - API:
-    - Authentication: api/authentication.md
-    - Endpoints: api/endpoints.md
+      - Authentication: api/authentication.md
+      - Endpoints: api/endpoints.md
   - Development:
-    - Setup: development/setup.md
-    - Contributing: development/contributing.md
+      - Setup: development/setup.md
+      - Contributing: development/contributing.md
 
 plugins:
   - search

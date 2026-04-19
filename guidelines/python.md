@@ -16,12 +16,14 @@ Python-specific patterns and standards. For security and testing requirements, s
 ### Type Hints - Pragmatic Approach
 
 **REQUIRED:**
+
 - Public API functions (in `__all__`)
 - Functions with 2+ parameters
 - Non-obvious return types
 - Library/package code
 
 **OPTIONAL:**
+
 - Private functions with obvious signatures
 - Lambda functions
 - Simple property getters/setters
@@ -53,20 +55,24 @@ def transform_records(
 ### Dependency Management - Tool Selection
 
 #### Primary Recommendation: `uv`
+
 - Fastest package installer (10-100x faster than pip)
 - Built-in Python version management
 - Compatible with pip/PyPI
 - Use for: New projects, speed-critical workflows
 
 #### Alternative: Poetry (if team already uses it)
+
 - Mature, stable, large ecosystem
 - Use for: Existing Poetry projects, team familiarity
 
 #### Alternative: PDM (PEP 582)
+
 - Standards-compliant
 - Use for: Strict PEP adherence requirements
 
 **Never Use:**
+
 - Bare `pip` for project management (only for Docker/CI)
 - `requirements.txt` without lock files
 
@@ -157,12 +163,14 @@ class Drawable(Protocol):
 ## Async vs Sync Decision Matrix
 
 **Use ASYNC when:**
+
 - Handling **10+ concurrent** I/O operations
 - Building web APIs/servers
 - Response time < 100ms required
 - Integrating with async libraries
 
 **Use SYNC when:**
+
 - Sequential processing (< 10 operations)
 - Simple CLI scripts
 - Batch jobs (not latency-sensitive)

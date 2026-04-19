@@ -6,13 +6,13 @@ This document contains centralized API design best practices to be referenced by
 
 ### HTTP Methods
 
-| Method | Action | Idempotent | Safe |
-| -------- | -------- | ------------ | ------ |
-| GET | Retrieve resource | Yes | Yes |
-| POST | Create resource | No | No |
-| PUT | Replace resource | Yes | No |
-| PATCH | Partial update | No | No |
-| DELETE | Remove resource | Yes | No |
+| Method | Action            | Idempotent | Safe |
+| ------ | ----------------- | ---------- | ---- |
+| GET    | Retrieve resource | Yes        | Yes  |
+| POST   | Create resource   | No         | No   |
+| PUT    | Replace resource  | Yes        | No   |
+| PATCH  | Partial update    | No         | No   |
+| DELETE | Remove resource   | Yes        | No   |
 
 ### URL Design
 
@@ -87,19 +87,19 @@ GET /api/v1/orderItems
 
 ### HTTP Status Codes
 
-| Code | Meaning | Use Case |
-| ------ | --------- | ---------- |
-| 200 | OK | Successful GET, PUT, PATCH |
-| 201 | Created | Successful POST |
-| 204 | No Content | Successful DELETE |
-| 400 | Bad Request | Validation error |
-| 401 | Unauthorized | Missing/invalid auth |
-| 403 | Forbidden | No permission |
-| 404 | Not Found | Resource doesn't exist |
-| 409 | Conflict | Resource already exists |
-| 422 | Unprocessable | Business logic error |
-| 429 | Too Many Requests | Rate limit exceeded |
-| 500 | Server Error | Unexpected error |
+| Code | Meaning           | Use Case                   |
+| ---- | ----------------- | -------------------------- |
+| 200  | OK                | Successful GET, PUT, PATCH |
+| 201  | Created           | Successful POST            |
+| 204  | No Content        | Successful DELETE          |
+| 400  | Bad Request       | Validation error           |
+| 401  | Unauthorized      | Missing/invalid auth       |
+| 403  | Forbidden         | No permission              |
+| 404  | Not Found         | Resource doesn't exist     |
+| 409  | Conflict          | Resource already exists    |
+| 422  | Unprocessable     | Business logic error       |
+| 429  | Too Many Requests | Rate limit exceeded        |
+| 500  | Server Error      | Unexpected error           |
 
 ## API Versioning
 

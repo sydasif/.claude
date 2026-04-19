@@ -5,20 +5,21 @@ Testing requirements and verification standards that must always be followed.
 ## Core Requirements
 
 ### Before Any Code Change
+
 - Run existing tests to establish baseline
 - Ensure tests pass before modifying code
 - Never commit broken tests
 
 ### Coverage Requirements
 
-| Component Type | Branch Coverage | Rationale |
-|----------------|-----------------|-----------|
-| Business logic | 95%+ | Core value, high risk |
-| API endpoints | 90%+ | User-facing |
-| Data models/validation | 85%+ | Data integrity |
-| CLI tools | 70%+ | Integration tests sufficient |
-| Utilities | 80%+ | Pure functions |
-| Config/constants | 60%+ | Low complexity |
+| Component Type         | Branch Coverage | Rationale                    |
+| ---------------------- | --------------- | ---------------------------- |
+| Business logic         | 95%+            | Core value, high risk        |
+| API endpoints          | 90%+            | User-facing                  |
+| Data models/validation | 85%+            | Data integrity               |
+| CLI tools              | 70%+            | Integration tests sufficient |
+| Utilities              | 80%+            | Pure functions               |
+| Config/constants       | 60%+            | Low complexity               |
 
 **Use Branch Coverage, not Line Coverage.**
 
@@ -35,17 +36,20 @@ For every change, you MUST verify:
 ## Test Quality Standards
 
 ### Test Isolation
+
 - Each test must be independent
 - Use fixtures for setup/teardown
 - Clean up after tests (no side effects)
 - Avoid shared mutable state
 
 ### Test Naming
+
 - Use `test_` prefix
 - Pattern: `test_[functionality]_[scenario]_[expected]`
 - Example: `test_calculate_total_with_discount()`
 
 ### AAA Pattern (Arrange, Act, Assert)
+
 1. **Arrange**: Set up test data and preconditions
 2. **Act**: Execute function under test
 3. **Assert**: Verify expected outcome
@@ -83,6 +87,7 @@ def test_calculator_add(mocker):
 ```
 
 ### 3. Flaky Tests
+
 - Avoid tests that sometimes pass/fail
 - Don't depend on external services without mocking
 - Avoid timing-dependent tests
@@ -98,6 +103,7 @@ pytest --cov=src --cov-fail-under=90
 ## When Testing Is Complete
 
 You are not "done" until:
+
 - All verification pyramid items checked
 - Static analysis passes
 - Coverage meets minimum thresholds

@@ -237,12 +237,12 @@ async with db.begin() as session:
 
 ### Isolation Levels
 
-| Level | Dirty Read | Non-repeatable Read | Phantom Read |
-| ------- | ----------- | --------------------- | -------------- |
-| READ UNCOMMITTED | Yes | Yes | Yes |
-| READ COMMITTED | No | Yes | Yes |
-| REPEATABLE READ | No | No | Yes |
-| SERIALIZABLE | No | No | No |
+| Level            | Dirty Read | Non-repeatable Read | Phantom Read |
+| ---------------- | ---------- | ------------------- | ------------ |
+| READ UNCOMMITTED | Yes        | Yes                 | Yes          |
+| READ COMMITTED   | No         | Yes                 | Yes          |
+| REPEATABLE READ  | No         | No                  | Yes          |
+| SERIALIZABLE     | No         | No                  | No           |
 
 **Default choices:**
 
@@ -253,13 +253,13 @@ async with db.begin() as session:
 
 ### Async Libraries
 
-| Database | Library |
-| ---------- | --------- |
-| PostgreSQL | asyncpg |
-| MySQL | aiomysql |
-| MongoDB | motor |
-| Redis | redis-py (async support) |
-| SQLite | aiosqlite |
+| Database   | Library                  |
+| ---------- | ------------------------ |
+| PostgreSQL | asyncpg                  |
+| MySQL      | aiomysql                 |
+| MongoDB    | motor                    |
+| Redis      | redis-py (async support) |
+| SQLite     | aiosqlite                |
 
 ### Async Patterns
 

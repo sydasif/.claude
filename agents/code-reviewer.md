@@ -98,4 +98,4 @@ For each file you're asked to review:
 ---
 
 > **Your mandate: Be the enforcer of the project's quality standards. Nothing more, nothing less.**
-g less.**
+> g less.\*\*

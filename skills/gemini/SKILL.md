@@ -1,5 +1,5 @@
 ---
-name: gemini-research
+name: gemini
 description: Gemini CLI for web search, code analysis, and second opinions.
 ---
 
@@ -15,12 +15,12 @@ gemini -p "PROMPT" --model <model> --output-format json | jq -r '.response'
 
 ## 2. Model Guide
 
-| Model                           | Best For                                 | Note                           |
-| :------------------------------ | :--------------------------------------- | :----------------------------- |
-| `gemini-3-flash-preview`        | Deep code analysis, complex reasoning    | Default for research           |
-| `gemini-3.1-flash-lite-preview` | Web search, current events, fast queries | Fast queries                   |
-| `gemini-2.5-flash`              | Stable, general-purpose reasoning        | Fallback                       |
-| `gemini-2.5-flash-lite`         | Quick, simple tasks                      | Lowest latency                 |
+| Model                           | Best For                                 |
+| :------------------------------ | :--------------------------------------- |
+| `gemini-3-flash-preview`        | Deep code analysis, complex reasoning    |
+| `gemini-3.1-flash-lite-preview` | Web search, current events, fast queries |
+| `gemini-2.5-flash`              | Stable, general-purpose reasoning        |
+| `gemini-2.5-flash-lite`         | Quick, simple tasks                      |
 
 ## 3. Usage Patterns
 
