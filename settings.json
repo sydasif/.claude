@@ -13,6 +13,9 @@
       "Bash(git status*)",
       "Bash(git log*)",
       "Bash(git diff*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(git push*)",
       "Bash(pwd*)",
       "Bash(which*)",
       "Bash(file*)",
@@ -20,13 +23,53 @@
       "Bash(du*)",
       "Bash(df*)",
       "Bash(uv run ruff check*)",
-      "Bash(uv run pytest*)"
+      "Bash(uv run pytest*)",
+      "Bash(uv run mypy*)",
+      "Bash(uv run black*)",
+      "Bash(fd *)",
+      "Bash(tree *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(find *)",
+      "Bash(sort *)",
+      "Bash(uniq *)",
+      "Bash(cut *)",
+      "Bash(tr *)",
+      "Bash(jq *)",
+      "Bash(curl *)",
+      "Bash(mkdir *)",
+      "Bash(touch *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(rm *)",
+      "Read(.gitignore)",
+      "Read(.claude/settings.json)",
+      "Read(.claude/CLAUDE.md)",
+      "Read(.claude/rules/*)",
+      "Read(.claude/guidelines/*)",
+      "Write(.claude/todos/*)"
     ],
     "deny": [
       "Read(.env)",
       "Read(*.pem)",
       "Read(secrets.yaml)",
-      "Read(credentials.json)"
+      "Read(credentials.json)",
+      "Read(*.key)",
+      "Read(id_rsa*)",
+      "Read(id_ed25519*)",
+      "Bash(sudo*)",
+      "Bash(chmod*)",
+      "Bash(chown*)",
+      "Bash(kill*)",
+      "Bash(systemctl*)",
+      "Bash(service*)",
+      "Bash(docker*)",
+      "Bash(podman*)",
+      "Write(/etc/*)",
+      "Write(/usr/*)",
+      "Write(/bin/*)",
+      "Write(/sbin/*)"
     ]
   },
   "hooks": {
@@ -36,7 +79,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "FILE=$(cat | jq -r '.tool_input.file_path // empty'); case \"$FILE\" in *.env|*.pem|*secrets.yaml|*credentials.json) echo '{\"block\": true, \"message\": \"Cannot edit sensitive files.\"}' >&2; exit 2 ;; esac",
+            "command": "FILE=$(cat | jq -r '.tool_input.file_path // empty'); case \"$FILE\" in *.env|*.pem|*secrets.yaml|*credentials.json|*.key|id_rsa*|id_ed25519*) echo '{\"block\": true, \"message\": \"Cannot edit sensitive files.\"}' >&2; exit 2 ;; esac",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CMD=$(cat | jq -r '.tool_input.command // empty'); case \"$CMD\" in *rm\\ -rf\\ /*|*mkfs*|*dd\\ if=*) echo '{\"block\": true, \"message\": \"Dangerous command blocked.\"}' >&2; exit 2 ;; esac",
             "timeout": 5
           }
         ]
@@ -53,6 +106,17 @@
           }
         ]
       }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Claude Code session started at '$(date)",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
@@ -61,7 +125,8 @@
   },
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
-    "repomix-mcp@repomix": true
+    "repomix-mcp@repomix": true,
+    "code-review@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "repomix": {
@@ -72,5 +137,6 @@
     }
   },
   "effortLevel": "high",
-  "autoUpdatesChannel": "latest"
+  "autoUpdatesChannel": "latest",
+  "dangerouslyDisableNaiveFiltering": false
 }

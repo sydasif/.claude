@@ -1,4 +1,4 @@
-# local dir
+# Claude Code local directories
 debug/
 file-history/
 ide/
@@ -11,7 +11,7 @@ statsig/
 telemetry/
 todos/
 
-# local files
+# Local files and caches
 history.jsonl
 stats-cache.json
 config.json
@@ -22,4 +22,20 @@ tasks/
 .claude/
 backups/
 sessions/
+
+# Credentials and secrets
 .credentials.json
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.backup
+*.bak
+*~
