@@ -60,8 +60,16 @@
     "command": "/bin/bash /home/zulu/.claude/hooks/statusline.sh"
   },
   "enabledPlugins": {
-    "context7@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true
+    "pyright-lsp@claude-plugins-official": true,
+    "repomix-mcp@repomix": true
+  },
+  "extraKnownMarketplaces": {
+    "repomix": {
+      "source": {
+        "source": "github",
+        "repo": "yamadashy/repomix"
+      }
+    }
   },
   "effortLevel": "high",
   "autoUpdatesChannel": "latest"
