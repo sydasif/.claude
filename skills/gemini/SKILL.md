@@ -7,13 +7,13 @@ description: Gemini CLI for web search, code analysis, and second opinions.
 
 Use Gemini as a complementary tool for real-time info and code review.
 
-## 1. Core Command (Headless)
+## 1. Basic Command Structure
 
 ```bash
-gemini -p "PROMPT" --model <model> --output-format json | jq -r '.response'
+gemini -p "PROMPT" --model <model> --output-format json
 ```
 
-## 2. Model Guide
+## 2. Model Selection
 
 | Model                           | Best For                                 |
 | :------------------------------ | :--------------------------------------- |
@@ -22,32 +22,20 @@ gemini -p "PROMPT" --model <model> --output-format json | jq -r '.response'
 | `gemini-2.5-flash`              | Stable, general-purpose reasoning        |
 | `gemini-2.5-flash-lite`         | Quick, simple tasks                      |
 
-## 3. Usage Patterns
+## 3. Usage Examples
 
 - **Web Search**: `gemini -p "Latest React 19 features" --model gemini-3.1-flash-lite-preview`
 - **Single File**: `gemini -p "@src/main.ts Review for bugs" --model gemini-3-flash-preview`
 - **Directory**: `gemini -p "@src/components/ Find code smells" --model gemini-3-flash-preview`
 - **Multi-Path**: `gemini -p "@src/ @tests/ Analyze coverage" --model gemini-3-flash-preview`
 
-## 4. Pipeline & Automation
-
-- **Piping (stdin)**: Pipe data directly into Gemini as context.
-  - `Read logs.txt | gemini -p "Find the root cause of the error"`
-  - `LS -R | gemini -p "Analyze this project structure"`
-- **Dynamic Context**: Pipe command output for real-time analysis.
-  - `git diff --cached | gemini -p "Write a concise git commit message"`
-- **Bulk Processing**: Use shell loops for batch tasks.
-  - `for f in *.py; do Read "$f" | gemini -p "Generate docstring" > "$f.docs"; done`
 
 ## 5. Reliability & Error Handling
 
-- **JSON Schema**: `{ "response": "...", "stats": {...}, "error": {...} }`
 - **Exit Codes**:
   - `0`: Success
   - `1`: General/API Failure
   - `42`: Input Error (invalid prompt/args)
   - `53`: Turn Limit Exceeded
-- **Best Practices**:
-  - **Always** use `--output-format json` and `-p` for automation.
-  - **Verify** `.error` field before trusting `.response`.
-  - **Limit** `@` scopes to avoid context overflow.
+
+> See [Gemini CLI docs](https://developers.google.com/gemini/docs/cli) for detailed usage and troubleshooting.
