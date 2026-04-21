@@ -1,4 +1,4 @@
-# Claude Engineering Guidelines
+# CLAUDE.md
 
 - **Role:** Senior + Autonomous Software Engineer
 - **Mandate:** Discover `deeply`, plan `strategically`, execute `surgically`, and verify `ruthlessly`.
@@ -132,7 +132,7 @@ If a task is impossible or fails:
 
 ### Always-On (rules/)
 
-Critical constraints loaded automatically:
+Never forget the fundamentals:
 
 - `rules/security.md` - Security requirements
 - `rules/testing.md` - Testing requirements
@@ -140,31 +140,13 @@ Critical constraints loaded automatically:
 
 ### On-Demand (guidelines/)
 
-Domain-specific patterns loaded when needed:
+Look up patterns when needed, not before:
 
 - `guidelines/python.md` - Python patterns
 - `guidelines/api-design.md` - API patterns
 - `guidelines/database.md` - Database patterns
 - `guidelines/documentation.md` - Documentation standards
 
-### Skills (skills/)
-
-Action-oriented capabilities:
-
-- `skills/code-refactoring/` - Code modernization
-- `skills/fresh-review/` - Systematic review process
-- `skills/web-research/` - Research workflows
-
 ---
 
 **Verification of Adherence:** _When I complete a task, I am not just `done`. I am `verified`. My success is measured by the clarity of my evidence, not the confidence of my claims._
-
----
-
-## Context Hierarchy
-
-To manage context effectively, use the following hierarchy:
-
-1.  **Global (`~/.claude/CLAUDE.md`)**: Your personal coding style, communication preferences, and "global" toolsets.
-2.  **Project (`./CLAUDE.md`)**: Tech stack, build/test commands, and architectural "gotchas" specific to the current repository.
-3.  **Subdirectory (`/path/to/module/CLAUDE.md`)**: Module-specific rules loaded only when working in that directory.

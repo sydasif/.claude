@@ -1,10 +1,10 @@
 ---
 name: code-reviewer
 description: Semantic code review using specific skills after editing code files.
+color: blue
 skills:
   - code-refactor
   - code-review
-model: haiku
 ---
 
 # Code Reviewer Agent

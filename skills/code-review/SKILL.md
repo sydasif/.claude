@@ -5,12 +5,11 @@ description: Review changes with fresh eyes using systematic verification approa
 
 # Fresh Review Command
 
-This command helps you review your changes with a fresh perspective using a systematic verification approach.
+Review your changes with a fresh perspective using a systematic verification approach.
 
 ## Purpose
 
-Provides a structured methodology for reviewing work to catch errors,
-verify completeness, and ensure quality standards are met.
+Provides a structured methodology for reviewing work to catch errors, verify completeness, and ensure quality standards are met.
 
 ## Review Process
 
@@ -41,8 +40,7 @@ Use the **Read** tool to inspect file contents.
 
 ## Usage
 
-Use `/fresh-review` when you want to systematically review your work with a
-fresh perspective. This is especially useful after completing complex tasks
+Use when you want to systematically review your work with a fresh perspective. This is especially useful after completing complex tasks
 or before submitting work.
 
 ## Best Practices

@@ -5,7 +5,7 @@ description: Strategic web research, content extraction, and real-time data acce
 
 # Web Research Reference
 
-Strategic information gathering using specialized MCP tools.
+Strategic information gathering using specialized `duck` (DuckDuckgo) MCP tools.
 
 ## 1. Tool Mapping
 
@@ -46,3 +46,5 @@ Strategic information gathering using specialized MCP tools.
 - [ ] **Cross-Ref**: Verify critical claims across $\ge 2$ independent sources.
 - [ ] **Objectivity**: Identify promotional bias or conflicts of interest.
 - [ ] **Completeness**: Did the `fetch_page` capture all relevant tables/sections?
+
+> This MCP skill is designed for strategic research tasks. For real-time data, ensure to use the latest search parameters and verify results against multiple sources.
