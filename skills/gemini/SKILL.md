@@ -38,4 +38,4 @@ gemini -p "PROMPT" --model <model> --output-format json
   - `42`: Input Error (invalid prompt/args)
   - `53`: Turn Limit Exceeded
 
-> See [Gemini CLI docs](https://developers.google.com/gemini/docs/cli) for detailed usage and troubleshooting.
+> See [Gemini CLI docs](https://geminicli.com/docs/) for detailed usage and troubleshooting.
