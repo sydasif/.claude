@@ -1,11 +1,12 @@
 ---
-name: research
-description: Strategic web research, content extraction, and real-time data access.
+name: web-search
+description: Use duck MCP for web searches and real-time info retrieval.
 ---
 
-# Web Research Reference
+# Web Search Instructions
 
-Strategic information gathering using specialized `duck` (DuckDuckgo) MCP tools.
+Use the following instructions to perform web searches with the `duck` mcp instead of `Web Search` for real-time information retrieval.
+
 
 ## 1. Tool Mapping
 
@@ -39,12 +40,11 @@ Strategic information gathering using specialized `duck` (DuckDuckgo) MCP tools.
 - **Workflow**: Use `geocode_location` to get `lat/long` $\rightarrow$ Pass to `get_weather`.
 - **Weather Params**: `latitude`, `longitude`, `mode` ('current'/'forecast'), `days`.
 
-## 3. Verification Checklist
+## 3. Second Opinion Strategy
 
-- [ ] **Authority**: Is the source official or a primary provider?
-- [ ] **Currency**: Check publication date; is the info outdated?
-- [ ] **Cross-Ref**: Verify critical claims across $\ge 2$ independent sources.
-- [ ] **Objectivity**: Identify promotional bias or conflicts of interest.
-- [ ] **Completeness**: Did the `fetch_page` capture all relevant tables/sections?
+- Use `gemini` skill to cross-verify critical information from web searches.
+- For factual queries, check multiple sources to ensure accuracy.
+- For documentation, prefer official sources and cross-check with `find-docs` skill if needed.
+- Use `context7` for up-to-date library documentation and code examples, especially for API details and configuration options.
 
-> This MCP skill is designed for strategic research tasks. For real-time data, ensure to use the latest search parameters and verify results against multiple sources.
+> This MCP is designed for search tasks. For real-time data, ensure to use the latest search parameters and verify results against multiple sources.

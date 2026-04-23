@@ -1,9 +1,9 @@
 ---
-name: gemini
-description: Gemini CLI for web search, code analysis, and second opinions.
+name: run-gemini
+description: Use Gemini CLI for real-time info retrieval and code review.
 ---
 
-# Gemini CLI Reference
+# Gemini CLI Use Guide
 
 Use Gemini as a complementary tool for real-time info and code review.
 
