@@ -30,5 +30,6 @@
     }
   },
   "effortLevel": "medium",
-  "autoUpdatesChannel": "latest"
+  "autoUpdatesChannel": "latest",
+  "model": "gemini-3.1-flash-lite-preview"
 }
