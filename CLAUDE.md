@@ -52,7 +52,20 @@
 
 ---
 
-## 3. Core Principles
+## 3. Reference Architecture
+
+### On-Demand (guidelines/)
+
+You must consult the relevant guidelines for each task. These are living documents that evolve with our codebase and industry best practices. Always check for updates before starting a new task.
+
+- `guidelines/python.md` - Python patterns
+- `guidelines/api-design.md` - API patterns
+- `guidelines/database.md` - Database patterns
+- `guidelines/documentation.md` - Documentation standards
+
+---
+
+## 4. Core Principles
 
 ### 1. Security-First Engineering
 
@@ -72,7 +85,113 @@
 
 ---
 
-## 4. Mandatory Output Structure
+## 5. Security Rules (Always Enforced)
+
+- Validate and sanitize all inputs
+- Enforce input length limits
+- Use parameterized queries only
+- Escape output to prevent XSS
+- Never store secrets in code — use environment variables or secure vaults
+- Hash passwords with `bcrypt` or `Argon2`
+- Do not use `eval` or `exec` with user input
+- Use `subprocess` with `shell=False`
+- Use secure XML parsing
+- Enforce HTTPS for all communication
+- Do not expose sensitive data in errors
+- File handling:
+  - Validate type and size
+  - Store outside web root
+  - Apply strict permissions
+
+---
+
+## 6. Python Toolchain
+
+### Required Stack
+
+| Tool     | Purpose                    |
+|----------|----------------------------|
+| `uv`     | Environment + dependencies |
+| `ruff`   | Lint + format              |
+| `mypy`   | Type checking              |
+| `pytest` | Testing                    |
+
+### Commands
+
+```bash
+uv sync
+uv run ruff check --fix .
+uv run ruff format .
+uv run mypy src/
+uv run pytest
+```
+
+### Security Checks
+
+```bash
+uv run safety check
+uv run bandit -r src/
+```
+
+---
+
+## 7. Testing Standards (Mandatory)
+
+### Before Changes
+
+- Run all tests → must pass
+
+### Coverage Thresholds (branch)
+
+| Scope          | Minimum |
+|----------------|---------|
+| Business logic | ≥ 95%   |
+| APIs           | ≥ 90%   |
+| Models         | ≥ 85%   |
+
+### Required Verification
+
+- Static checks (lint + types)
+- Positive test case
+- Negative test case
+- Regression tests pass
+- Rollback validated
+
+### Test Rules
+
+- Tests must be independent
+- Follow AAA pattern (Arrange, Act, Assert)
+- No test chaining
+- Avoid excessive mocking
+- No flaky tests
+
+### Pre-commit
+
+```bash
+uv run pytest
+uv run pytest --cov=src --cov-branch --cov-fail-under=90
+```
+
+---
+
+## 8. Git Rules
+
+### Branch Naming
+
+- `feat/*`
+- `fix/*`
+- `docs/*`
+- `chore/*`
+
+### Commit Messages
+
+- Imperative mood
+- Max 50 characters (subject line)
+- No trailing period
+
+---
+
+## 9. Mandatory Output Structure
 
 ```markdown
 ## 1. Discovery Report
@@ -107,7 +226,7 @@
 
 ---
 
-## 5. The "Stop & Ask" Triggers
+## 10. The "Stop & Ask" Triggers
 
 **You must stop and ask if:**
 
@@ -118,34 +237,13 @@
 
 ---
 
-## 6. Professional Failure Handling
+## 11. Professional Failure Handling
 
 If a task is impossible or fails:
 
 1. **Show the "Dead End":** Provide exact error or constraint
 2. **Provide "Pivot Options":** "I can't do X because of Y, but I could do Z"
 3. **Preserve State:** Provide code for parts that did work
-
----
-
-## 7. Reference Architecture
-
-### Always-On (rules/)
-
-Never forget the fundamentals:
-
-- `rules/security.md` - Security requirements
-- `rules/testing.md` - Testing requirements
-- `rules/tools.md` - Tool commands
-
-### On-Demand (guidelines/)
-
-Look up patterns when needed, not before:
-
-- `guidelines/python.md` - Python patterns
-- `guidelines/api-design.md` - API patterns
-- `guidelines/database.md` - Database patterns
-- `guidelines/documentation.md` - Documentation standards
 
 ---
 
