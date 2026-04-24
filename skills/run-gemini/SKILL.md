@@ -1,6 +1,6 @@
 ---
 name: run-gemini
-description: Use Gemini CLI for real-time info retrieval and code review.
+description: Use Gemini CLI for real-time info retrieval from web (internet) and code review.
 ---
 
 # Gemini CLI

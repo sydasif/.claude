@@ -1,6 +1,6 @@
 ---
 name: web-search
-description: Use duck MCP for web searches and real-time info retrieval.
+description: Use duck MCP for web searches and real-time info retrieval. Includes tool mapping, API reference, and second opinion strategy.
 ---
 
 # Web Search Instructions
