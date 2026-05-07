@@ -60,31 +60,39 @@ Invoke the `code-review` skill as the final gate.
 
 After all phases complete, produce a single consolidated summary:
 
-```
+```markdown
 ## Pipeline Summary
 
 ### Phases run
+
 - [ ] code-cleanup
 - [ ] code-refactor
 - [ ] code-review
 
 ### Files in scope
+
 [list from git diff]
 
 ### Issues by severity
+
 **Blocking** (must fix before submitting)
+
 - [file:line] description
 
 **Should fix** (high confidence improvements)
+
 - [file:line] description
 
 **Minor** (low-risk suggestions)
+
 - [file:line] description
 
 ### Residual risks carried forward
+
 [anything flagged but not resolved across all phases]
 
 ### Verdict
+
 [ ] Ready to submit
 [ ] Needs fixes — see blocking issues above
 [ ] Needs discussion — questions require user input

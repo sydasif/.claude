@@ -41,7 +41,7 @@ The configuration follows a **Progressive Disclosure Strategy**, separating crit
 ├── CLAUDE.md                # Core engineering mandates (auto-loaded)
 ├── skills/                  # Intent-based workflows and references
 │   ├── code-refactor/       # Modernization & cleanup sequences
-│   └── python-pro/          # Python guidance
+│   └── python-expert/       # Python guidance
 │       └── reference/       # Python, API, database, and docs references
 └── agents/                  # TIER 4: Specialized subagents
     └── code-reviewer.md     # Read-only semantic analysis configuration
@@ -70,10 +70,10 @@ To maintain a lean context window, only load guidelines relevant to the current 
 
 ```bash
 # For Python-centric feature development
-Read ~/.claude/skills/python-pro/reference/python.md
+Read ~/.claude/skills/python-expert/reference/python.md
 
 # For API architectural planning
-Read ~/.claude/skills/python-pro/reference/api-design.md
+Read ~/.claude/skills/python-expert/reference/api-design.md
 ```
 
 ### Executing Specialized Reviews

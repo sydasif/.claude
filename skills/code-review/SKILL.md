@@ -96,15 +96,17 @@ Answer each question based on evidence in the code, not intuition:
 
 Always produce a structured review report — do not summarize in prose only.
 
-```
+```markdown
 ## Code Review Report
 
 ### Orientation
+
 - Task type: [cleanup / refactor / feature / fix / other]
 - Files changed: [count and list or reference to git diff]
 - Prior pass residual risks reviewed: [yes / no / none present]
 
 ### Checklist Results
+
 - Correctness: [pass / issues found]
 - Public contracts: [pass / issues found]
 - Tests: [pass / issues found]
@@ -113,16 +115,20 @@ Always produce a structured review report — do not summarize in prose only.
 - Security flags: [none / list any]
 
 ### Issues Found
+
 For each issue:
+
 - File and line reference
 - Description of the problem
 - Severity: [blocking / should fix / minor]
 - Recommended action
 
 ### Residual Risks Not Resolved
+
 Items flagged in prior passes that remain open.
 
 ### Verdict
+
 [ ] Ready to submit — no blocking issues found
 [ ] Needs fixes — blocking issues listed above
 [ ] Needs discussion — questions that require user input before proceeding
