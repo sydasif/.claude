@@ -1,17 +1,5 @@
 {
-  "env": {
-    "ANTHROPIC_BASE_URL": "http://localhost:4000/",
-    "ANTHROPIC_AUTH_TOKEN": "sk-xxx",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "gemini/gemma-4-31b-it",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "gemini/gemini-3.1-flash-lite-preview",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "gemini/gemma-4-26b-a4b-it"
-  },
-  "permissions": {
-    "allow": [],
-    "deny": []
-  },
   "hooks": {
-    "PreToolUse": [],
     "PostToolUse": [
       {
         "matcher": "Edit|MultiEdit",
@@ -31,27 +19,6 @@
           }
         ]
       }
-    ],
-    "SessionStart": []
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "/bin/bash /home/zulu/.claude/hooks/statusline.sh"
-  },
-  "enabledPlugins": {
-    "pyright-lsp@claude-plugins-official": true,
-    "repomix-mcp@repomix": true,
-    "code-simplifier@claude-plugins-official": true
-  },
-  "extraKnownMarketplaces": {
-    "repomix": {
-      "source": {
-        "source": "github",
-        "repo": "yamadashy/repomix"
-      }
-    }
-  },
-  "effortLevel": "high",
-  "autoUpdatesChannel": "latest",
-  "model": "sonnet"
+    ]
+  }
 }
