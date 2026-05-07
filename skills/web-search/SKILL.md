@@ -7,7 +7,6 @@ description: Use duck MCP for web searches and real-time info retrieval. Include
 
 Use the following instructions to perform web searches with the `duck` mcp instead of `Web Search` for real-time information retrieval.
 
-
 ## 1. Tool Mapping
 
 | Goal                         | Tool               | Key Parameter                  |
