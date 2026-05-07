@@ -33,5 +33,6 @@
     }
   },
   "effortLevel": "high",
-  "autoUpdatesChannel": "latest"
+  "autoUpdatesChannel": "latest",
+  "model": "sonnet"
 }
