@@ -7,7 +7,6 @@ skills:
     devops-iac-engineer,
     docker-expert,
     github-workflow-automation,
-    senior-devops,
     python-expert,
   ]
 ---
