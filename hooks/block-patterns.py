@@ -14,20 +14,29 @@ DANGEROUS_PATTERNS = [
     # Command Injection & Chaining
     # Catches things like: ls ; rm -rf /
     r"[;&|]\s*(rm|sudo|curl|wget|nc|bash|sh|python|perl|chmod|chown|mkfs|dd)",
-    # Nested Execution (Command Substitution)
-    # Catches things like: ls $(whoami)
-    r"\$\(.*\)",
-    r"`.*`",
+    # Nested Execution — only block if paired with a dangerous command
+    # e.g. rm -rf $(cat /etc/passwd) but NOT echo "$(date)"
+    r"\$\(\s*(curl|wget|nc|bash|sh|python|perl|php|ruby|eval|exec)",
+    r"`\s*(curl|wget|nc|bash|sh|python|perl|php|ruby|eval|exec)",
     # Denial of Service
     r":[()]{.*:\|:&.*};",  # Classic fork bomb
+    # Destructive git operations
+    r"git\s+reset\s+--hard",
+    r"git\s+clean\s+-[a-zA-Z]*f",  # git clean -fd, -fx, etc.
 ]
 
-input_data = json.load(sys.stdin)
+try:
+    input_data = json.load(sys.stdin)
+except (json.JSONDecodeError, ValueError) as e:
+    # Malformed input — fail open (allow) to avoid blocking all Bash tool use
+    print(f"block-patterns: could not parse stdin as JSON: {e}", file=sys.stderr)
+    sys.exit(0)
+
 if input_data.get("tool_name") == "Bash":
     command = input_data.get("tool_input", {}).get("command", "")
     for pattern in DANGEROUS_PATTERNS:
         if re.search(pattern, command, re.IGNORECASE):
-            print("BLOCKED: Dangerous pattern", file=sys.stderr)
+            print(f"BLOCKED: Dangerous pattern matched: {pattern}", file=sys.stderr)
             sys.exit(2)
 
 sys.exit(0)

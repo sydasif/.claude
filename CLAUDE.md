@@ -12,7 +12,7 @@
 1. **Call-Site Search** — Who calls this code? Find every reference.
 2. **Pattern Search** — How does the project solve similar problems?
 3. **History Search** — What do recent commits reveal about intent?
-4. **Guideline Check** — Read the relevant file from Section 3 before forming a plan. Verify the file exists first; if missing, note it and proceed with project conventions.
+4. **Guideline Check** — Explicitly load the relevant skill file from Section 2 using the `Read` tool before forming a plan. Skills are not auto-loaded; you must read them manually. Verify the file exists first; if missing, note it and proceed with project conventions.
 
 ### Phase 2 · Strategic Planning
 
@@ -41,15 +41,26 @@ Before delegating to a subagent:
 
 ## 2. Skills Reference Guidelines
 
-Always consult the relevant skill guideline **before** starting a task.
+Skills are **not auto-loaded**. Before starting a task, explicitly read the relevant skill file with the `Read` tool, e.g.:
 
-### Specific Skills
+```bash
+Read ~/.claude/skills/python-expert/SKILL.md
+```
 
-- `python-expert` — Enhanced Python development guidance
-- `devops-iac-engineer` — DevOps infrastructure as code
-- `docker-expert` — Docker container management
-- `github-workflow-automation` — GitHub workflow automation
-- `mcp-builder` — MCP guidelines
+Then follow any instructions inside that file to load sub-references as needed.
+
+### Available Skills
+
+| Skill | Path | Use When |
+| :---- | :--- | :------- |
+| `python-expert` | `~/.claude/skills/python-expert/SKILL.md` | Python development, typing, async, frameworks |
+| `devops-iac-engineer` | `~/.claude/skills/devops-iac-engineer/SKILL.md` | Terraform, Kubernetes, cloud infrastructure |
+| `docker-expert` | `~/.claude/skills/docker-expert/SKILL.md` | Dockerfile, Compose, container security |
+| `github-workflow-automation` | `~/.claude/skills/github-workflow-automation/SKILL.md` | GitHub Actions, PR automation, GitOps |
+| `mcp-builder` | `~/.claude/skills/mcp-builder/SKILL.md` | Building MCP servers (Python or TypeScript) |
+| `code-cleanup` | `~/.claude/skills/code-cleanup/SKILL.md` | Pruning dead code, YAGNI/DRY/KISS pass |
+| `code-refactor` | `~/.claude/skills/code-refactor/SKILL.md` | Modernising legacy Python |
+| `code-review` | `~/.claude/skills/code-review/SKILL.md` | Final gate review before submitting work |
 
 ---
 
@@ -105,7 +116,7 @@ Every completed task must be reported in this format:
 
 - **Found Patterns:** [e.g., "Project uses Pydantic for all validation"]
 - **Affected Areas:** [Files/modules that reference the changed code]
-- **Missing Guidelines:** [Any files from Section 3 that were absent]
+- **Missing Guidelines:** [Any files from Section 2 that were absent]
 - **Coverage Baseline:** [Current coverage vs. thresholds — note any gaps]
 
 ## 2. Strategic Plan
