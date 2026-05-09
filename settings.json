@@ -7,10 +7,33 @@
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "gemini-3.1-flash-lite"
   },
   "permissions": {
-    "allow": [],
-    "deny": []
+    "deny": [
+      "Read(.env*)",
+      "Read(*/.env*)",
+      "Read(.git/*)",
+      "Read(*.pem)",
+      "Read(*.key)",
+      "Read(id_rsa*)",
+      "Read(credentials.json)",
+      "Read(secrets.json)",
+      "Bash(rm -rf *)",
+      "Bash(sudo *)",
+      "Bash(chmod 777 *)",
+      "Bash(git push --force *)",
+      "Bash(mkfs *)",
+      "Bash(dd *)"
+    ],
+    "allow": [
+      "Read(*)",
+      "Bash(ls *)",
+      "Bash(pwd)",
+      "Bash(git status)",
+      "Bash(git diff)",
+      "Bash(uv sync)",
+      "Bash(ruff check *)"
+    ]
   },
-  "model": "haiku",
+  "model": "opus",
   "hooks": {
     "PostToolUse": [
       {
@@ -33,31 +56,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/usr/bin/python3 ~/.claude/hooks/block-cmd.py"
-          }
-        ]
-      },
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/bin/bash ~/.claude/hooks/protect-files.sh"
+            "command": "python3 ~/.claude/hooks/block-patterns.py"
           }
         ]
       }
     ],
-    "PermissionRequest": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/usr/bin/python3 ~/.claude/hooks/approve-cmd.py"
-          }
-        ]
-      }
-    ],
+    "PermissionRequest": [],
     "Stop": []
   },
   "statusLine": {
