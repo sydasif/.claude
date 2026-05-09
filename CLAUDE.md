@@ -96,7 +96,7 @@ When a task cannot be completed:
 
 ---
 
-## 4. Mandatory Output Structure
+## 6. Mandatory Output Structure
 
 Every completed task must be reported in this format:
 
@@ -137,6 +137,22 @@ Every completed task must be reported in this format:
 - [ ] Regression: [Proof existing tests still pass]
 - [ ] Rollback: [Proof the revert path works]
 ```
+
+---
+
+## 7. Linting and formatting
+
+Use `ruff` for both linting and formatting. Do not call `Black`, `flake8`, `isort`, or `pylint`.
+
+- Lint: `uv run ruff check .`
+- Lint and auto-fix: `uv run ruff check --fix .`
+- Format: `uv run ruff format .`
+- Check formatting without writing: `uv run ruff format --check .`
+- Always invoke Ruff through `uv run` so it resolves to the project's virtual environment.
+
+`ruff` configuration lives in `pyproject.toml` under `[tool.ruff]`.
+Do not add a separate `ruff.toml` or `.ruff.toml`.
+Do not add inline `# noqa` comments without a rule code.
 
 ---
 

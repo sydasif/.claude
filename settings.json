@@ -32,16 +32,19 @@
         ]
       },
       {
-        "matcher": "Write|Edit",
+        "matcher": "Write|Edit|MultiEdit",
         "hooks": [
           {
             "type": "command",
             "command": "npx prettier --write \"$CLAUDE_TOOL_INPUT_FILE_PATH\""
+          },
+          {
+            "type": "command",
+            "command": "/bi/bash ~/.claude/hooks/ruff-after-edit.sh"
           }
         ]
       }
     ],
-    "SessionStart": [],
     "PermissionRequest": [
       {
         "matcher": "Bash",
@@ -49,6 +52,17 @@
           {
             "type": "command",
             "command": "/usr/bin/python3 ~/.claude/hooks/approve-cmd.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run ruff check . >&2 || exit 2",
+            "timeout": 30
           }
         ]
       }
