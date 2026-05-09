@@ -40,10 +40,6 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/bin/bash ~/.claude/hooks/prettier-after-edit.sh"
-          },
-          {
-            "type": "command",
             "command": "/bin/bash ~/.claude/hooks/ruff-after-edit.sh"
           }
         ]
@@ -60,8 +56,17 @@
         ]
       }
     ],
-    "PermissionRequest": [],
-    "Stop": []
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run ruff check . >&2 || exit 2",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
   },
   "statusLine": {
     "type": "command",
