@@ -30,10 +30,38 @@
       "Bash(git push --force *)"
     ]
   },
-  "model": "sonnet",
+  "model": "haiku",
   "hooks": {
-    "PostToolUse": [],
-    "PreToolUse": [],
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/zulu/.claude/hooks/audit_logger.py"
+          },
+          {
+            "type": "command",
+            "command": "/home/zulu/.claude/hooks/format_code.py"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/zulu/.claude/hooks/block_secrets.py"
+          },
+          {
+            "type": "command",
+            "command": "/home/zulu/.claude/hooks/block_threading.py"
+          }
+        ]
+      }
+    ],
     "Stop": []
   },
   "statusLine": {

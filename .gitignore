@@ -42,3 +42,4 @@ Thumbs.db
 *~
 hooks/__pycache__/approve-cmd.cpython-314.pyc
 hooks/__pycache__/block-cmd.cpython-314.pyc
+audit.log
