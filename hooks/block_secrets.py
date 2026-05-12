@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 
 import json
-
 import sys
-
 from pathlib import Path
 
 
@@ -25,7 +23,7 @@ def main():
 
         file_path = Path(file_path_str)
 
-        # Define the list of sensitive file extensions
+        # Define the list of sensitive file extensions and prefixes
 
         sensitive_extensions = [
             ".env",
@@ -38,12 +36,27 @@ def main():
             ".crt",
             ".cer",
             ".secret",
-            ".config",
         ]
 
-        # Check if the file path has a sensitive extension
+        name_lower = file_path.name.lower()
 
+        # Check exact extension match (e.g. .env, .pem)
         if file_path.suffix.lower() in sensitive_extensions:
+            blocking = True
+
+        # Check prefix match for variant files (e.g. .env.production)
+        # Requires trailing dot to avoid matching .envrc or .envfile
+        elif any(name_lower == ext or name_lower.startswith(ext + ".") for ext in sensitive_extensions):
+            blocking = True
+
+        # Check for dotted variants: name contains .key. or .pem. etc.
+        # e.g. my.key.old → name is my.key.old, not a single suffix
+        elif any(f".{ext.strip('.')}." in name_lower for ext in sensitive_extensions):
+            blocking = True
+        else:
+            blocking = False
+
+        if blocking:
             # This is a sensitive file, block the action
 
             # Construct a clear, helpful error message for Claude

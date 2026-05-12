@@ -6,25 +6,23 @@ import subprocess
 import sys
 from pathlib import Path
 
-PRETTIER_EXTENSIONS = {
-    ".js", ".jsx", ".mjs", ".cjs",
-    ".ts", ".tsx", ".mts", ".cts",
-    ".css", ".scss", ".less",
-    ".html", ".htm", ".vue",
-    ".json", ".json5", ".jsonc",
-    ".yaml", ".yml",
-    ".md", ".mdx",
-    ".graphql", ".gql",
-}
 
-
-def format_prettier(file_path):
+def format_ruff(file_path):
     try:
-        subprocess.run(
-            ["prettier", "--write", file_path], check=True, capture_output=True
-        )
+        subprocess.run(["ruff", "format", file_path], check=True, capture_output=True)
         return True
     except (subprocess.CalledProcessError, FileNotFoundError):
+        return False
+
+
+def lint_ruff(file_path):
+    """Run ruff check --fix. Returns True if command ran (not whether issues were found)."""
+    try:
+        subprocess.run(
+            ["ruff", "check", "--fix", file_path], check=False, capture_output=True
+        )
+        return True
+    except FileNotFoundError:
         return False
 
 
@@ -50,12 +48,14 @@ def main():
         if not file_path or not should_format_file(file_path, tool_name):
             sys.exit(0)
 
-        extension = Path(file_path).suffix.lower()
-        if extension not in PRETTIER_EXTENSIONS:
+        if Path(file_path).suffix.lower() != ".py":
             sys.exit(0)
 
-        if format_prettier(file_path):
-            print(f"Formatted {file_path}")
+        formatted = format_ruff(file_path)
+        linted = lint_ruff(file_path)
+
+        if formatted or linted:
+            print(f"Formatted and linted {file_path}")
     except (json.JSONDecodeError, KeyError):
         pass
     sys.exit(0)

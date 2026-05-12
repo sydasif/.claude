@@ -33,10 +33,27 @@ fi
 # Read the input JSON from stdin
 input=$(cat)
 
-# Extract information from the JSON
-dir=$(echo "$input" | jq -r '.workspace.current_dir | split("/")[-1]')
-model=$(echo "$input" | jq -r '.model.display_name')
-pwd_path=$(echo "$input" | jq -r '.workspace.current_dir')
+# Parse JSON - use jq if available, fall back to python3
+if command -v jq >/dev/null 2>&1; then
+    dir=$(echo "$input" | jq -r '.workspace.current_dir | split("/")[-1]')
+    model=$(echo "$input" | jq -r '.model.display_name')
+    pwd_path=$(echo "$input" | jq -r '.workspace.current_dir')
+elif command -v python3 >/dev/null 2>&1; then
+    read -r dir model pwd_path <<< "$(echo "$input" | python3 -c "
+import json, sys
+d = json.load(sys.stdin)
+w = d.get('workspace', {})
+m = d.get('model', {})
+cd = w.get('current_dir', '?')
+print(cd.rstrip('/').split('/')[-1] if cd != '?' else '?')
+print(m.get('display_name', '?'))
+print(cd)
+")"
+else
+    dir="?"
+    model="?"
+    pwd_path="?"
+fi
 
 # Format the path for display
 if [ "$pwd_path" = "$HOME" ]; then
@@ -51,7 +68,7 @@ fi
 git_info=""
 if command -v git >/dev/null 2>&1; then
     # Run git status with --no-optional-locks to avoid potential lock issues
-    # Use pushd/popd instead of cd to avoid changing the current directory permanently
+    # Use subshell cd to avoid changing the current directory permanently
     git_status=$(cd "$pwd_path" 2>/dev/null && git --no-optional-locks status --porcelain 2>/dev/null || echo "")
     git_branch=$(cd "$pwd_path" 2>/dev/null && git --no-optional-locks rev-parse --abbrev-ref HEAD 2>/dev/null || echo "")
 
