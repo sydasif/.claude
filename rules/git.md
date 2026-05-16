@@ -1,3 +1,8 @@
+---
+name: git
+description: Git branch naming conventions and commit message rules
+---
+
 # Git Rules
 
 ## Branch Naming
@@ -14,5 +19,3 @@
 - Use **imperative mood** — "Add validation" not "Added validation"
 - Subject line: **≤ 50 characters**, no trailing period
 - Body (if needed): wrap at 72 characters, explain _why_ not _what_
-
-
