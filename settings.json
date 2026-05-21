@@ -1,6 +1,6 @@
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "http://localhost:4000",
+    "ANTHROPIC_BASE_URL": "http://localhost:8080/anthropic",
     "ANTHROPIC_AUTH_TOKEN": "sk-1234",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "gemini/gemini-3.1-flash-lite",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "gemini/gemma-4-31b-it",
@@ -29,7 +29,6 @@
       "Bash(git push --force *)"
     ]
   },
-  "model": "opus",
   "hooks": {
     "PostToolUse": [
       {
@@ -94,8 +93,7 @@
   },
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
-    "repomix-mcp@repomix": true,
-    "code-simplifier@claude-plugins-official": true
+    "repomix-mcp@repomix": true
   },
   "extraKnownMarketplaces": {
     "repomix": {
