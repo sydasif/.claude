@@ -1,5 +1,5 @@
 ---
-name: code-cleanup
+name: cleanup-code
 description: Codebase cleanup workflow for applying YAGNI, DRY, and KISS principles. Use when asked to review, simplify, refactor, or clean up a project for unnecessary code, duplicated logic, over-abstraction, excessive complexity, stale tests, or docs that no longer match implementation.
 ---
 
@@ -255,4 +255,4 @@ When operating as an agent across multiple passes or context windows:
 
 ## See Also
 
-- `code-refactor` skill — For modernizing Python code after cleanup
+- `refactor-code` skill — For modernizing Python code after cleanup

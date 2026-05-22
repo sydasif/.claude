@@ -14,7 +14,7 @@ Global Claude Code config for Python work.
 ~/.claude/
 ├── CLAUDE.md
 ├── rules/
-├── skills/          # code-cleanup, code-refactor, code-review, ddg-search, …
+├── skills/          # cleanup-code, refactor-code, review-code, ddg-search, …
 ├── agents/          # matching subagents
 ├── hooks/           # ruff on .py save, statusline
 ├── templates/ci-python.yml
@@ -23,7 +23,7 @@ Global Claude Code config for Python work.
 
 ## Python pipeline
 
-`code-cleanup` → `code-refactor` → `code-review` — verify per `rules/python-style.md`.
+`cleanup-code` → `refactor-code` → `review-code` — verify per `rules/python-style.md`.
 
 ## Overrides
 

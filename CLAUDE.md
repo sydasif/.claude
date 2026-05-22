@@ -17,7 +17,7 @@ Declare these before any task begins. Sub-agents inherit this context explicitly
 ### Python workflow
 
 - **Canonical rules (auto-loaded):** `rules/python-style.md` (toolchain, lint, types, security), `rules/python-testing.md` (pytest, coverage). Do not restate their content in plans or reports.
-- **Skill pipeline:** `code-cleanup` → `code-refactor` → `code-review` when doing structured Python maintenance.
+- **Skill pipeline:** `cleanup-code` → `refactor-code` → `review-code` when doing structured Python maintenance.
 
 ---
 
