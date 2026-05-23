@@ -73,9 +73,7 @@ class MCPConnection(ABC):
 class MCPConnectionStdio(MCPConnection):
     """MCP connection using standard input/output."""
 
-    def __init__(
-        self, command: str, args: list[str] = None, env: dict[str, str] = None
-    ):
+    def __init__(self, command: str, args: list[str] = None, env: dict[str, str] = None):
         super().__init__()
         self.command = command
         self.args = args or []

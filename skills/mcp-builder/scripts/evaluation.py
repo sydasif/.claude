@@ -40,9 +40,7 @@ async def evaluate_mcp_server(
         "details": [],
     }
 
-    async with MCPConnectionStdio(
-        command=server_command[0], args=server_command[1:]
-    ) as conn:
+    async with MCPConnectionStdio(command=server_command[0], args=server_command[1:]) as conn:
         tools = await conn.list_tools()
         print(f"Connected to MCP server with {len(tools)} tools")
 

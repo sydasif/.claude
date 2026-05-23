@@ -9,13 +9,12 @@
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": "Write|Edit|MultiEdit",
+        "matcher": "Edit|Write",
+        "if": ".py",
         "hooks": [
           {
             "type": "command",
-            "command": "python3",
-            "if": ".py",
-            "args": ["/home/zulu/.claude/hooks/format_python.py"]
+            "command": "jq -r '.tool_input.file_path' | ruff format"
           }
         ]
       }
