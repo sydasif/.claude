@@ -27,11 +27,11 @@
       {
         "hooks": [
           {
-            "command": "bash /home/zulu/.claude/hooks/format-after-edit.sh",
+            "command": "node /home/zulu/.claude/hooks/format-code.js",
             "type": "command"
           }
         ],
-        "matcher": "Write|Edit|MultiEdit"
+        "matcher": "Write|Edit"
       }
     ],
     "PreToolUse": [
