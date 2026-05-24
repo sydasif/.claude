@@ -1,48 +1,35 @@
 {
-  "autoUpdatesChannel": "latest",
-  "effortLevel": "high",
-  "enabledPlugins": {
-    "pyright-lsp@claude-plugins-official": true,
-    "repomix-mcp@repomix": true,
-    "typescript-lsp@claude-plugins-official": true
-  },
   "env": {
     "ANTHROPIC_AUTH_TOKEN": "sk-1234",
     "ANTHROPIC_BASE_URL": "http://localhost:8080/anthropic",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "gemma-4-26b-a4b-it",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "gemma-4-31b-it",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "gemini-3.1-flash-lite",
-    "ENABLE_LSP_TOOL": "1"
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "gemini-3.1-flash-lite"
   },
-  "extraKnownMarketplaces": {
-    "repomix": {
-      "source": {
-        "repo": "yamadashy/repomix",
-        "source": "github"
-      }
-    }
+  "permissions": {
+    "allow": ["WebSearch"]
   },
   "hooks": {
     "PostToolUse": [
       {
+        "matcher": "Write|Edit",
         "hooks": [
           {
-            "command": "node /home/zulu/.claude/hooks/format-code.js",
-            "type": "command"
+            "type": "command",
+            "command": "node /home/zulu/.claude/hooks/format-code.js"
           }
-        ],
-        "matcher": "Write|Edit"
+        ]
       }
     ],
     "PreToolUse": [
       {
+        "matcher": "WebSearch",
         "hooks": [
           {
-            "command": "bash /home/zulu/.claude/hooks/block-websearch.sh",
-            "type": "command"
+            "type": "command",
+            "command": "bash /home/zulu/.claude/hooks/block-websearch.sh"
           }
-        ],
-        "matcher": "WebSearch"
+        ]
       },
       {
         "matcher": "Bash",
@@ -64,12 +51,25 @@
       }
     ]
   },
-  "permissions": {
-    "allow": ["WebSearch"]
-  },
   "statusLine": {
-    "command": "/bin/bash ~/.claude/hooks/statusline.sh",
-    "type": "command"
+    "type": "command",
+    "command": "/bin/bash ~/.claude/hooks/statusline.sh"
   },
+  "enabledPlugins": {
+    "pyright-lsp@claude-plugins-official": true,
+    "repomix-mcp@repomix": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "context7@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "repomix": {
+      "source": {
+        "source": "github",
+        "repo": "yamadashy/repomix"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "autoUpdatesChannel": "latest",
   "theme": "dark"
 }
