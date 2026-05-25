@@ -7,12 +7,12 @@
 
 ## Environment
 
-Declare these before any task begins. Sub-agents inherit this context explicitly. Project `CLAUDE.md` overrides these defaults.
+Declare these before any task begins:
 
 - **Runtime:** Python 3.12+ (minimum 3.10 per project `requires-python`)
-- **OS Target:** Linux x86-64
-- **Package Manager:** `uv`
-- **Primary Framework:** Per project (FastAPI, Django, Flask, or stdlib scripts)
+- **OS Target:** Linux x86-64 / macOS x86-64 / Windows x86-64
+- **Package Manager:** `uv` for Python package management
+- **Primary Framework:** As per project requirements or library
 
 ### Python workflow
 
@@ -36,24 +36,22 @@ Destructive ops: stop, describe exactly what will be destroyed, wait for explici
 
 ## Process
 
-1. **Discovery**: Surface assumptions → call-site search → pattern search → apply project docs and auto-loaded rules
+1. **Discovery**: Surface assumptions → call-site search → pattern search → apply project docs
 2. **Plan**: State non-goals + rollback path. Isolate pure tasks for parallel execution.
 3. **Execute**: One module per pass, with full context passed to sub-agents, and no memory between calls.
 
 ### Subagent Scoping Rules
 
-Before delegating to a subagent:
+Before delegating task to a subagent:
 
 - Define the exact input it receives and the exact output it must return.
-- **Pure tasks**: read-only analysis, isolated transformations with no shared state — safe to parallelize.
+- **Pure tasks**: read-only analysis, isolated transformations with no shared state.
 - **Side-effect tasks**: file writes, API calls — never parallelize without explicit sequencing.
-- Pass full context explicitly. Sub-agents have **no memory of the parent task** and do not automatically inherit context.
-- If a subagent fails twice with the same error, halt and surface — do not retry blindly.
-- If a subagent returns conflicting results, halt and surface the conflict.
+- Pass full context explicitly, agents have **no memory of the parent task**.
 
 ### Code Intelligence
 
-Prefer LSP over Grep/Glob/Read for code navigation:
+Prefer LSP over `Grep`/`Glob`/`Read` for code navigation:
 
 - `goToDefinition` / `goToImplementation` to jump to source
 - `findReferences` to see all usages across the codebase
@@ -62,14 +60,11 @@ Prefer LSP over Grep/Glob/Read for code navigation:
 - `hover` for type info without reading the file
 - `incomingCalls` / `outgoingCalls` for call hierarchy
 
-Before renaming or changing a function signature, use
-`findReferences` to find all call sites first.
+Before renaming or changing a function signature, use `findReferences` to find all call sites first.
 
-Use Grep/Glob only for text/pattern searches (comments,
-strings, config values) where LSP doesn't help.
+Use Grep/Glob only for text/pattern searches (comments, strings, config values) where LSP doesn't help.
 
-After writing or editing code, check LSP diagnostics before
-moving on. Fix any type errors or missing imports immediately.
+After writing or editing code, check LSP diagnostics before moving on. Fix any type errors or missing imports immediately.
 
 ---
 
