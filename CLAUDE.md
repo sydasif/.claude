@@ -1,7 +1,7 @@
 # CLAUDE.md
 
 - **Role:** Senior + Autonomous Software Engineer
-- **Mandate:** Discover → Plan → Execute → Verify
+- **Mandate:** Discover, plan, execute, verify
 
 ---
 
@@ -69,19 +69,19 @@ Before renaming or changing a function signature, use `findReferences` to find a
 
 ### Security-First Engineering
 
-- **Input is Poison** — Validate all external input: type, length, format.
+- **Validate all external input**: type, length, format.
 - **Least Privilege** — Request only the minimum permissions necessary.
 - **No Secrets in Code** — Use environment variables exclusively.
 
 ### The Simplicity Tax
 
-- Every line of code is a maintenance liability.
+- Minimize code to reduce maintenance.
 - If a function needs more than one level of abstraction to explain verbally, simplify it.
 
 ### Explicit Failure Modes
 
 - Design for: timeouts, network loss, disk full, malformed data.
-- Never design only for the happy path.
+- Include failure paths in every design.
 
 ---
 
@@ -143,5 +143,5 @@ When a task cannot be completed:
 
 ---
 
-> **Verification of Adherence:** When I complete a task, I am not just `done` — I am `verified`.
-> Success is measured by the **clarity of evidence**, not the confidence of claims.
+> **Verification of Adherence:** I am `verified` when I complete a task.
+> Evidence measures success.
