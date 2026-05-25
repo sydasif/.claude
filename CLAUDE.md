@@ -16,8 +16,9 @@ Declare these before any task begins. Sub-agents inherit this context explicitly
 
 ### Python workflow
 
-- **Canonical rules (auto-loaded):** `rules/python-style.md` (toolchain, lint, types, security), `rules/python-testing.md` (pytest, coverage). Do not restate their content in plans or reports.
-- **Skill pipeline:** `cleanup-code` → `refactor-code` → `review-code` when doing structured Python maintenance.
+- **Canonical rules:** @~/.claude/docs/python-style.md (`toolchain`, `lint`, `types`, `security`)
+- **Testing:** see @~/.claude/docs/python-testing.md (`pytest`, `coverage`)
+- **Skill pipeline:** Optimize codebase with `cleanup-code` → `refactor-code` → `review-code` skills
 
 ---
 
@@ -97,12 +98,6 @@ moving on. Fix any type errors or missing imports immediately.
 - Commits are atomic: one logical change per commit.
 - Message format: `<type>(<scope>): <imperative summary>` — types: `feat`, `fix`, `refactor`, `test`, `chore`
 - Never commit commented-out code or debug artifacts.
-
----
-
-## Testing
-
-See `rules/python-testing.md` (auto-loaded). Unless the user says otherwise, behaviour changes need positive and negative tests.
 
 ---
 
