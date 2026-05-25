@@ -12,7 +12,7 @@ This directory contains modular Python standards. Load individual files as neede
 
 - [Error Handling](./python/error-handling.md) – specific exceptions, `raise from`, context managers, logging
 - [Security](./python/security.md) – secrets, `eval()`, SQL injection, `subprocess`, password hashing
-- [Testing](./python-testing.md) – (separate file) AAA pattern, coverage, pytest
+- [Testing](./python/testing.md) – (separate file) AAA pattern, coverage, pytest
 
 ## Performance & Concurrency
 

@@ -38,7 +38,7 @@ cp ~/.claude/templates/ci-python.yml .github/workflows/ci.yml
 | `skills/*/SKILL.md`       | Reusable capabilities (cleanup, refactor, review, blog writing, humanizing)  |
 | `agents/*.md`             | Specialized sub‑agents with tool restrictions                                |
 | `docs/python-index.md`    | Modular Python standards — style, typing, security, performance, frameworks  |
-| `docs/python-testing.md`  | Testing standards, coverage thresholds, commands                             |
+| `docs/python/testing.md`  | Testing standards, coverage thresholds, commands                             |
 | `templates/ci-python.yml` | GitHub Actions workflow template                                             |
 
 ---
