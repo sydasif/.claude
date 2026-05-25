@@ -28,10 +28,10 @@ Use these tie-breakers:
 - Prefer simple duplication over a vague abstraction.
 - Prefer deletion over generalization when code has no current call sites, tests, docs, or framework purpose.
 - Prefer local explicit code when behavior is short and unlikely to change together.
-- Prefer a shared helper when duplicated logic represents a real policy — error shape, security validation, serialization, timeout handling, or network execution.
+- Use a shared helper for real policies — error shape, security validation, serialization, timeout handling, or network execution.
 - Preserve public APIs unless the user explicitly accepts breaking changes.
 
-> **YAGNI guardrail (read before applying YAGNI)**: YAGNI is not a license for sloppy deletion. The goal is to remove speculative complexity, not to paint the codebase into a corner. Prefer removing _implementations_ of unused features over removing _seams_ that make future change possible. If a removal structurally forecloses an obvious and reasonable future extension point, pause and flag it rather than deleting silently.
+> **YAGNI guardrail**: YAGNI is not a license for sloppy deletion. Remove speculative complexity, not the seams that make future change possible. If a removal forecloses an obvious and reasonable future extension point, pause and flag it.
 
 ---
 
@@ -41,11 +41,11 @@ Run these checks before any analysis or editing. Stop and confirm with the user 
 
 ### Gate 1 — Git cleanliness
 
-Run `git status`. If there are uncommitted user changes, confirm the cleanup scope explicitly before proceeding. Do not mistake in-progress work for cleanup targets.
+Run `git status`. If uncommitted user changes exist, confirm the cleanup scope explicitly before proceeding. In-progress work is not a cleanup target.
 
 ### Gate 2 — Test coverage baseline
 
-Assess whether the codebase has meaningful automated test coverage before ranking anything as "safe cleanup." A rough heuristic: if there are no tests at all, or fewer than one test per exported function or class, treat coverage as thin. If test coverage is thin or absent, escalate all findings to "needs care" and warn the user. YAGNI and KISS cleanup without tests can break behavior silently.
+Assess automated test coverage before ranking cleanup as "safe." Heuristic: if tests are absent or fewer than one per exported function/class, coverage is thin. Escalate all findings to "needs care" and warn the user. YAGNI and KISS cleanup without tests can break behavior silently.
 
 ### Gate 3 — Project-level overrides
 
@@ -62,7 +62,7 @@ Read `CLAUDE.md` or `README.md`, contribution docs, and any style/convention fil
 - Confirm git status is clean (Gate 1 above).
 - Assess test coverage (Gate 2 above).
 - Note any project-specific overrides (Gate 3 above).
-- **If the repository is large (more than ~20 modules or top-level source files), confirm the intended scope with the user before proceeding.** Default to a single module or layer per session rather than sweeping the whole codebase.
+- **Large repositories (~20+ modules/files)**: confirm the intended scope with the user before proceeding. Default to a single module or layer per session.
 
 ### 2. Identify candidates with evidence
 
@@ -178,7 +178,7 @@ Simplify code that makes readers jump through unnecessary indirection:
 - Tests that assert implementation details without protecting behavior.
 - Stale comments that describe removed behavior (also a YAGNI signal).
 
-Prefer the simplest form that still preserves:
+Prefer the simplest form that preserves:
 
 - Clear error semantics.
 - Testability.
