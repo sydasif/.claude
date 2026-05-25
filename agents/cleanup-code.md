@@ -8,6 +8,10 @@ skills:
   - cleanup-code
 ---
 
+# Docs
+
+@~/.claude/docs/python-index.md
+
 ## What I do
 
 I follow the `cleanup-code` skill exactly. Read it in full before

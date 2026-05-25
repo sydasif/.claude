@@ -16,9 +16,9 @@ Declare these before any task begins:
 
 ### Python workflow
 
-- **Canonical rules:** @~/.claude/docs/python-style.md (`toolchain`, `lint`, `types`, `security`)
+- **Canonical rules:** @~/.claude/docs/python-index.md (modular Python standards)
 - **Testing:** see @~/.claude/docs/python-testing.md (`pytest`, `coverage`)
-- **Skill pipeline:** Optimize codebase with `cleanup-code` → `refactor-code` → `review-code` skills
+- **Skill pipeline:** Optimize codebase with `cleanup-code` → `refactor-code` → `security-audit` → `review-code` skills
 
 ---
 

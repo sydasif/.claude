@@ -1,7 +1,7 @@
 ---
 name: review-code
 description: >
-  Final-gate review of completed changes. Catches errors, verifies
+  Final-gate review after security audit. Catches errors, verifies
   completeness, and confirms quality standards before submitting.
 tools: Read, Grep, Glob, Bash
 disallowedTools: Write, Edit
@@ -9,6 +9,10 @@ skills:
   - review-code
   - ddg-search
 ---
+
+# Docs
+
+@~/.claude/docs/python-index.md
 
 ## What I do
 

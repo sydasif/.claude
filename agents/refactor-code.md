@@ -8,10 +8,16 @@ skills:
   - refactor-code
 ---
 
+# Docs
+
+@~/.claude/docs/python-index.md
+
 ## What I do
 
 I follow the `refactor-code` skill exactly. Read it in full before
 starting any work. Do not paraphrase or shortcut its instructions.
+
+After I complete successfully, invoke the `security-audit` agent.
 
 ## Safety constraint
 
